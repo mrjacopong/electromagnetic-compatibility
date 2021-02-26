@@ -1,0 +1,226 @@
+\section{Class 1 - 22/02/21}
+Today's lesson was a recap on Maxwell equation.\\
+First of all we have seen the Faraday equation:
+\begin{equation}\label{eq:first_maxwell}
+ \oint_l \overline{E} \cdot \hat{l} \, dl = -\frac{d}{dt}\int_s \overline{B} \cdot \hat{n} \, ds = - \frac{d\Phi_B}{dt}
+\end{equation}
+And this second equation:
+\begin{equation}
+\oint_l \overline{H}\cdot \hat{l} \, dl = \int_s \left(\frac{d\overline{D}}{dt}+\overline{J}\right)\cdot \hat{n}\,ds
+\end{equation}
+Where those symbol are:
+\begin{itemize}
+\item $E=$ intensity of electric field $[\frac{V}{m}]$
+\item $B=$ magnetic induction vector $[T]$
+\item $H=$ intensity magnetic field $[A]$
+\item $D=$ electronic displacement $[\frac{A}{m}]$
+\item $J=$ intensity of electric current $[\frac{A}{m^2}]$
+\end{itemize}
+Now, we can think $E - H$ as the element measuring the real electromagnetic field, and $D - B$ as something that measure the effect of the EMF.\\
+We also remember that:
+\begin{equation}\label{eq:1}
+\frac{d}{dt}\int_V \overline{\rho} \, dV=-\int_s \overline{J}\cdot \hat{n}\,ds
+\end{equation}
+Where $\rho$ is the density of charge (volumetric) and $s$ is the boundary of the volume $V$ in the integral on the left.\\
+On the right of \cref{eq:1} we can find a minus sign, because if my electron goes from out to in in our volume, it means that the current is going from in to out (the right integral is positive because of the convension for the versor $\hat{n}$ that goes from in to out). If the the electron are going in as we already said, we are accumulating a negative charge, for this reason we need to put this negative sign.
+\subsection*{Recap of operator nabla}
+Usually we refer to a variation of a quantity with the derivative (for example $\frac{dT}{dt}$).\\
+If the vector $T$ has more components, we can have a look at the derivative of everything: $\frac{dT}{dx},\frac{dT}{dy},\frac{dT}{dz}$.\\
+If we are in space, we have 3 components and 3 versors, so we introduce the gradient of the scalar field T (temperature) as:
+\begin{equation}
+\left(\frac{\partial T}{\partial x}\ihat+\frac{\partial T}{\partial y}\jhat+\frac{\partial T}{\partial z}\khat\right)=\nabla\,T
+\end{equation}
+Where $\nabla=\frac{\partial}{\partial x}\ihat +\frac{\partial}{\partial y}\jhat +\frac{\partial}{\partial z}\khat$ is the nabla operator.\\
+Now from the scalar $T$ we obtained a vector and that is okay, but if our field is not scalar but vectorial?\\
+The electric field $\overline{E}=E_x \ihat + E_y \jhat + E_z \khat$ is a vectorial field.
+What we can do now is using the dot or cross product between our vector E and the $\nabla$ operator.
+\subsubsection*{Scalar product $\overline{\nabla} \cdot \overline{E}$}
+The scalar product (dot) between nabla and a vectorial field is named \emph{divergence}
+\begin{equation}
+\overline{\nabla} \cdot \overline{E} =\frac{\partial E_x}{\partial y}+\frac{\partial E_y}{\partial y}+\frac{\partial E_z}{\partial z}
+\end{equation}
+Phisically speaking the divergence of the vector $E$ is \textit{how $E_x$ is changing over the $x$ direction etc...}\\
+Another way to look at this divergence is:
+\begin{equation}
+\overline{\nabla} \cdot \overline{E} = \cdots = \lim_{\Delta v \rightarrow 0}\frac{\oint_s \overline{E}\cdot \hat{n}\, ds}{\Delta v}
+\end{equation}
+\subsubsection*{Divergence theorem}
+This theorem is very useful to transform an integral over a surface to an integral over a volume.
+\begin{equation}
+\int_v \overline{\nabla} \cdot \overline{E} = \int_s \overline{E}\cdot \hat{n}\,ds
+\end{equation}
+So the integral of the divergence over a volume is equal to the flux across the boundary surface of the volume.
+\subsubsection*{Cross product $\overline{\nabla} \times \overline{E}$}
+The cross product of nabla and our vectorial field is named \emph{rotor}
+\begin{equation}
+\overline{\nabla}\times \overline{E}=det
+\left[ \begin{matrix}
+\ihat & \jhat & \khat\\
+\frac{\partial}{\partial x} & \frac{\partial}{\partial y} & \frac{\partial}{\partial z}\\
+E_x & E_y & E_z
+\end{matrix} \right]=
+\left(\frac{\partial E_x}{\partial y} - \frac{\partial E_y}{\partial z}\right)\ihat+
+\left(\frac{\partial E_x}{\partial z} - \frac{\partial E_z}{\partial x}\right)\jhat+
+\left(\frac{\partial E_y}{\partial x} - \frac{\partial E_x}{\partial y}\right)\khat
+\end{equation}
+The rotor (as the name says) explains the behaviour of $E_x$ (for example).\\
+Again, another way to look at the rotor is:
+\begin{equation}
+\overline{\nabla} \times \overline{E}=\lim_{\Delta s \rightarrow 0}\frac{\hat{n}\cdot\oint_l \overline{E}\cdot \hat{l}\,dl}{\delta s}
+\end{equation}
+The $\hat{n}$ is there to maximize the value of $\oint_l \overline{E}\cdot \hat{l}\,dl$. I don
+'t really know why, PLEASE GIVE IT A LOOK
+\subsection*{Stokes Theorem}
+This theorem is similar to divergence theorem, but instead of surface and volume, we deal with surface and line:
+\begin{equation}\label{eq:stokes_eq}
+\int_s \overline{\nabla}\times \overline{E}\cdot \hat{n}\,ds=\oint_l\overline{E}\cdot\hat{l}\,dl
+\end{equation}
+It means that the flux over a surface of the rotor of a vectorial field, is the integral of that field on the line that is bounding s.
+\subsubsection*{Laplacian}
+If i use the operator rotor twice we get the laplacian.\\
+Consider the gradient of a scalar field $T$: $\overline{\nabla}T=\left(\frac{\partial T}{\partial x}\ihat+\frac{\partial T}{\partial y}\jhat+\frac{\partial T}{\partial z}\khat\right)$ now:
+\begin{equation}\label{eq:2}
+\overline{\nabla}\cdot(\overline{\nabla}T)=\overline{\nabla}^2T=\left(\frac{\partial^2 T}{\partial x^2}+\frac{\partial^2 T}{\partial y^2}+\frac{\partial^2 T}{\partial z^2}\right)
+\end{equation}
+If we consider a vectorial field $\overline{E}=E_x \ihat + E_y \jhat + E_z \khat$
+\begin{equation}
+\overline{\nabla}^2\cdot \overline{E}= \overline{\nabla}^2E_x\,\ihat+\overline{\nabla}^2E_y\,\jhat+\overline{\nabla}^2E_z\,\khat
+\end{equation}
+Actually we can write $\nabla^2E_x\,\ihat+\nabla^2E_y\,\jhat+\nabla^2E_z\,\khat$ because we are dealing with different Laplacian for each $E$ component, that is scalar.\\
+The same can be said to $\nabla^2 T$ on \cref{eq:2}
+\subsubsection*{Going back to the Stokes Theorem}
+With stokes theorem we can write something similar to the first Maxwell equation:\\
+Starting from the first Maxwell equation seen in \cref{eq:first_maxwell}
+\begin{equation}
+\oint_l \overline{E} \cdot \hat{l} \, dl = -\frac{d}{dt}\int_s \overline{B} \cdot \hat{n} \, ds
+\end{equation} 
+And with the Stokes theorem \cref{eq:stokes_eq}, we can write:
+\begin{equation}
+\int_s (\overline{\nabla} \times \overline{E})\cdot \hat{n}\,ds=\frac{d}{dt}\int_s \overline{B}\cdot\hat{n}\, ds
+\end{equation}
+We notice that we have two integral over the same surface $s$, so:
+\begin{equation}
+\int_s \left(\overline{\nabla}\times\overline{E}+\frac{d\overline{B}}{dt}\right)\cdot\hat{n}\,ds=0
+\end{equation}
+Finally we know that this integral is equal to zero if the equation inside the brackets is also equal to zero, so:
+\begin{equation}\label{eq:maxwell_first_local}
+\overline{\nabla}\times\overline{E}=-\frac{d\overline{B}}{dt}
+\end{equation}
+This \cref{eq:maxwell_first_local} can be considered as the first Maxwell equation but for a point.\\
+We can do the same for the second Maxwell equation:
+\begin{equation}\label{eq:maxwell_second_local}
+\overline{\nabla}\times\overline{H}=\frac{d\overline{D}}{dt}+\overline{J}
+\end{equation}
+\cref{eq:maxwell_first_local} and \cref{eq:maxwell_second_local}are also named as the local formulation of the Maxwell equation.\\
+To be more precise we can actually split the intensity of current $J$ in two contribution:
+\begin{itemize}
+\item $J_\sigma$: current generated by the electromagnetic field on iron ($\sigma$ actually is the conductivity).
+\item $J_i$: current that generates the electromagnetic field, given by for example a battery of the phone.
+\end{itemize}
+We have seen $J_\sigma$ as the metallic behaviour of the receiver and $J_i$ as the source of the EMF, and we can also see at the component $\frac{d\overline{D}}{dt}$ as he behaviour of the dielectric material due to the displacement of the charge.\\
+\cref{eq:maxwell_second_local} becomes:
+\begin{equation}
+\overline{\nabla}\times\overline{H}=\frac{d\overline{D}}{dt}+\overline{J}_\sigma+\overline{J}_i
+\end{equation}
+\subsection*{Step forward: solution of the Maxwell equation}
+The solutions of the Maxwell equations are not always simple to obtain analytically, we need to have a sort of classification for the equation to be solved. Those can be classified as:
+\begin{itemize}
+\item \textbf{Linear} and \textbf{non linear}
+\item \textbf{isotropic} and \textbf{anisotropic}
+\item \textbf{stationary} and \textbf{non stationary}
+\item \textbf{dispersive} and \textbf{non dispersive}
+\begin{itemize}
+\item in time
+\item in space
+\end{itemize}
+\end{itemize}
+\textbf{Linear} means that the equation is composed only and only only by the sum of each variable $x_i$ multiplied by their own coefficient $a_i$: $\bm{a_1x_2+a_1x_2\cdots + a_nx_n+b=0}$, this is an important class of equation because we can use a lot of useful properties.\\
+\textbf{Stationary} means that the results will not change with the time, so if i do the experiment now or 10 years later I'll be sure that nothing will change.\\
+We need this little recap to neglect all those non optimal behavior, and for the sake of simplicity we use those relation:
+\begin{itemize}
+    \item $\overline{D}=\varepsilon \overline{E}\;\rightarrow \varepsilon$ is the dielectric permittivity
+    \item $\overline{B}=\mu \overline{H}\;\rightarrow \mu$ is the electric permeability
+    \item $\overline{J_\sigma}=\sigma \overline{E}\;\rightarrow \sigma$ is the conductivity (is there when we have a metallic object)
+\end{itemize}
+Those are very oversiplified, but can be useful to study our EMF.\\
+We remember that we have obtained the $\varepsilon \, \mu \, \sigma$ value in vacum, that are:
+\begin{itemize}
+    \item $\varepsilon_0=\frac{1}{36\pi}\,10^{-9} \left[\frac{F}{m}\right]$
+    \item $\mu_0=4\pi\,10^{-7} \left[\frac{H}{m}\right]$
+    \item $\sigma_0=0 \left[\frac{S}{m}\right]$
+\end{itemize}
+When we are dealing with linear material, we can not consider the numeric value of these constant over vacum, but instead with some approximation we can consider:
+\begin{itemize}
+    \item $\varepsilon=\varepsilon_0\,\varepsilon_r$
+    \item $\mu=\mu_0\,\mu_r$
+    \item $\sigma=\frac{1}{\rho}$
+\end{itemize}
+With this kept in mind we can write the first two local Maxwell equation as:
+\begin{equation}\label{eq:maxwell_system}
+    \begin{cases}
+    \overline{\nabla}\times\overline{E}=-\mu\frac{d\overline{H}}{dt}\\[5pt]
+    \overline{\nabla}\times\overline{H}=\varepsilon\frac{d\overline{E}}{dt}+\sigma\,\overline{E}+\overline{J}_i
+    \end{cases}
+\end{equation}
+Ad can be seen, the system in \cref{eq:maxwell_system} is a systems of equations in two unkown variable ($E$ and $H$), we can solve that but it will be very complicated.
+\subsection*{Another useful equation}
+similarly to what we have done in \cref{eq:maxwell_first_local}, we can write this equation exploiting the Stokes Theorem (\cref{eq:stokes_eq}):
+    \begin{align}
+    \begin{split}
+    &\frac{d}{dt}\int_v\overline{\rho}\,dv=-\int_s \overline{J}\cdot \hat{n}ds=-\int_v\overline{\nabla}\cdot\overline{J}\,dv\\[5pt]
+    &\int_v\left(\frac{d\overline{\rho}}{dt}+\overline{\nabla}\cdot\overline{J}\right)\,dv=0
+    \end{split}
+    \end{align}
+Then we obtain:
+\begin{equation}
+    \overline{\nabla}\cdot\overline{J}=-\frac{d\overline{\rho}}{dt}
+\end{equation}
+\subsection*{Third maxwell equation in local formulation}
+First of all we try to do the divergence of $\overline{\nabla}\times\overline{E}$.\\ 
+Note that the result of the divergence of a rotor is equal to zero because the result of the rotor will be perpendicular to the nabla operator, so $\overline{\nabla}\cdot(\overline{\nabla}\times\overline{E})=0$
+\begin{align}
+    \begin{split}
+        &\overline{\nabla} \cdot \left[ (\overline{\nabla}\times \overline{E})=-\frac{d\overline{B}}{dt}\right]=\\[5pt]
+        &\overline{\nabla} \cdot \left(-\frac{d\overline{B}}{dt}\right)=0\\[5pt]
+        &\frac{d}{dt}(\overline{\nabla}\cdot \overline{B})=0
+    \end{split}
+\end{align}
+We obtained the \emph{Third maxwell equation in local formulation}:
+\begin{equation}\label{eq:third_max_eq_local}
+    \overline{\nabla}\cdot \overline{B}=0
+\end{equation}
+We can say that \cref{eq:third_max_eq_local} ist true because we are considering that at the starting time $t_0$ our EMF was turned off ($\overline{\nabla}\cdot \overline{B}=0 $ at $t_0$).
+If $\mu$ is constant:
+\begin{equation}
+    \overline{\nabla}\cdot \overline{B}=\overline{\nabla}\cdot(\mu\,\overline{H})=\overline{\nabla}\cdot\overline{H}=0
+\end{equation}
+\subsection*{Forth maxwell equation in local formulation}
+Using the same passages as before, we can obtain the forth maxwell equation in local formulation by doing the divergence of the rotor of $H$
+\begin{align}
+    \begin{split}
+        &\overline{\nabla} \cdot \left[ (\overline{\nabla}\times \overline{H})=-\frac{d\overline{D}}{dt}+\overline{J}\right]=\\[5pt]
+        &\overline{\nabla} \cdot \left(-\frac{d\overline{D}}{dt}+\overline{J}\right)=0\\[5pt]
+        &\frac{d}{dt}(\overline{\nabla}\cdot \overline{D})+\overline{\nabla}\cdot \overline{J}=0\\[5pt]
+        &\frac{d}{dt}(\overline{\nabla}\cdot \overline{D})+\overline{\nabla}\cdot \frac{d\overline\rho}{dt}=0\\[5pt]
+        &\frac{d}{dt}\left(\overline{\nabla}\cdot\overline{D}-\overline{\rho}\right)=0\\[5pt]
+    \end{split}
+\end{align}
+At the end, the Forth maxwell equation in local formulation is:
+\begin{equation}
+    \overline{\nabla}\cdot\overline{D}=\overline{\rho}
+\end{equation}
+If $\varepsilon$ is constant we obtain
+\begin{align}
+    \begin{split}
+        &\overline{\nabla}\cdot(\varepsilon\,\overline{E})=\overline{\rho}\\[5pt]
+        &\overline{\nabla}\cdot\overline{E}=\frac{\overline{\rho}}{\epsilon}
+    \end{split}
+\end{align}
+Those equation does not say anything more than the maxwell eqution.
+To summarize all the equation:
+\begin{center}
+\begin{tabular}{ c c }
+    $\overline{\nabla}\cdot\overline{E}=\frac{\overline{\rho}}{\epsilon}$&$\overline{\nabla}\cdot\overline{J}=-\frac{d\overline{\rho}}{dt}$\\[5pt]
+    $\overline{\nabla}\cdot\overline{B}=0$&$\overline{\nabla}\cdot\overline{D}=\rho$
+\end{tabular}
+\end{center}
