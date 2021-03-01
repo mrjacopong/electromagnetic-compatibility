@@ -1,0 +1,39 @@
+\section{Class 3 - 1/03/21}
+During this class we will talk about the passage from the time domain to frequency. We do that because in frequency domain we do not need anymore to do the derivate in time, and thus the calculations simplify a lot. Another reason is that is more important to look at the signal on the corner frequency other than all over the spectrum
+\subsection*{EMF in phasor domain}
+Now we take a look at the electrical field propagating on the $z$ axe: $\overline{E}(z,t)=E_x\,\jhat+E_y\,\ihat+E_z\,\khat$, and we explore all the element:
+\begin{align}\label{eq:electric_field_3_axes_phase}
+    \begin{split}
+        E_x(z,t)&=E_{x_0}\,cos(\omega\,t-\beta\,z+\varphi_x)\\[5pt]
+        E_y(z,t)&=E_{y_0}\,cos(\omega\,t-\beta\,z+\varphi_y)\\[5pt]
+        E_z(z,t)&=E_{z_0}\,cos(\omega\,t-\beta\,z+\varphi_z)
+    \end{split}
+\end{align}
+Note that here $\omega$ and $\beta$ does not change, but $\varphi$ does, this is not very important, but it is just a note.\\
+From \cref{eq:electric_field_3_axes_phase}, and exploiting the cos property:
+\begin{equation*}
+    cos(\alpha + \beta )=cos\alpha\, cos\beta - sin\alpha \, sin\beta
+\end{equation*}
+By considering $\alpha = \omega\, t$ and $\beta = \beta z+\varphi+z$ we obtain the total equation of the EMF on $z$ direction:
+\begin{align}
+    \begin{split}
+        &\overline{E}(z,t)=E_x\,\jhat+E_y\,\ihat+E_z\,\khat=\\[5pt]
+        &=cos(\omega\,t)[E_{x_0}cos(\varphi-\beta\,z)\ihat+E_{y_0}cos(\varphi_y-\beta\,z)\jhat+E_{z_0}cos(\varphi_z-\beta\,z)\khat]+\\[5pt]
+        &-sin(\omega\,t)[E_{x_0}sin(\varphi-\beta\,z)\ihat+E_{y_0}sin(\varphi_y-\beta\,z)\jhat+E_{z_0}sin(\varphi_z-\beta\,z)\khat])=\\[5pt]
+        &=\overline{E}_1\,cos(\omega\,t)+\overline{E}_2\,sen(\omega\,t)
+    \end{split}
+\end{align}
+First of all we notice that $\overline{E}_1$ and $\overline{E}_2$ are vectors that are only in function of space (and that is great and useful).\\
+Then we can write:
+\begin{equation}
+    \overline{E}(z,t)=\operatorname{Re}\left\{(E_1+jE_2)[cos(\omega t)+j sin(\omega t)]\right\}=\operatorname{Re}\left\{(E_1+jE_2)e^{j\omega t}\right\}
+\end{equation}
+With this notation we can introduce the phasor $\phas{E}(z)=E_1+jE_2$, and we will use this notation to describe the EMF in complex notation.
+\begin{equation}\label{eq:electric_field_in_time}
+    \overline{E}(z,t)=\operatorname{Re}\left\{\phas{E}e^{j\omega t}\right\}
+\end{equation}
+If we want to go from time domain to phasor, we need to find $E_1$ and $E_2$. To do the opposite we need to use \cref{eq:electric_field_in_time}.\\
+Now let's give a look at the derivative of the field:
+\begin{equation}
+    \frac{\partial\overline{E}}{\partial t}=\operatorname{Re}\left\{\frac{\partial}{\partial t}\phas{E}e^{j\omega t}\right\}=\operatorname{Re}\left\{j\omega\,\phas{E}e^{j\omega t}\right\}
+\end{equation}
