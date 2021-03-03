@@ -159,14 +159,21 @@ When we are dealing with linear material, we can not consider the numeric value 
     \item $\mu=\mu_0\,\mu_r$
     \item $\sigma=\frac{1}{\rho}$
 \end{itemize}
-With this kept in mind we can write the first two local Maxwell equation as:
+Now, the first two local Maxwell equation which we have already seen are:
+\begin{equation}\label{eq:maxwell_system_2}
+    \begin{cases}
+    \nabla\times\overline{E}=-\frac{d\overline{B}}{dt}\\[5pt]
+    \nabla\times\overline{H}=\frac{d\overline{D}}{dt}+\overline{J}_\sigma +\overline{J}_i
+    \end{cases}
+\end{equation}
+We try to make this system solvable by substitution:
 \begin{equation}\label{eq:maxwell_system}
     \begin{cases}
     \nabla\times\overline{E}=-\mu\frac{d\overline{H}}{dt}\\[5pt]
     \nabla\times\overline{H}=\varepsilon\frac{d\overline{E}}{dt}+\sigma\,\overline{E}+\overline{J}_i
     \end{cases}
 \end{equation}
-Ad can be seen, the system in \cref{eq:maxwell_system} is a systems of equations in two unknown variable ($E$ and $H$), we can solve that but it will be very complicated.
+As can be seen, the system in \cref{eq:maxwell_system} is a systems of equations in two unknown variable ($E$ and $H$), we can solve that but it would be very complicated.
 \subsection*{Another useful equation}
 similarly to what we have done in \cref{eq:maxwell_first_local}, we can write this equation exploiting the Stokes Theorem (\cref{eq:stokes_eq}):
     \begin{align}

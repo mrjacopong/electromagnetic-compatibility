@@ -23,15 +23,15 @@ We continue to try to find the wave equation by using some tricks, the next pass
 \end{align}
 We remember a cool property of the curl of a curl of a vector field:
 \begin{equation}
-    \nabla\times\nabla\times\overline{E}=\nabla(\nabla\cdot \overline{E})-\nabla^2\cdot\overline{E}
+    \nabla\times\nabla\times\overline{E}=\nabla(\nabla\cdot \overline{E})-\nabla^2\,\overline{E}
 \end{equation}
 Please note that we have already discussed the $\nabla^2$ symbol before in \cref{sec:laplacian} as the Laplacian. Now let's write:
 \begin{equation}
-    \nabla(\nabla\cdot \overline{E})-\nabla^2\cdot\overline{E}=-\mu \varepsilon \frac{\partial^2\overline{E}}{\partial t^2}
+    \nabla(\nabla\cdot \overline{E})-\nabla^2\,\overline{E}=-\mu \varepsilon \frac{\partial^2\overline{E}}{\partial t^2}
 \end{equation}
 We simplify a little bit more, and we consider that we don't have free charge: $\nabla(\varepsilon \overline{E}=0)$ and we obtain:
 \begin{equation}\label{eq:whave_1}
-    \nabla^2\cdot\overline{E}-\mu \varepsilon \frac{\partial^2\overline{E}}{\partial t^2}=0
+    \nabla^2\,\overline{E}-\mu \varepsilon \frac{\partial^2\overline{E}}{\partial t^2}=0
 \end{equation}
 WE FINALLY OBTAINED THE \emph{WAVE EQUATION}. Here we define a constant that will be helpful next:
 \begin{equation}
@@ -39,12 +39,12 @@ WE FINALLY OBTAINED THE \emph{WAVE EQUATION}. Here we define a constant that wil
 \end{equation}
 Then \cref{eq:whave_1} becomes:
 \begin{equation}\label{eq:whave_2}
-    \nabla^2\cdot\overline{E}-\frac{1}{c^2} \frac{\partial^2\overline{E}}{\partial t^2}=0
+    \nabla^2\,\overline{E}-\frac{1}{c^2} \frac{\partial^2\overline{E}}{\partial t^2}=0
 \end{equation}
 Pay attention to one thing: if you look at the maxwell equation \cref{eq:maxwell_simplified} it is a differential equation of the first order, but now we have a second order differential equation (\cref{eq:whave_2}) and the set of solution is increased. We don't address this problem now, but keep in mind that later we will be able to select the good solution by using the divergence equation (\textsl{i don't really know what does it mean}).\\
 If instead use the second equation from \cref{eq:whave_2}, and we do all the passages as before, we obtain nearly the same equation, but with $\overline{H}$
 \begin{equation}
-    \nabla^2\cdot\overline{H}-\frac{1}{c^2} \frac{\partial^2\overline{H}}{\partial t^2}=0
+    \nabla^2\,\overline{H}-\frac{1}{c^2} \frac{\partial^2\overline{H}}{\partial t^2}=0
 \end{equation}
 \subsection*{Scalar wave equation}
 Now let's try to write our equation with scalars and not vectors, it should simplify a bit.\\
@@ -214,7 +214,7 @@ Now we give some notation for:
     \item $\bm{\gamma=\frac{1}{T}}$ is the frequency of the EMF
 \end{itemize}
 We can also introduce the phase constant $\bm{\beta=\frac{\omega}{c}}$, and now the wave equation becomes:
-\begin{equation}
+\begin{equation}\label{eq:E_with_phase_constant}
     E(z,t)=E_0cos(\omega\, t-\beta\,z)
 \end{equation}
 Those two parameters $\omega$ and $\beta$ are useful to obtain the propagation speed.\\
