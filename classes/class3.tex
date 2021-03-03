@@ -26,14 +26,240 @@ By considering $\alpha = \omega\, t$ and $\beta = \beta z+\varphi+z$ we obtain t
 First of all we notice that $\overline{E}_1$ and $\overline{E}_2$ are vectors that are only in function of space (and that is great and useful).\\
 Then we can write:
 \begin{equation}
-    \overline{E}(z,t)=\operatorname{Re}\left\{(E_1+jE_2)[cos(\omega t)+j sin(\omega t)]\right\}=\operatorname{Re}\left\{(E_1+jE_2)e^{j\omega t}\right\}
+    \overline{E}(z,t)=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)[cos(\omega t)+j sin(\omega t)]\right\}=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)e^{j\omega t}\right\}
 \end{equation}
-With this notation we can introduce the phasor $\phas{E}(z)=E_1+jE_2$, and we will use this notation to describe the EMF in complex notation.
+With this notation we can introduce the phasor 
+\begin{equation}
+\phas{E}(z)=\overline{E}_1+j\overline{E}_2
+\end{equation}
+And we will use this notation to describe the EMF in complex notation.
 \begin{equation}\label{eq:electric_field_in_time}
-    \overline{E}(z,t)=\operatorname{Re}\left\{\phas{E}e^{j\omega t}\right\}
+    \overline{E}(z,t)=\operatorname{Re}\left\{\phas{E}(z)e^{j\omega t}\right\}
 \end{equation}
 If we want to go from time domain to phasor, we need to find $E_1$ and $E_2$. To do the opposite we need to use \cref{eq:electric_field_in_time}.\\
 Now let's give a look at the derivative of the field:
 \begin{equation}
-    \frac{\partial\overline{E}}{\partial t}=\operatorname{Re}\left\{\frac{\partial}{\partial t}\phas{E}e^{j\omega t}\right\}=\operatorname{Re}\left\{j\omega\,\phas{E}e^{j\omega t}\right\}
+    \frac{\partial\overline{E}(z,t)}{\partial t}=\operatorname{Re}\left\{\frac{\partial}{\partial t}\phas{E}e^{j\omega t}\right\}=\operatorname{Re}\left\{j\omega\,\phas{E}e^{j\omega t}\right\}
+\end{equation}
+With this trick we can use the derivative by only multiplying $j\omega$.\\
+That being said, we can give the definition of electric or magnetic field that propagates in a general direction:
+\begin{align}
+    \begin{split}
+        &\overline{E}(\overline{r},t)=\operatorname{Re}\left\{\phas{E}(\overline{r})e^{j\omega t}\right\}\\[5pt]
+        &\overline{H}(\overline{r},t)=\operatorname{Re}\left\{\phas{H}(\overline{r})e^{j\omega t}\right\}\\[5pt]
+    \end{split}
+\end{align}
+Now in phasor domain, we can write the maxwell equations that we have already seen in \cref{eq:maxwell_system_2}, but with a simpler notation.
+\begin{align}\label{eq:maxwell_equation_in_phasor}
+    \begin{split}
+        &\nabla\times\phas{E}=j\omega \,\phas{B}\\[5pt]
+        &\nabla\times\phas{H}=j\omega \,\phas{D}+\phas{J}_\sigma+\phas{J}_i\\[5pt]
+    \end{split}
+\end{align}
+Obviously this is true for any general direction $\overline{r}$, evn if we didn't mentioned that for a better notation elegance.\\
+Another important thing that we need to stress is the relation of the other vectors that can be represented in the phasor space:
+\begin{center}
+    \begin{tabular}{ c c c }
+        $\phas{D}=-\varepsilon \phas{E}$&
+        $\phas{B}=\mu \phas{H}$&
+        $\phas{J}_\sigma=\sigma\phas{E}$
+    \end{tabular}
+\end{center}
+Note that $\varepsilon$,$\mu$ and $\sigma$ in this case are dependent on the position and frequency (not in time as before).
+\begin{align}
+    \begin{split}
+        &\varepsilon=\varepsilon(\overline{r},\omega)\\[5pt]
+        &\mu=\mu(\overline{r},\omega)\\[5pt]
+        &\sigma=\sigma(\overline{r},\omega)
+    \end{split}
+\end{align}
+\subsubsection*{Note on the refraction index}
+The refraction index can become useful next, here we only introduce it and say what does it mean.\\
+First of all we define refraction index $n$ as the square root of $\varepsilon_r$
+\begin{equation}
+    n=\sqrt{\varepsilon_r}=\sqrt{\frac{\varepsilon}{\varepsilon_0}}
+\end{equation}
+Actually this is a simplified relation, it is better to define $n$ as:
+\begin{equation}
+    n=\sqrt{\varepsilon_r\,\mu_r}=\sqrt{\frac{\varepsilon\,\mu}{\varepsilon_0\,\mu_0}}
+\end{equation}
+We already seen before that $c=\frac{1}{\sqrt{\varepsilon_0\,\mu_0}}$ and $v_p=\frac{1}{\sqrt{\varepsilon\,\mu }}$, so we the refraction index is very useful to describe the speed of an EMF through a medium:
+\begin{equation}
+    n=\frac{c}{v_0}
+\end{equation}
+\subsubsection*{Wave equation in phasor domain}
+Given the system of equation in \cref{eq:maxwell_equation_in_phasor}, and applying some substitution we can obtain:
+\begin{align}\label{eq:maxwell_equation_in_phasor_2}
+    \begin{split}
+        &\nabla\times\phas{E}=-j\omega\mu\,\phas{H}\\[5pt]
+        &\nabla\times\phas{H}=j\omega \varepsilon\,\phas{E}+\sigma\phas{E}_\sigma+\overline{J}_i\\[5pt]
+    \end{split}
+\end{align}
+It is evident that without derivative it is much more simple to find the wave equation.\\
+For the sake of simplicity we will not make all the calculation to arrive to the final value, instead we use the old wave equation in time domain (\cref{eq:whave_2}) and we obtain the new wave equation in phasor domain:
+\begin{equation}\label{eq:Helmholtz1}
+    \nabla^2\,\phas{E}-\frac{\omega^2}{c^2}\,\phas{E}=0
+\end{equation}
+If we assume $E$ as a scalar field, then:
+\begin{equation}\label{eq:Helmholtz2}
+    \frac{\partial^2\phas{E}(z)}{\partial z^2}\nabla^2\,-\frac{\omega^2}{c^2}\,\phas{E}(z)=0
+\end{equation}
+\cref{eq:Helmholtz1} and \cref{eq:Helmholtz2} are also known as the Helmholtz equation (strange name, i know).
+\subsubsection*{Solution of the wave equation in phasor domain}
+Given \cref{eq:Helmholtz2}, it is very simple to obtain its solution.\\
+Before to do that we introduce the parameter $\gamma$ such that:
+\begin{equation}\label{eq:gamma_1}
+    \gamma^2=-\frac{\omega^2}{c^2}=-\omega\,\mu\,\varepsilon
+\end{equation}
+Substituting $-\frac{\omega^2}{c^2}$ with $gamma$ from \cref{eq:Helmholtz2} we are able to get a possible solution:
+\begin{equation}\label{eq:maxwell_solution_phasor1}
+    \phas{E}=\overline{E}_{0_1}\,e^{\gamma z}+\overline{E}_{0_2}\,e^{-\gamma z}
+\end{equation}
+We know that $\gamma$ is a complex number because both $\mu$ and $\varepsilon$ are so:
+\begin{equation}
+    \gamma=\alpha+j\beta
+\end{equation}
+So we can write \cref{eq:maxwell_solution_phasor1} as:
+\begin{equation}\label{eq:maxwell_solution_phasor}
+    \phas{E}=\overline{E}_{0_1}\,e^{\alpha z}\,e^{j\beta z}+\overline{E}_{0_2}\,e^{-\alpha z}\,e^{-j\beta z}=
+\end{equation}
+We will focus on the forward wave equation $\phas{E}=\overline{E}_{0}\,e^{-\alpha z}\,e^{-j\beta z}$.
+\subsubsection*{Going back from phasor to time domain}
+If we want to go back to time domain from \cref{eq:maxwell_solution_phasor} we can just apply the relation from \cref{eq:electric_field_in_time}:
+\begin{align}
+    \begin{split}
+        &\overline{E}(z,t)=\operatorname{Re}\left\{\phas{E}(z)e^{j\omega t}\right\}=\\[5pt]
+        &=\operatorname{Re}\left\{\overline{E}_{0_2}\,e^{-\alpha z}\,e^{-j\beta z}e^{j\omega t}\right\} =\\[5pt]
+        &=\operatorname{Re}\left\{|E_{0_2}|\,e^{j\varphi_0}\,e^{-\alpha z}\,e^{-j\beta z}e^{j\omega t}\right\} =\\[5pt]
+        &= |E_{0_2}| e^{-\alpha z}\operatorname{Re}\left\{e^{j(\omega t-\beta z +\varphi_0)}\right\}=\\[5pt]
+        &= |E_{0_2}| e^{-\alpha z}\operatorname{Re}\left\{cos(\omega t-\beta z +\varphi_0)+j sin(\omega t-\beta z +\varphi_0)\right\}=\\[5pt]
+        &= |E_{0_2}| e^{-\alpha z}\,cos(\omega t-\beta z +\varphi_0)
+    \end{split}
+\end{align}
+We obtained the forward equation of an EMF that propagates over the $z$ direction, that we have already seen in \cref{eq:wave_equation_generalized}.
+\subsubsection*{Why $\varphi$ is a complex number?}
+Consider the Maxwell equation in \cref{eq:maxwell_equation_in_phasor_2}, but without the $\overline{J}_i$ term (no current that is generating the EMF).\\
+I'll not write again the \cref{eq:maxwell_equation_in_phasor_2} because you can find it simply clicking at the reference number, that being said we can do something with the second relation:
+\begin{align}
+    \begin{split}
+        &\nabla\times\phas{H}=j\omega \varepsilon\,\left(1+\frac{\sigma}{j\omega \epsilon}\right)\phas{E}=\\[5pt]
+        &\nabla\times\phas{H}=j\omega \varepsilon\,\left(1-j\frac{\sigma}{\omega \epsilon}\right)\phas{E}=\\[5pt]
+        &\nabla\times\phas{H}=j\omega \underbrace{\varepsilon\,\left(1+\frac{\sigma}{j\omega \epsilon}\right)}_{\varepsilon_c}\,\phas{E}=\\[5pt]
+        &\nabla\times\phas{H}=j\omega \varepsilon_c\,\phas{E}\\[5pt]
+    \end{split}
+\end{align}
+$\varepsilon_c$ is the complex permittivity, with this the maxwell equation becomes very similar to \cref{eq:maxwell_simplified}:
+\begin{equation}\label{eq:maxwell_equation_in_phasor_simplified}
+    \begin{cases}
+    \nabla\times\phas{E}=-j\omega\,\mu \phas{H}\\[5pt]
+    \nabla\times\phas{H}=\;\;\,j\omega \, \varepsilon_c\phas{E}
+    \end{cases}
+\end{equation}
+So \cref{eq:gamma_1} is not totally correct because we need to consider the complex permittivity $\varepsilon_c$: $\gamma^2=-\omega\,\mu\,\varepsilon_c$.\\
+An interesting thing to note is that the imaginary part of $\varepsilon_c=\varepsilon\,\left(1-j\frac{\sigma}{\omega \epsilon}\right)$ are the losses during the propagation of the EMF through a medium
+\begin{itemize}
+    \item $\bm{\sigma}$: metallic medium loss
+    \item $\bm{\omega \epsilon}$: dielectric medium loss
+\end{itemize}
+We can also use $\frac{\sigma}{\omega \epsilon}$ to know the property of our medium:
+\begin{itemize}
+    \item $\frac{\sigma}{\omega \epsilon}> 1$: metallic medium
+    \item $\bm{\frac{\sigma}{\omega \epsilon}< 1}$: dielectric medium loss
+\end{itemize}
+If we suppose no metallic loss: $\sigma = 0$, then:
+\begin{equation*}
+    \theta=0\rightarrow\varepsilon_c=\varepsilon\rightarrow\alpha=0\rightarrow\gamma =j\beta
+\end{equation*}
+With this simplification the forward magnetic field becomes:
+\begin{equation}
+    \phas{E}=\overline{E}_{0}\, e^{-j\beta z}
+\end{equation}
+\subsection*{EMF in frequency domain}
+Until now we have seen a pure sinusoidal EMF that propagates, what if this EMF is not pure?\\
+We can say that our signal is not a pure sinusoid if we have more than 1 component other than the fundamental harmonic, this mean that we deal with noisy signal.\\
+Similarly to \cref{eq:electric_field_in_time}, we can define the transformation from time domain to frequency domain as:
+\begin{equation}
+    \overline{E}(\overline{r},t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\overline{E}(\overline{r},w)e^{j\omega t}
+\end{equation}
+That transformation is actually the same as the one for the complex domain, but we now can consider more than 1 harmonic.\\
+Again here we don't deal anymore with derivatives in time, so our job simplify a lot!:
+\begin{equation}
+    \frac{\partial\overline{E}(\overline{r},t)}{\partial t}=\frac{1}{2\pi}\int_{-\infty}^{+\infty}j\omega\,\overline{E}(\overline{r},w)e^{j\omega t}
+\end{equation}
+Like in \cref{eq:maxwell_equation_in_phasor_simplified} we can have a look at the Maxwell equation in phasor domain again without the $\overline{J}_i$ term (no current that is generating the EMF).\\
+You can notice that they are actually the same, but in frequency the field $E$ and $H$ are dependent in time and also in frequency.
+\begin{align}
+    \begin{split}
+        &\nabla\times\overline{E}(t,\omega)=-j\omega\mu\,\overline{H}(t,\omega)\\[5pt]
+        &\nabla\times\overline{H}(t,\omega)=\;\;\,j\omega \varepsilon\,\overline{E}(t,\omega)
+    \end{split}
+\end{align}
+And the wave equation becomes:
+\begin{equation}
+    \nabla^2\,\overline{E}(t,\omega)-\gamma^2\,\overline{E}(t,\omega)=0
+\end{equation}
+\subsection*{A little exercise}
+The prof said it was little... but i'm too tired to copy all the numbers, but here i reported the passages.\\
+ The request was to find the expression of the EMF ($E$ and $H$ equation) given $\gamma $, the direction $z$ and supposing no losses ($\alpha=0$). The field of $E$ is on his peak $E_0$ wen $t=0$ and $z=50$\\
+ First of all the peak of the field $E_0$ is obtained when $cos(\omega t-\beta z +\phi_0)=1$, so when $(\omega t-\beta z +\phi_0)=0$.\\
+ We can simplify saying that $\omega t =0$ (we can assume the initial time $t_0=0$ because of the given data).\\
+ From \cref{eq:gamma_1} we can obtain $\omega$ from $\gamma$ ($\omega^2=c^2-\omega^2$).\\
+ From \cref{eq:E_with_phase_constant} we also know that $\beta=\frac{\omega}{c}$.\\
+Then we obtain $\varphi_0$ from $-\frac{\omega}{c}+\phi_0=0$.\\
+We have all we need to write down the equation for $E$ in time
+\begin{equation*}
+    E(z,t)=E_0\, cos(-\beta z +\phi_0)\,\ihat
+\end{equation*}
+What about $H$?
+\begin{equation}
+    \nabla\times \overline{E}=\frac{\partial E_x}{\partial z}\jhat=-\mu\frac{\partial \overline{H}}{\partial t}\jhat
+\end{equation}
+Doing some strange calculation we can obtain the $H$ equation, where the argument of $cos$ are the same, but $H_0$ changes:
+\begin{equation*}
+    H(z,t)=H_0\, cos(-\beta z +\phi_0)\,\jhat
+\end{equation*}
+\subsubsection*{Frequency domain}
+In frequency it is much more simple:
+\begin{equation*}
+    \phas{E}(z)=\overline{E_0}\,\cancelto{0}{e^{-\alpha z}}\,e^{-j\beta z}=|E_0|\,e^{-j\beta z}\,e^{j\varphi_0}
+\end{equation*}
+We already have $E_0$, $\beta$ and $\varphi_0$ can be simply calculated as before.\\
+Now $\phas{H}(z)$??
+\begin{align}
+    \begin{split}
+        &\frac{\partial \phas{E_x}}{\partial z}=-j\omega\mu\,\phas{H}\\[5pt]
+        &\phas{H}=\frac{1}{-j\omega\mu}\frac{\partial \phas{E_x}}{\partial z}=\\[5pt]
+        &=\frac{j}{\omega \beta}\overline{E_0}e^{-j\beta z}=\\[5pt]
+        &=\frac{\beta}{\mu \omega}|E_0|\, e^{j\varphi_0}e^{-j\beta z}
+    \end{split}
+\end{align}
+We know that $\beta = \frac{\omega}{c}$, then:
+\begin{equation*}
+    \frac{\omega}{c}\,\frac{1}{\omega \mu}=\frac{\sqrt{\mu \varepsilon}}{\mu}=\sqrt{\frac{\epsilon}{\mu}}=\eta 
+\end{equation*}
+So we obtain a very useful equation:
+\begin{equation}
+    \phas{H}=\frac{1}{\eta}\,\overline{E_0}e^{-j\beta z}
+\end{equation}
+And we can also say that if the field propagates along $z$:
+\begin{align}\label{eq:useful_maxwell_in_phasor}
+    \begin{split}
+        \phas{H}&=\frac{1}{\eta}\,\khat \times \phas{E}\\[5pt]
+        \phas{E}&=\eta\,\phas{H}\times \khat
+    \end{split}
+\end{align}
+Note that the second equation in \cref{eq:useful_maxwell_in_phasor} is very similar to the first hom law because we have:
+\begin{equation*}
+    \left[\frac{V}{m}\right]=\eta\,\left[\frac{A}{m}\right]
+\end{equation*}
+Just like $\left[V\right]=\Omega \,\left[A\right]$
+\subsection*{One more thing: Poynting vector}
+The Poynting vector $\overline{S}$ describe the density of power of our radiation, and it is defined by:
+\begin{equation}
+    \overline{S}=\overline{E}\times\overline{H}\rightarrow\left[\frac{w}{m}\right]
+\end{equation}
+To obtain $\overline{S}$ is not very simple, but in phasor domain it is \emph{na crema} (italian way to say "very beautiful"):
+\begin{equation}
+    \overline{S}=\frac{\phas{E}\times\phas{H}^*}{2}=\frac{1}{2}\,\overline{E}
+_x\cdot\overline{H}_y^*\,\khat
 \end{equation}
