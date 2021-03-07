@@ -23,16 +23,25 @@
 \usepackage{amsmath,amssymb,bm,mathtools}
 \usepackage[makeroom]{cancel}
 \numberwithin{equation}{section}
+\numberwithin{figure}{section}
 \newcommand{\ihat}{\hat{\imath}}
 \newcommand{\jhat}{\hat{\jmath}}
 \newcommand{\khat}{\hat{\mathnormal{k}}}
 \newcommand{\phas}[1]{\overset{\mathbin
 {{\circ \mkern-2.5mu\rightarrow}}}{#1}}
-
-\usepackage{hyperref}
+\usepackage[a-2b]{pdfx}
+\usepackage[pdfa]{hyperref}
 \usepackage{cleveref}
 \usepackage{pgfplots}
+\usepackage{circuitikz}
+\usetikzlibrary{positioning} 
 \usepackage{float}
+\usepackage{scalerel}
+\usepackage{siunitx}
+\sisetup{
+  per-mode=fraction,
+  fraction-function=\tfrac
+}
 \pgfplotsset{compat=1.17}
 \begin{document}
 \maketitle
@@ -46,11 +55,10 @@ You can share it, modify or do whatever you want, i enjoy to write in \LaTeX, so
 Please consider to help me to find any mistakes or misunderstanding, contact me or just modify the code from Github.\\
 If you want to be added to my private Github repository just give me your email and I'll add you with no problem.
 \newpage
-\tableofcontents
-\newpage
 \include{classes/class1}
 \include{classes/class2}
 \include{classes/class3}
+\include{classes/class4}
 
 
 \end{document}

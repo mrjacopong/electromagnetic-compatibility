@@ -3,3 +3,5 @@
 *.toc
 *.synctex.gz
 .vscode
+*.out
+*.xmpi
