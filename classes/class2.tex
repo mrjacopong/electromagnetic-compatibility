@@ -65,26 +65,26 @@ Searching for the solution of \cref{eq:whave_simplified} is a bit time consuming
 So without going into tedious calculation, we look at 2 possible solutions for $f_1$ and $f_2$:
 \begin{align}\label{eq:maxwell_solution_simple}
     \begin{split}
-        &E_1(z,t)=E_0 cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[5pt]
-        &E_2(z,t)=E_0 cos\left[\omega\left(t+\frac{z}{c}\right)\right]
+        &E_1(z,t)=E_0 \cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[5pt]
+        &E_2(z,t)=E_0 \cos\left[\omega\left(t+\frac{z}{c}\right)\right]
     \end{split}
 \end{align}
 Does that satisfy the maxwell equation? Let's consider the first solution of \cref{eq:maxwell_solution_simple} and verify that it actually satisfy \cref{eq:whave_simplified}:
 \begin{align*}
     \begin{split}
-        \frac{\partial^2E}{\partial z^2}=&\frac{\partial}{\partial z}\left\{E_0\left[-\left(-\frac{\omega}{c}\right)sen\left[\omega\left(t-\frac{z}{c}\right)\right]\right]\right\}=\\[5pt]
-        =&E_0\,\frac{\omega}{c}\left\{\left(-\frac{\omega}{c}\right)cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=\\[5pt]
-        =&-E_0\,\frac{\omega^2}{c^2}cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[10pt]
-        \frac{\partial^2E}{\partial t^2}=&\frac{\partial}{\partial t}\left\{E_0\left[-\omega\, sen\left[\omega\left(t-\frac{z}{c}\right)\right]\right]\right\}=\\[5pt]
-        =&-E_0\,\omega\left\{\omega \, cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=\\[5pt]
-        =&-E_0\,\omega^2\,cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[10pt]
+        \frac{\partial^2E}{\partial z^2}=&\frac{\partial}{\partial z}\left\{E_0\left[-\left(-\frac{\omega}{c}\right)\sin\left[\omega\left(t-\frac{z}{c}\right)\right]\right]\right\}=\\[5pt]
+        =&E_0\,\frac{\omega}{c}\left\{\left(-\frac{\omega}{c}\right)\cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=\\[5pt]
+        =&-E_0\,\frac{\omega^2}{c^2}\cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[10pt]
+        \frac{\partial^2E}{\partial t^2}=&\frac{\partial}{\partial t}\left\{E_0\left[-\omega\, \sin\left[\omega\left(t-\frac{z}{c}\right)\right]\right]\right\}=\\[5pt]
+        =&-E_0\,\omega\left\{\omega \, \cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=\\[5pt]
+        =&-E_0\,\omega^2\,\cos\left[\omega\left(t-\frac{z}{c}\right)\right]\\[10pt]
     \end{split}
 \end{align*}
 Then it is simple to verify \cref{eq:whave_simplified}
 \begin{align*}
     \begin{split}
     &\frac{\partial^2E}{\partial z^2}-\frac{1}{c^2} \frac{\partial^2E}{\partial t^2}=\\[5pt]
-    =&-E_0\,\frac{\omega^2}{c^2}cos\left[\omega\left(t-\frac{z}{c}\right)\right]-\frac{1}{c^2}\left\{-E_0\,\omega^2\,cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=0
+    =&-E_0\,\frac{\omega^2}{c^2}\cos\left[\omega\left(t-\frac{z}{c}\right)\right]-\frac{1}{c^2}\left\{-E_0\,\omega^2\,\cos\left[\omega\left(t-\frac{z}{c}\right)\right]\right\}=0
     \end{split}
 \end{align*}
 We see that this solution is dependent both in space and time, but what else we can say?
@@ -205,7 +205,7 @@ What we have found is a forward speed because $\Delta z$ is positive and $c$ pos
 \subsubsection*{Going back to the EMF}
 Some more consideration of the EMF
 \begin{equation}
-    E(z,t)=E_0\,cos(\omega t-\frac{\omega\,z}{c})
+    E(z,t)=E_0\,\cos(\omega t-\frac{\omega\,z}{c})
 \end{equation}
 Now we give some notation for:
 \begin{itemize}
@@ -215,7 +215,7 @@ Now we give some notation for:
 \end{itemize}
 We can also introduce the phase constant $\bm{\beta=\frac{\omega}{c}}$, and now the wave equation becomes:
 \begin{equation}\label{eq:E_with_phase_constant}
-    E(z,t)=E_0cos(\omega\, t-\beta\,z)
+    E(z,t)=E_0\cos(\omega\, t-\beta\,z)
 \end{equation}
 Those two parameters $\omega$ and $\beta$ are useful to obtain the propagation speed.\\
 As we have done before we evaluate this propagation speed by considering $(\omega \,t-\beta \,z)$ to be constant, then:
@@ -225,7 +225,7 @@ As we have done before we evaluate this propagation speed by considering $(\omeg
 \subsubsection*{Generalization of the EMF}
 We can generalize a bit the EMF equation by adding an attenuation constant $\alpha$ and a reference phase $\varphi$
 \begin{equation}\label{eq:wave_equation_generalized}
-    E(z,t)=E_0\,e^{-\alpha\,z}cos(\omega\,t-\beta\,z+\varphi)
+    E(z,t)=E_0\,e^{-\alpha\,z}\cos(\omega\,t-\beta\,z+\varphi)
 \end{equation}
 $\alpha$ is used to show how the wave is attenuated during his path on the medium.
 \subsubsection*{EMF over a general direction}
@@ -233,15 +233,15 @@ Usually we consider $\khat$ as the direction of the EMF, but sometimes we need t
 Consider the forward equation of the EMF over the 3 direction:
 \begin{align}\label{eq:electric_field_3_axes}
     \begin{split}
-        E(x,t)&=E_0\,cos(\omega\,t-\beta_x\,x)\\[5pt]
-        E(y,t)&=E_0\,cos(\omega\,t-\beta_y\,y)\\[5pt]
-        E(z,t)&=E_0\,cos(\omega\,t-\beta_z\,z)
+        E(x,t)&=E_0\,\cos(\omega\,t-\beta_x\,x)\\[5pt]
+        E(y,t)&=E_0\,\cos(\omega\,t-\beta_y\,y)\\[5pt]
+        E(z,t)&=E_0\,\cos(\omega\,t-\beta_z\,z)
     \end{split}
 \end{align}
 What we do now is to find a way to merge those equation and describe the EMF that goes in a general direction $\overline{r}=x\,\ihat+y\,\jhat+z\,\khat$.\\
 In order to do this we introduce the vector $\overline{k}=k_x\,\ihat+k_y\,\jhat+k_z\,\khat$ that generalize the $\beta$ factor, so we can write the wave equation with a general direction:
 \begin{equation}
-    E(\overline{E},t)=\overline{E}_0\,cos(\omega\,t-\overline{k}\cdot\overline{r})
+    E(\overline{E},t)=\overline{E}_0\,\cos(\omega\,t-\overline{k}\cdot\overline{r})
 \end{equation}
 Keep in mind that the direction is not $\overline{r}$ but $\overline{k}$, because $\overline{r}$ represent the variables, and $\overline{k}$ the three weights that defines the direction of the wave.
 This is also called the plane wave equation, why?\\

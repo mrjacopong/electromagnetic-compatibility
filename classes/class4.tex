@@ -29,15 +29,15 @@ When we have a signal to be transmitted over a cable, the problem to connect the
 In \cref{fig:transmission_line_example} a very simplified view of a transmission line, where the voltage at the input is the one over $AA'$, and $BB'$ on the output.\\
 If we do not consider the resistance $R_g$, then the voltage in input of the TL can be seen as:
 \begin{equation}
-  V_{AA'}(t)=V_g(t)=V_0 \, cos(\omega t)
+  V_{AA'}(t)=V_g(t)=V_0 \, \cos(\omega t)
 \end{equation}
 Now for the output voltage equation we need to consider the time delay of signal travelling from $A$ to $B$. So we need to consider the same signal $V_{AA'}$ but delayed by $\frac{l}{c}$ ($l$ is the length of the TL, and $c$ is the speed of the signal, the same speed of light).
 \begin{align}\label{eq:vbb_in_transmission_line}
   \begin{split}
     V_{BB'}(t)&=V_{AA'}\left(t-\frac{l}{c}\right)=\\[5pt]
-      &=V_0 \, cos\left[\omega \left(t-\frac{l}{c}\right)\right]=\\[5pt]
-      &=V_0\, cos\left(\omega t-\frac{\omega}{c}\, l\right)=\\[5pt]
-      &=V_0\, cos\left(\omega t-\beta\, l\right)= \\[5pt]
+      &=V_0 \, \cos\left[\omega \left(t-\frac{l}{c}\right)\right]=\\[5pt]
+      &=V_0\, \cos\left(\omega t-\frac{\omega}{c}\, l\right)=\\[5pt]
+      &=V_0\, \cos\left(\omega t-\beta\, l\right)= \\[5pt]
   \end{split}
 \end{align}
 Actually in \cref{eq:vbb_in_transmission_line} we can see that our signal over the transmission line is actually a wave dependent on the frequency and the length of the cables.
@@ -47,17 +47,17 @@ For example, on the input of the TL we have a signal with amplitude $A_0$ and a 
 Suppose the length of the TL $l=\SI{5}{\centi \meter}$, then the signal on the output at $t=0$ will be:
 \begin{align*}
   \begin{split}
-  V_{BB'}(t)&=V_0\, cos\left(\omega t-\beta\, l\right)=cos\left(\omega t-\frac{\omega}{c}\, l\right)=\\[5pt]
-  &=V_0\, cos\left(2\,\pi\,10^{3}\cdot 0+\frac{2\,\pi\,10^{3}}{3\cdot 10^{8}}\cdot 0.05\right)=\\[5pt]
-  &=V_0\,cos(0,105 \cdot 10^{-5})\approx V_0\cdot 0.999\approx V_0
+  V_{BB'}(t)&=V_0\, \cos\left(\omega t-\beta\, l\right)=\cos\left(\omega t-\frac{\omega}{c}\, l\right)=\\[5pt]
+  &=V_0\, \cos\left(2\,\pi\,10^{3}\cdot 0+\frac{2\,\pi\,10^{3}}{3\cdot 10^{8}}\cdot 0.05\right)=\\[5pt]
+  &=V_0\,\cos(0,105 \cdot 10^{-5})\approx V_0\cdot 0.999\approx V_0
   \end{split}
 \end{align*}
 As we can see, we have a very short length of the cable compared to the wavelength, the attenuation over the line due is totally negligible.\\
 If we suppose instead the length of the TL: $l=\SI{100}{\kilo \meter}$, then the signal on the output at $t=0$ will be:
 \begin{align*}
   \begin{split}
-  V_{BB'}(t)&=V_0\, cos\left(2\,\pi\,10^{3}\cdot 0+\frac{2\,\pi\,10^{3}}{3\cdot 10^{8}}\cdot100\cdot 10^{3}\right)=\\[5pt]
-  &=V_0\,cos(2.09)\approx V_0\cdot -0.49\approx -\frac{1}{2}\,V_0
+  V_{BB'}(t)&=V_0\, \cos\left(2\,\pi\,10^{3}\cdot 0+\frac{2\,\pi\,10^{3}}{3\cdot 10^{8}}\cdot100\cdot 10^{3}\right)=\\[5pt]
+  &=V_0\,\cos(2.09)\approx V_0\cdot -0.49\approx -\frac{1}{2}\,V_0
   \end{split}
 \end{align*}
 It is very important to notice that now the amplitude of the signal is half as before, just by moving away from the source, and without considering the attenuation of the line.\\
@@ -70,8 +70,8 @@ What we can notice is that the effect of that attenuation depends a lot on the w
 \begin{equation*}
   \beta\, l=\frac{\omega}{c}\,l=\frac{2\pi}{c}\cdot f\cdot l=2\pi\cdot\frac{l}{\lambda}
 \end{equation*}
-The cosine operator is periodic over $2\pi$, this mean that when the length of the TL $l$ is a multiple of the wavelength $\lambda$, the output signal won't be attenuated: $cos(k\,2\pi)=1$.\\
-But when $l = (\frac{n}{2}+1)\,\lambda$ for $n=0,1,\cdots$ at $t=0$, on the output of the TL we will not see any signal because $cos(k\,\frac{\pi}{2})=1$\\
+The cosine operator is periodic over $2\pi$, this mean that when the length of the TL $l$ is a multiple of the wavelength $\lambda$, the output signal won't be attenuated: $\cos(k\,2\pi)=1$.\\
+But when $l = (\frac{n}{2}+1)\,\lambda$ for $n=0,1,\cdots$ at $t=0$, on the output of the TL we will not see any signal because $\cos(k\,\frac{\pi}{2})=1$\\
 Now you could say: \textit{"hey!, that sounds like a simple phase shift, we can just wait $\frac{\pi}{2}$ and then the signal amplitude will be again $A_0$"}, that is true my friend, but by this example it is very simple to understand how a signal can change if we move over a transmission line.\\
 In the next section we will talk about a real attenuation of the signal along the TL (for example we will be able to choose the right distance from the source to guarantee the maximum power transfer).\\
 Another thing that we will take in consideration is the losses over the line, and the attenuation of the reflected signal.
@@ -201,12 +201,12 @@ To obtain the wave equation, we can use the derivative over the space on the fir
 \end{align}
 The wave equation obtained in \cref{eq:wave_eq_on_TL} is very similar to what we have fond before, from here we can also obtain the solution of that equation:
 \begin{equation}
-  v(z,t)=v_{\scaleto{+}{3pt}}\,cos\left(\omega t-\frac{\omega}{c}z\right)+v_{\scaleto{-}{3pt}}\,cos\left(\omega t+\frac{\omega}{c}z\right)
+  v(z,t)=V\bottomPlus \,\cos\left(\omega t-\frac{\omega}{c}z\right)+V\bottomMinus \,\cos\left(\omega t+\frac{\omega}{c}z\right)
 \end{equation}
 \subsubsection*{Telegraph and wave equation in phasor domain}
 Starting from \cref{eq:Telegraph_eq_prettier} we can obtain the telegraph equation in phasor domain:
 \begin{equation}
-  \begin{cases}
+  \begin{cases}\label{eq:telegraph_in_phas_1}
   -\frac{\partial \phas{V}}{\partial z}=(R+j\omega L)\phas{I}\\[5pt]
   -\frac{\partial \phas{I}}{\partial z}=(G+j\omega C)\phas{V}
   \end{cases}
@@ -226,24 +226,24 @@ We introduce $\gamma = \sqrt{(R+j\omega L)(G+j\omega C)}=\alpha+j\beta$, then we
   \end{cases}\label{eq:telephone_eq}
 \end{equation}
 We can also write a beautiful solution from \cref{eq:telephone_eq}:
-\begin{equation}
-  \phas{V}(z)=v_{\scaleto{+}{3pt}}\,e^{-\gamma z}+v_{\scaleto{-}{3pt}}\,e^{\gamma z}
+\begin{equation}\label{eq:voltage_in_phas_domain}
+  \phas{V}(z)=V\bottomPlus \,e^{-\gamma z}+V\bottomMinus \,e^{\gamma z}
 \end{equation}
 We also know that $\gamma$ is a complex number, so what we can do is to write the same equation, but dividing $\gamma = \alpha+j\beta$ and looking only at the forward:
 \begin{equation}
-  \phas{V}(z)=v_{\scaleto{+}{3pt}}\,e^{-\alpha z}\,e^{-j\beta z}
+  \phas{V}(z)=V\bottomPlus \,e^{-\alpha z}\,e^{-j\beta z}
 \end{equation}
 If i go back to time domain:
 \begin{equation}
-  v(z,t)=v_{\scaleto{+}{3pt}}e^{\alpha z}cos(\omega t-\beta z)
+  v(z,t)=V\bottomPlus e^{\alpha z}\cos(\omega t-\beta z)
 \end{equation}
 Inside $\gamma $ we have $R$,$L$,$G$ and $C$, so we have all the geometry and physical characteristic of the TL.
 \subsubsection*{What could happen if we assume no losses?}
 If we assume no losses over the line, then $\alpha=0$, and so $\gamma = j\beta$, then the wave propagation will follow \cref{eq:wave_solution_no_losses}:
 \begin{equation}
   \begin{cases}
-  \phas{V}(z)=v_{\scaleto{+}{3pt}}\,e^{-j\beta z}+v_{\scaleto{-}{3pt}}\,e^{j\beta z}\\[5pt]
-  \phas{I}(z)=i_{\scaleto{+}{3pt}}\,e^{-j\beta z}+i_{\scaleto{-}{3pt}}\,e^{j\beta z}
+  \phas{V}(z)=V\bottomPlus \,e^{-j\beta z}+V\bottomMinus \,e^{j\beta z}=\phas{V_p}(z)+\phas{V_r}(z)\\[5pt]
+  \phas{I}(z)=I\bottomPlus \,e^{-j\beta z}+I\bottomMinus \,e^{j\beta z}=\phas{I_p}(z)+\phas{I_r}(z)
   \end{cases}\label{eq:wave_solution_no_losses}
 \end{equation}
 So what are the parameters that give losses? We obtain the $\alpha$ and $\beta$ value from the real and imaginary value of:

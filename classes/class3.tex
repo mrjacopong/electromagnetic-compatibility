@@ -4,29 +4,29 @@ During this class we will talk about the passage from the time domain to frequen
 Now we take a look at the electrical field propagating on the $z$ axe: $\overline{E}(z,t)=E_x\,\jhat+E_y\,\ihat+E_z\,\khat$, and we explore all the element:
 \begin{align}\label{eq:electric_field_3_axes_phase}
     \begin{split}
-        E_x(z,t)&=E_{x_0}\,cos(\omega\,t-\beta\,z+\varphi_x)\\[5pt]
-        E_y(z,t)&=E_{y_0}\,cos(\omega\,t-\beta\,z+\varphi_y)\\[5pt]
-        E_z(z,t)&=E_{z_0}\,cos(\omega\,t-\beta\,z+\varphi_z)
+        E_x(z,t)&=E_{x_0}\,\cos(\omega\,t-\beta\,z+\varphi_x)\\[5pt]
+        E_y(z,t)&=E_{y_0}\,\cos(\omega\,t-\beta\,z+\varphi_y)\\[5pt]
+        E_z(z,t)&=E_{z_0}\,\cos(\omega\,t-\beta\,z+\varphi_z)
     \end{split}
 \end{align}
 Note that here $\omega$ and $\beta$ does not change, but $\varphi$ does, this is not very important, but it is just a note.\\
 From \cref{eq:electric_field_3_axes_phase}, and exploiting the cos property:
 \begin{equation*}
-    cos(\alpha + \beta )=cos\alpha\, cos\beta - sin\alpha \, sin\beta
+    \cos(\alpha + \beta )=\cos\alpha\, \cos\beta - \sin\alpha \, \sin\beta
 \end{equation*}
 By considering $\alpha = \omega\, t$ and $\beta = \beta z+\varphi+z$ we obtain the total equation of the EMF on $z$ direction:
 \begin{align}
     \begin{split}
         &\overline{E}(z,t)=E_x\,\jhat+E_y\,\ihat+E_z\,\khat=\\[5pt]
-        &=cos(\omega\,t)[E_{x_0}cos(\varphi-\beta\,z)\ihat+E_{y_0}cos(\varphi_y-\beta\,z)\jhat+E_{z_0}cos(\varphi_z-\beta\,z)\khat]+\\[5pt]
-        &-sin(\omega\,t)[E_{x_0}sin(\varphi-\beta\,z)\ihat+E_{y_0}sin(\varphi_y-\beta\,z)\jhat+E_{z_0}sin(\varphi_z-\beta\,z)\khat])=\\[5pt]
-        &=\overline{E}_1\,cos(\omega\,t)+\overline{E}_2\,sen(\omega\,t)
+        &=\cos(\omega\,t)[E_{x_0}\cos(\varphi-\beta\,z)\ihat+E_{y_0}\cos(\varphi_y-\beta\,z)\jhat+E_{z_0}\cos(\varphi_z-\beta\,z)\khat]+\\[5pt]
+        &-\sin(\omega\,t)[E_{x_0}\sin(\varphi-\beta\,z)\ihat+E_{y_0}\sin(\varphi_y-\beta\,z)\jhat+E_{z_0}\sin(\varphi_z-\beta\,z)\khat])=\\[5pt]
+        &=\overline{E}_1\,\cos(\omega\,t)+\overline{E}_2\,\sin(\omega\,t)
     \end{split}
 \end{align}
 First of all we notice that $\overline{E}_1$ and $\overline{E}_2$ are vectors that are only in function of space (and that is great and useful).\\
 Then we can write:
 \begin{equation}
-    \overline{E}(z,t)=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)[cos(\omega t)+j sin(\omega t)]\right\}=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)e^{j\omega t}\right\}
+    \overline{E}(z,t)=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)[\cos(\omega t)+j \sin(\omega t)]\right\}=\operatorname{Re}\left\{(\overline{E}_1+j\overline{E}_2)e^{j\omega t}\right\}
 \end{equation}
 With this notation we can introduce the phasor 
 \begin{equation}
@@ -132,8 +132,8 @@ If we want to go back to time domain from \cref{eq:maxwell_solution_phasor} we c
         &=\operatorname{Re}\left\{\overline{E}_{0_2}\,e^{-\alpha z}\,e^{-j\beta z}e^{j\omega t}\right\} =\\[5pt]
         &=\operatorname{Re}\left\{|E_{0_2}|\,e^{j\varphi_0}\,e^{-\alpha z}\,e^{-j\beta z}e^{j\omega t}\right\} =\\[5pt]
         &= |E_{0_2}| e^{-\alpha z}\operatorname{Re}\left\{e^{j(\omega t-\beta z +\varphi_0)}\right\}=\\[5pt]
-        &= |E_{0_2}| e^{-\alpha z}\operatorname{Re}\left\{cos(\omega t-\beta z +\varphi_0)+j sin(\omega t-\beta z +\varphi_0)\right\}=\\[5pt]
-        &= |E_{0_2}| e^{-\alpha z}\,cos(\omega t-\beta z +\varphi_0)
+        &= |E_{0_2}| e^{-\alpha z}\operatorname{Re}\left\{\cos(\omega t-\beta z +\varphi_0)+j \sin(\omega t-\beta z +\varphi_0)\right\}=\\[5pt]
+        &= |E_{0_2}| e^{-\alpha z}\,\cos(\omega t-\beta z +\varphi_0)
     \end{split}
 \end{align}
 We obtained the forward equation of an EMF that propagates over the $z$ direction, that we have already seen in \cref{eq:wave_equation_generalized}.
@@ -163,7 +163,7 @@ An interesting thing to note is that the imaginary part of $\varepsilon_c=\varep
 \end{itemize}
 We can also use $\frac{\sigma}{\omega \epsilon}$ to know the property of our medium:
 \begin{itemize}
-    \item $\frac{\sigma}{\omega \epsilon}> 1$: metallic medium
+    \item $\bm{\frac{\sigma}{\omega \epsilon}> 1}$: metallic medium
     \item $\bm{\frac{\sigma}{\omega \epsilon}< 1}$: dielectric medium loss
 \end{itemize}
 If we suppose no metallic loss: $\sigma = 0$, then:
@@ -201,14 +201,14 @@ And the wave equation becomes:
 \subsection*{A little exercise}
 The prof said it was little... but i'm too tired to copy all the numbers, but here i reported the passages.\\
  The request was to find the expression of the EMF ($E$ and $H$ equation) given $\gamma $, the direction $z$ and supposing no losses ($\alpha=0$). The field of $E$ is on his peak $E_0$ wen $t=0$ and $z=50$\\
- First of all the peak of the field $E_0$ is obtained when $cos(\omega t-\beta z +\phi_0)=1$, so when $(\omega t-\beta z +\phi_0)=0$.\\
+ First of all the peak of the field $E_0$ is obtained when $\cos(\omega t-\beta z +\phi_0)=1$, so when $(\omega t-\beta z +\phi_0)=0$.\\
  We can simplify saying that $\omega t =0$ (we can assume the initial time $t_0=0$ because of the given data).\\
  From \cref{eq:gamma_1} we can obtain $\omega$ from $\gamma$ ($\omega^2=c^2-\omega^2$).\\
  From \cref{eq:E_with_phase_constant} we also know that $\beta=\frac{\omega}{c}$.\\
 Then we obtain $\varphi_0$ from $-\frac{\omega}{c}+\phi_0=0$.\\
 We have all we need to write down the equation for $E$ in time
 \begin{equation*}
-    E(z,t)=E_0\, cos(-\beta z +\phi_0)\,\ihat
+    E(z,t)=E_0\, \cos(-\beta z +\phi_0)\,\ihat
 \end{equation*}
 What about $H$?
 \begin{equation}
@@ -216,7 +216,7 @@ What about $H$?
 \end{equation}
 Doing some strange calculation we can obtain the $H$ equation, where the argument of $cos$ are the same, but $H_0$ changes:
 \begin{equation*}
-    H(z,t)=H_0\, cos(-\beta z +\phi_0)\,\jhat
+    H(z,t)=H_0\, \cos(-\beta z +\phi_0)\,\jhat
 \end{equation*}
 \subsubsection*{Frequency domain}
 In frequency it is much more simple:
@@ -233,10 +233,10 @@ Now $\phas{H}(z)$??
         &=\frac{\beta}{\mu \omega}|E_0|\, e^{j\varphi_0}e^{-j\beta z}
     \end{split}
 \end{align}
-We know that $\beta = \frac{\omega}{c}$, then:
-\begin{equation*}
+We know that $\beta = \frac{\omega}{c}$, then we obtain the intrinsic impedance $\eta$:
+\begin{equation}\label{eq:intrinsic_impedance}
     \frac{\omega}{c}\,\frac{1}{\omega \mu}=\frac{\sqrt{\mu \varepsilon}}{\mu}=\sqrt{\frac{\epsilon}{\mu}}=\eta 
-\end{equation*}
+\end{equation}
 So we obtain a very useful equation:
 \begin{equation}
     \phas{H}=\frac{1}{\eta}\,\overline{E_0}e^{-j\beta z}
