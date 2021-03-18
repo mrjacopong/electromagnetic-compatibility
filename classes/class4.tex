@@ -233,8 +233,8 @@ We also know that $\gamma$ is a complex number, so what we can do is to write th
 \begin{equation}
   \phas{V}(z)=V\bottomPlus \,e^{-\alpha z}\,e^{-j\beta z}
 \end{equation}
-If i go back to time domain:
-\begin{equation}
+If i go back to time domain (see \cref{eq:from_phas_to_time}):
+\begin{equation}\label{eq:from_phas_to_time_TL}
   v(z,t)=V\bottomPlus e^{\alpha z}\cos(\omega t-\beta z)
 \end{equation}
 Inside $\gamma $ we have $R$,$L$,$G$ and $C$, so we have all the geometry and physical characteristic of the TL.
@@ -249,7 +249,7 @@ If we assume no losses over the line, then $\alpha=0$, and so $\gamma = j\beta$,
 So what are the parameters that give losses? We obtain the $\alpha$ and $\beta$ value from the real and imaginary value of:
 \begin{align}
   \begin{split}
-    &\gamma =\sqrt{(R+j\omega L)(G+j\omega C)}=\\[5pt]
+    \gamma &=\sqrt{(R+j\omega L)(G+j\omega C)}=\\[5pt]
     &=\sqrt{R\,G+j\omega L\,G+j\omega C\,R-\omega^2L\,C}=\\[5pt]
     &=\sqrt{j\omega( L\,G + C\,R)+R\,G-\omega^2L\,C}\\[5pt]
   \end{split}

@@ -20,7 +20,19 @@
 \author{Jacopo Ferretti}
 \usepackage[utf8]{inputenc} % Required for inputting international characters
 
+\newcommand\vertarrowbox[3][3ex]{%
+  \begin{array}[t]{@{}c@{}} #2 \\
+  \left\uparrow\vcenter{\hrule height #1}\right.\kern-\nulldelimiterspace\\
+  \makebox[0pt]{\scriptsize#3}
+  \end{array}%
+}
+\usepackage[nottoc]{tocbibind}
 \usepackage{amsmath,amssymb,bm,mathtools}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.13}
+\usepgfplotslibrary{smithchart}
+\usepgfplotslibrary{polar}
+\usepackage{steinmetz}
 \usepackage[makeroom]{cancel}
 \numberwithin{equation}{section}
 \numberwithin{figure}{section}
@@ -33,6 +45,7 @@
 \usepackage[pdfa]{hyperref}
 \usepackage{cleveref}
 \usepackage{pgfplots}
+\usepackage{xcolor}
 \usepackage{circuitikz}
 \usetikzlibrary{positioning} 
 \usepackage{float}
@@ -67,6 +80,11 @@
 
 \begin{document}
 \maketitle
+\begin{center}
+  \vspace*{\stretch{0.5}}
+  \Huge{\ding{166}}
+  \vspace*{\stretch{1.5}}
+\end{center}
 \newpage
 \tableofcontents
 \newpage
@@ -75,18 +93,21 @@
 I share with you my work, it is not perfect, but i think it could be helpful for anyone.\\
 You can share it, modify or do whatever you want, i enjoy to write in \LaTeX, so i'm totally fine with this.\\
 Please consider to help me to find any mistakes or misunderstanding, contact me or just modify the code from Github.\\
-If you want to be added to my private Github repository just give me your email and I'll add you with no problem.
+If you want to be added to my private Github repository just give me your email and I'll add you with no problem.\\
+I want to suggest you to give a look at the book \emph{High Speed Digital Design}\cite{zhang_book}, in the introduction it is explained in very simple and intuitive way the first part of our course.\\
+\begin{footnotesize}
+  You can find it easily in 1lib.eu but i didn't told you nothing :x
+\end{footnotesize}
 \newpage
 \include{classes/class1}
 \include{classes/class2}
 \include{classes/class3}
 \include{classes/class4}
 \include{classes/class5}
-\newpage
-\thispagestyle{empty}
-\begin{center}
-  \vspace*{\stretch{1}}
-  \Huge{\ding{166}}
-  \vspace*{\stretch{1}}
-  \end{center}
+\include{classes/class6}
+
+\medskip
+\bibliographystyle{unsrt}
+\bibliography{bibliography}
+
 \end{document}

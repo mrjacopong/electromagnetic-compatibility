@@ -1,4 +1,4 @@
-\section{Class 2 - 08/02/21}
+\section{Class 5 - 08/03/21}
 \subsection*{characteristic impedance}
 We can start this lecture by computing the derivative over the space of the voltage equation in phasor domain in \cref{eq:voltage_in_phas_domain}.
 \begin{equation}
@@ -6,7 +6,7 @@ We can start this lecture by computing the derivative over the space of the volt
 \end{equation}
 Then from the first equation in \cref{eq:telegraph_in_phas_1} we can obtain another way to express the current in phasor domain:
 \begin{equation}
-    \phas{I}(z)=\overbrace{\frac{\gamma}{(R+j\omega L)}}^{Z_0}\left[V\bottomPlus \,e^{-\gamma z}-V\bottomMinus \,e^{\gamma z}\right]
+    \phas{I}(z)=\overbrace{\frac{\gamma}{(R+j\omega L)}}^{\frac{1}{Z_0}}\left[V\bottomPlus \,e^{-\gamma z}-V\bottomMinus \,e^{\gamma z}\right]
 \end{equation}
 If we take a look on that equation, we can notice a very interesting pattern, that look like the ohm's law: $I=G\,V$ with $G$ the conductivity of the circuit, or the inverse of the resistivity.\\
 If you look closely, also $\frac{\gamma}{(R+j\omega L)}$ is a conductance:
@@ -22,7 +22,15 @@ Without losses, the same equation becomes:
     Z_0=\sqrt{\frac{j\omega L}{j\omega C}}=\sqrt{\frac{L}{C}}
 \end{equation}
 If you look closely, \cref{eq:characteristic_impedance_no_loss} is very similar to the intrinsic impedance $\eta = \sqrt{\frac{\mu}{\varepsilon}}$ (\cref{eq:intrinsic_impedance}).\\
-Then we can write:
+The current and current expression becomes:
+\begin{equation}
+    \begin{cases}
+    \phas{V}(z) = V\bottomPlus \,e^{-j\beta z}+V\bottomMinus \,e^{j\beta z} \\[5pt]
+    \phas{I}(z)=\frac{1}{Z_0}\left[V\bottomPlus \,e^{-\gamma z}-V\bottomMinus \,e^{\gamma z}\right]
+    \end{cases}\label{eq:current_and_voltage_in_TL_phas}
+\end{equation}
+From now on, sometimes i could miss some phasor notation over $V$ and $I$, this was very important to emphasize the difference between the different domains, but no the next pages if you see $V(l)$ or $I(l)$ just remember that those wave expression does not contain the time $t$, so they are in phasor domain.\\
+That being said, we can also write:
 \begin{align}
     \begin{split}
       &V\bottomMinus = - Z_0 \,I\bottomMinus \\[5pt]
@@ -142,7 +150,7 @@ In terms of admittance, the \cref{eq:input_impedance_1} becomes:
 In \cref{fig:forward_and_backward_wave} you can see a very common example of how the signal propagates in a TL when a load $Z_l$ is connected: we have both a forward and backward wave inside the same medium (ex. coaxial cable).\\
 The forward signal $V\bottomPlus$ is the one that we like, the backward $V\bottomMinus$ is not helpful for us, and it cause unwanted interference (by adding to the forward one, and making a mess).\\
 To describe a bit better this situation, we can introduce the \emph{reflection coefficient} $\rho(l)$, that define the reflected wave with respect to the incident wave:
-\begin{equation}
+\begin{equation}\label{eq:definition_of_rho}
     \rho(l) = \frac{V\bottomMinus\,e^{-j\,\beta\,l}}{V\bottomPlus\,e^{\,j\,\beta\,l}}=\frac{V\bottomMinus}{V\bottomPlus}\,e^{\,j2\beta l}
 \end{equation}
 \begin{equation}
@@ -155,9 +163,14 @@ If you place a load $Z_L$ at the output of the transmission line, and you measur
 \begin{equation}\label{eq:reflection_coeff_at_load}
     \rho(l=0)=\rho_L=\frac{V\bottomMinus}{V\bottomPlus}=\frac{Z_L-Z_0}{Z_L+Z_0}
 \end{equation}
+From \cref{eq:definition_of_rho} we can write:
+\begin{equation}\label{eq:reflection_coeff_at_load2}
+    \rho(l)=\rho_L\,e^{\,j2\beta l}
+\end{equation}
 This is a parameter that is used to define the reflected wave with respect to the
 incident wave on the load, and i think that it is much more easy to understand than $\rho(l)$.
-If you look closely at \cref{eq:reflection_coeff_at_load}, it is possible to have $\rho_L=0$ when $Z_L=Z_0$. The explanation that the prof gave to us is a little confusing for me, but it works like the wave is always seeing $Z_0$ while it is travelling along all the tiny portion of TL; when the wave arrives to $Z_L$, it sees no difference, so for him it is like the TL is infinite.
+If you look closely at \cref{eq:reflection_coeff_at_load}, it is possible to have $\rho_L=0$ when $Z_L=Z_0$. The explanation that the prof gave to us is a little confusing for me, but it works like the wave is always seeing $Z_0$ while it is travelling along all the tiny portion of TL; when the wave arrives to $Z_L$, it sees no difference, so for him it is like the TL is infinite.\\
+Note that sometimes the reflection coefficient $\rho_L$ is written like only the symbol $\rho$. This is a little confusing, but it simplify a lot the notation.
 \subsubsection*{Little exercise!}
 We have a transmission line with:
 \begin{itemize}
@@ -442,19 +455,19 @@ $\bullet$ We can plot again the behavior of the TL, that is very similar as befo
                 xticklabels={-1,-0.75,...,0},
                 xtick={-1,-0.75,...,0},
                 ]
-              \addplot[domain=-1.1:0,blue,samples=200] {tan(deg(x*2*3.14159))};
-              \draw[dashed,red] (-1,-5) -- (-1,5);
-              \draw[dashed,red] (-0.5,-5) -- (-0.5,5);
+              \addplot[domain=-1.1:0.01,blue,samples=200] {-cot(deg(-x*2*3.14159))};
+              \draw[dashed,red] (-0.75,-5) -- (-0.75,5);
+              \draw[dashed,red] (-0.25,-5) -- (-0.25,5);
 
               \par\ctikzset{bipoles/capacitor/width=.1,bipoles/capacitor/height=.25}
               \par\ctikzset{bipoles/cuteinductor/width=.2,bipoles/cuteinductor/height=.25,bipoles/cuteinductor/coils=3}
 
-              \draw (-0.9,2.5) to [cute inductor] (-0.9,1.5);
-              \draw (-0.4,2.5) to [cute inductor] (-0.4,1.5);
+              \draw (-0.85,2.5) to [cute inductor] (-0.85,1.5);
+              \draw (-0.35,2.5) to [cute inductor] (-0.35,1.5);
 
-              \draw (-0.6,-2.5) to [C] (-0.6,-1.5);
-              \draw (-0.1,-2.5) to [C] (-0.1,-1.5);
-              \draw (-1.07,-2.5) to [C] (-1.07,-1.5);
+              \draw (-0.65,-2.5) to [C] (-0.65,-1.5);
+              \draw (-0.15,-2.5) to [C] (-0.15,-1.5);
+              \draw (-1.07,-1.5) to [C] (-1.07,-0.5);
             \end{axis}
             
             \end{tikzpicture}       
