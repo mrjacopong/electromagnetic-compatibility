@@ -26,6 +26,7 @@
   \makebox[0pt]{\scriptsize#3}
   \end{array}%
 }
+\usepackage{multicol}
 \usepackage[nottoc]{tocbibind}
 \usepackage{amsmath,amssymb,bm,mathtools}
 \usepackage{pgfplots}
@@ -58,7 +59,8 @@
   fraction-function=\tfrac
 }
 \pgfplotsset{compat=1.17}
-
+\usepackage{graphicx}
+\usepackage{subcaption}
 %% stupid dunno emoticon%%
 \newcommand{\dunno}[1][]{%
 \begin{tikzpicture}[baseline,x=0.8\ht\strutbox,y=0.8\ht\strutbox,line width=0.125ex,#1]
@@ -105,6 +107,7 @@ I want to suggest you to give a look at the book \emph{High Speed Digital Design
 \include{classes/class4}
 \include{classes/class5}
 \include{classes/class6}
+\include{classes/class7}
 
 \medskip
 \bibliographystyle{unsrt}

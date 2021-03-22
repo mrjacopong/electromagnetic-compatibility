@@ -68,8 +68,8 @@ In \cref{fig:voltage_components_in_phas} you can see the graphical representatio
             \draw [blue!60!black, thick] (1.3,0) 
             arc [start angle=0, end angle=25, radius=1.3cm]
             node [midway, right] {$\beta l$}; 
-            \draw [red!60!black, thick] (0:0.7) 
-            arc [start angle=0, end angle=-26, radius=0.7cm]
+            \draw [red!60!black, thick] (0:1.3) 
+            arc [start angle=0, end angle=-25, radius=1.3cm]
                 node [midway, right,yshift=-1] {$-\beta l$};
         \end{tikzpicture}
     \end{center}\caption{Forward and backward Voltage wave in phasor domain}\label{fig:voltage_components_in_phas}
@@ -239,7 +239,7 @@ And:
 \end{equation}
 \subsection*{Standing wave ratio (SWR)}
 Finally we can introduce this famous value of Standing wave ratio (SWR). This is very useful to describe the quality of our signal when we have a forward and backward wave.
-\begin{equation}
+\begin{equation}\label{eq:swr_def}
     \text{SWR}=\frac{V_{max}}{V_{min}}=\frac{1+|\rho|}{1-|\rho|}
 \end{equation}
 Another interesting relation is the one with the maximum and minimum\\
@@ -384,17 +384,17 @@ I won't do all the calculations here, but the results are:
 All those numbers and complex numbers are quite confusing... But what if i tell you that there is a graphical way to describe the transmission line and all the useful coefficient.\\
 We need to prepare ourself a bit, first of all we need to define a bit better the normalized impedance (already seen in \cref{eq:normalized_impedance}):
 \begin{equation}
-    \mathcal{Z}_i(l)=\frac{Z_i(l)}{Z_0}=\mathcal{R}+j\mathcal{X}
+    \mathcal{Z}(l)=\frac{Z_i(l)}{Z_0}=\mathcal{R}+j\mathcal{X}
 \end{equation}
 We also remember the reflection coefficient $\rho$:
 \begin{equation}
     \rho(l)=\rho_L e^{\,j2\beta l}=u+jv
 \end{equation}
-Those two parameters are dependent on $l$, but now we consider that we have chosen a $l*$ value so $\mathcal{Z}$ and $\rho$ are fixed.\\
-Consider the input impedance for a given position on the TL and we can now write:
+Those two parameters are dependent on $l$, but now we consider that we have chosen a $l^*$ value so $\mathcal{Z}$ and $\rho$ are fixed (very flexible notation, we can also use it for the load impedance when $l=0$).\\
+Consider the impedance for a given position on the TL and we can now write:
 \begin{align}
     \begin{split}
-        \mathcal{Z}_i(l^*) &=\frac{Z_{in}}{Z_0}\\[5pt]
+        \mathcal{Z}(l^*) &=\frac{Z(l^*)}{Z_0}\\[5pt]
         &=\frac{1}{Z_0}\cdot \frac{V(l^*)}{I(l^*)}\\[5pt]
         &=\frac{1}{\cancel{Z_0}}\cdot \cancel{Z_0} \,\frac{V\bottomPlus +V\bottomMinus }{V\bottomPlus -V\bottomMinus }\\[5pt]
         &= \frac{V\bottomPlus +\rho V\bottomPlus }{V\bottomPlus -\rho V\bottomPlus } = \frac{1 +\rho }{1 -\rho }
@@ -403,7 +403,7 @@ Consider the input impedance for a given position on the TL and we can now write
 We simplify a bit the notation and we continue:
 \begin{align}
     \begin{split}
-        \mathcal{Z}_i =\frac{1+\rho}{1-\rho}& =\frac{1+u+jv}{1-u-jv}\cdot \frac{1-u+jv}{ 1-u+jv}=\mathcal{R}+j\mathcal{X}\\[5pt]
+        \mathcal{Z} =\frac{1+\rho}{1-\rho}& =\frac{1+u+jv}{1-u-jv}\cdot \frac{1-u+jv}{ 1-u+jv}=\mathcal{R}+j\mathcal{X}\\[5pt]
         \mathcal{R}+j\mathcal{X}&=\frac{(1-u^2-v^2)+j2v}{(1-u)^2+v^2}
     \end{split}
 \end{align}
@@ -429,7 +429,7 @@ And we can write:
 \begin{equation}
     \left(u-\frac{\mathcal{R}}{1+\mathcal{R}}\right)^2+v^2=\frac{1}{1+\mathcal{R}} - \frac{\mathcal{R}}{1+\mathcal{R}}+\left(\frac{\mathcal{R}}{1+\mathcal{R}}\right)^2
 \end{equation}
-Some math passage later that we will not show\dots
+Some math passage later\dots
 \begin{equation}
     \begin{cases}
         \left(u-\frac{\mathcal{R}}{1+\mathcal{R}}\right)^2+v^2 =\frac{1}{(1+\mathcal{R})^2}\\
@@ -480,16 +480,16 @@ Good news for the second equation in \cref{eq:normalized_impedance}, because als
             \draw[thick,->,black] (0,-1)--(0,4) node[left] {$v$}; % y axis
             \draw[green!60!black,thick] (-3,0) -- (4,0);
             \draw[->,green!60!black] (-0.2,0)--(-0.7,0.2)
-            node[label={[font=\footnotesize]left:$\mathcal{R}=0$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{X}=0$}] {};
             \draw[black] (2*1,2*1) circle (2*1);
             \draw[->,black] (0,2)--(-0.6,2.5)
-            node[label={[font=\footnotesize]left:$\mathcal{R}=1$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{X}=1$}] {};
             \draw[black] (2*1,2*1/2) circle (2*1/2);
             \draw[->,black] (1,1)--(-0.7,1)
-            node[label={[font=\footnotesize]left:$\mathcal{R}=2$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{X}=2$}] {};
             %\draw[black] (2*1,2*1/0.5) circle (2*1/0.5);
             \draw[->,black] (-0.35*4,1.9)--(-0.5*4,1.9)
-            node[label={[font=\footnotesize]left:$\mathcal{R}=0.5$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{X}=0.5$}] {};
             \draw[black] (6,2*1/0.5) arc (0:-180:2*1/0.5);
             \draw[black] (2*1,2*1/3) circle (2*1/3);
             \draw[black] (2*1,2*1/4) circle (2*1/4);
@@ -499,7 +499,7 @@ Good news for the second equation in \cref{eq:normalized_impedance}, because als
     \end{center}\caption{Plots of different circles from the second equation}\label{fig:y_cicles} 
 \end{figure}
 In \cref{fig:y_cicles} you can have a look at the circles made by changing the $\mathcal{R}$ parameter. When $\mathcal{R}\rightarrow \infty$ those circles collapse in $(1,0)$, then by decreasing the $\mathcal{R}$ the circumference radius will increase, until we reach the limit $\mathcal{R}=0$ where the circumference is lying in the horizontal $u$ axe (in green). You can also go in the negative part of the plot with $\mathcal{R}<0$\\
-Hooray! We found a very intuitive way to represent our normalized impedance $\mathcal{Z} (l) = \mathcal{R}+j\mathcal{X}$ by choosing the right circles in my new plot that we will call \emph{Smith Chart} (Smith Will for friends). With that we can obtain the value of $v$ and $u$ of the reflection coefficient by looking at the position of the point on the plot.
+Hooray! We found a very intuitive way to represent our normalized impedance $\mathcal{Z} (l) = \mathcal{R}+j\mathcal{X}$ by choosing the right circles in my new plot that we will call \emph{Smith Chart} (Smith Will for friends). With that we can obtain the value of $v$ and $u$ of the reflection coefficient by looking at the position of the point on the plot. 
 \subsubsection*{A simple example}
 In this example, we want to represent $\mathcal{Z}_i = 0.2 +j0.5\si{\ohm}$ in our new plot (\cref{fig:example_plot}):
 \begin{figure}[H]
@@ -522,7 +522,7 @@ In this example, we want to represent $\mathcal{Z}_i = 0.2 +j0.5\si{\ohm}$ in ou
 \end{figure}
 By looking at the plot in \cref{fig:example_plot}, we obtain the reflection coefficient:
 \begin{equation}
-    \rho(l)=u+jv=\rho_L e^{\,j2\beta l}
+    \rho(l)=u+jv=|\rho| e^{\,j2\beta l}
 \end{equation}
 \subsubsection*{Second example}
 Consider the transmission line in \cref{fig:second_example_class6} and its value of
@@ -540,7 +540,7 @@ $Z_0=50$ and $Z_L=100+j150\si{\ohm}$
             \draw (4.5,0.45)node[label={[font=\Large]above:$Z_0=70\si{\ohm}$}] {}
             ;
             \draw [->]  (2.5,2.3) -- (6.5,2.3)
-            node[midway,yshift=0.6em]{$75\si{\centi\metre}$};;
+            node[midway,yshift=0.6em]{$75\si{\centi\metre}$};
           \end{circuitikz}     
     \end{center} \caption{Transmission line of this second example}\label{fig:second_example_class6} 
 \end{figure}
@@ -548,7 +548,7 @@ The first thing to do is to obtain the normalized impedance:
 \begin{equation*}
     \mathcal{Z}_L=\frac{Z_L}{Z_0}=2+j3
 \end{equation*}
-We consider $\mathcal{Z}_L=\mathcal{Z}_i$ so we can draw the Smith Chart:
+We draw $\mathcal{Z}_L=\mathcal{Z}(l=0)$ in the Smith Chart:
 \begin{figure}[H]
     \begin{center}
         \begin{tikzpicture}
@@ -560,12 +560,12 @@ We consider $\mathcal{Z}_L=\mathcal{Z}_i$ so we can draw the Smith Chart:
             \draw[thick,->,black] (2,0)--(3,0) node[below] {$u$}; % x axis
             \draw[thick,->,black] (0,-1)--(0,4) node[left] {$v$}; % y axis
             \draw[->,black] (1.2,0.4)--(-0.5,1)
-            node[label={[font=\footnotesize]left:$\mathcal{Z}_i = 0.9 +j0.5$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{Z}_L = 0.9 +j0.5$}] {};
             \filldraw [black] (1.2,0.4) circle (1pt);
             \draw[black] (2*1,2*1/2) circle (2*1/2);
             \draw[black] (3*2/4,0) circle (2/4);
            \end{tikzpicture}
-    \end{center}\caption{Smith Chart of $\mathcal{Z}_i = 2+j3$}\label{fig:example2_plot} 
+    \end{center}\caption{Smith Chart of $\mathcal{Z} = 2+j3$}\label{fig:example2_plot} 
 \end{figure}
 Then what we can do is to look at the reflection coefficient $\rho$, not only by looking ad $u$ and $v$, but obtaining the module and the phase of the complex vector $\rho$. You can see the example in \cref{fig:example2_rho}
 \begin{figure}[H]
@@ -577,9 +577,9 @@ Then what we can do is to look at the reflection coefficient $\rho$, not only by
             \draw[thick,->,black] (2,0)--(3,0) node[below] {$u$}; % x axis
             \draw[thick,->,black] (0,-1)--(0,2) node[left] {$v$}; % y axis
             \filldraw [black] (1.2,0.4) circle (1pt);
-            \draw[->,black] (0,0)--(1.2,0.4)node[right] {$\rho(l^*)=\rho_L\,e^{\,j2\beta l^*}$};;
+            \draw[->,black] (0,0)--(1.2,0.4)node[right] {$\rho(l^*)=|\rho|\,e^{\,j2\beta l^*}$};;
            \end{tikzpicture}
-    \end{center}\caption{Smith Chart of $\mathcal{Z}_i = 2+j3$}\label{fig:example2_rho} 
+    \end{center}\caption{Smith Chart of $\mathcal{Z} = 2+j3$}\label{fig:example2_rho} 
 \end{figure}
 According to \cref{eq:reflection_coeff_at_load2}, the module of the $\rho$ vector that we have found in the Smith chart is $\rho_L$ and it's phase angle is $2\beta l$.\\
 This phase angle is very important, this is why you can find it already printed in the first outer diameter of the Smith chart, usually under the name of \emph{angle of reflection coefficient in degrees}.\\
@@ -598,7 +598,7 @@ If we move in the transmission line changing the $l$ value, in the Smith chart w
            \end{tikzpicture}
     \end{center}\caption{Smith Chart when we move on the line}\label{fig:example2_rho2} 
 \end{figure}
-We can exploit this cool behavior of the chart because whenever we move along the line, $\rho$ will rotate, and then we move in another point where we can interpolate the famous circles and we can obtain the value of the new $Z_i$ without going troughs all the ugly formulas that we have already seen before.\\
+We can exploit this cool behavior of the chart because whenever we move along the line, $\rho$ will rotate, and then we move in another point where we can interpolate the famous circles and we can obtain the value of the new $\mathcal{Z}$ without going troughs all the ugly formulas that we have already seen before.\\
 Another interesting characteristic of this chart is that when you rotate the vector, and touch the horizontal $u$ axe, the impedance will be completely real.
 
 If from my point i do a complete rotation, this mean that my phase variation is $2\pi$, this mean that:

@@ -98,17 +98,17 @@ Now the calculation can seems scary, but they are very simple but long:
       &=Z_0\frac{V\bottomPlus [\cos(\beta\, l)-j \, \sin(\beta\, l)]+V\bottomMinus [\cos(\beta\, l)+j \, \sin(\beta\, l)]}{V\bottomPlus [\cos(\beta\, l)-j \, \sin(\beta\, l)]-V\bottomMinus [\cos(\beta\, l)+j \, \sin(\beta\, l)]}=\\[5pt]
       &=Z_0\,\frac{(V\bottomPlus +V\bottomMinus )\,\cos(\beta\,l)-j(V\bottomPlus -V\bottomMinus )\,\sin(\beta\, l)}{(V\bottomPlus -V\bottomMinus )\,\cos(\beta\,l)-j(V\bottomPlus +V\bottomMinus )\,\sin(\beta\, l)}\cdot \frac{\frac{1}{(V\bottomPlus-V\bottomMinus)}}{\frac{1}{(V\bottomPlus-V\bottomMinus)}}=\\[5pt]
       &=Z_0\frac{\frac{Z_L}{Z_0}\cos(\beta\,l)-j\,\sin(\beta \,l)}{\cos(\beta\, l)-j\,\frac{Z_L}{Z_0}\sin(\beta l)}=\\[5pt]
-      &=\frac{Z_L\,\cos(\beta \,l)-j\,Z_0\,\sin(\beta \, l)}{Z_0\, \cos(\beta \, l)-j\,Z_L\,\sin(\beta \, l)}
+      &=Z_0\frac{Z_L\,\cos(\beta \,l)-j\,Z_0\,\sin(\beta \, l)}{Z_0\, \cos(\beta \, l)-j\,Z_L\,\sin(\beta \, l)}
     \end{split}
 \end{align}
 Now for the sake of simplicity we say that $l$ is not the coordinate of the point where we are looking over the line, but the distance from the $0$ point.\\
 In this case, the $Z_i(l)$ equation of the input impedance becomes a bit simpler (it only changes a couple of sign):
 \begin{equation}\label{eq:input_impedance_1}
-    Z_i(l)=\frac{Z_L\,\cos(\beta \,l)+j\,Z_0\,\sin(\beta \, l)}{Z_0\, \cos(\beta \, l)+j\,Z_L\,\sin(\beta \, l)}
+    Z_i(l)=Z_0\frac{Z_L\,\cos(\beta \,l)+j\,Z_0\,\sin(\beta \, l)}{Z_0\, \cos(\beta \, l)+j\,Z_L\,\sin(\beta \, l)}
 \end{equation}
 In terms of admittance, the \cref{eq:input_impedance_1} becomes:
 \begin{equation}
-    Y_i(l)=\frac{Y_L\,\cos(\beta \,l)+j\,Y_0\,\sin(\beta \, l)}{Y_0\, \cos(\beta \, l)+j\,Y_L\,\sin(\beta \, l)}
+    Y_i(l)=Y_0\frac{Y_L\,\cos(\beta \,l)+j\,Y_0\,\sin(\beta \, l)}{Y_0\, \cos(\beta \, l)+j\,Y_L\,\sin(\beta \, l)}
 \end{equation}
 \subsection*{Reflection coefficient}
 \begin{figure}[H]
@@ -146,14 +146,14 @@ In terms of admittance, the \cref{eq:input_impedance_1} becomes:
             ;
           \end{circuitikz}     
     \end{center} \caption{Forward and backward wave signal in a TL}\label{fig:forward_and_backward_wave} 
-    \end{figure}
+\end{figure}
 In \cref{fig:forward_and_backward_wave} you can see a very common example of how the signal propagates in a TL when a load $Z_l$ is connected: we have both a forward and backward wave inside the same medium (ex. coaxial cable).\\
 The forward signal $V\bottomPlus$ is the one that we like, the backward $V\bottomMinus$ is not helpful for us, and it cause unwanted interference (by adding to the forward one, and making a mess).\\
 To describe a bit better this situation, we can introduce the \emph{reflection coefficient} $\rho(l)$, that define the reflected wave with respect to the incident wave:
 \begin{equation}\label{eq:definition_of_rho}
     \rho(l) = \frac{V\bottomMinus\,e^{-j\,\beta\,l}}{V\bottomPlus\,e^{\,j\,\beta\,l}}=\frac{V\bottomMinus}{V\bottomPlus}\,e^{\,j2\beta l}
 \end{equation}
-\begin{equation}
+\begin{equation}\label{eq:definition_of_rho2}
     \rho(l) = \frac{Z_i(l)-Z_0}{Z_i(l)+Z_0}
 \end{equation}
 Note that the amplitude of $\rho(l)$ is always fixed along $l$, and only the exponential part $e^{\,j2\beta l}$ is dependent on $l$ (I don't really know why this is important \dunno).\\
@@ -304,8 +304,12 @@ $\bullet$ Power of this stationary wave:
 \end{align}
 Notice that the power is completely imaginary, this mean that we are transmitting only reactive power.\\
 $\bullet$ The input impedance:
-\begin{equation}
+\begin{equation}\label{input_impedance_of_a_short}
     Z_i(l)=Z_0\frac{\cancelto{0}{Z_L}\cos(\beta l)+jZ_0 \sin(\beta l)}{Z_0\cos(\beta l)+j\cancelto{0}{Z_L}\sin(\beta l)}=jZ_0\tan(\beta l)
+\end{equation}
+$\bullet$ The input admittance:
+\begin{equation}\label{input_admittance_of_an_open}
+    Y_i(l)=\frac{1}{Z_i(l)}=\frac{1}{jZ_0\tan(\beta l)}=-Y_0\cot(\beta l)
 \end{equation}
 We again see that this input impedance is completely imaginary, so could be seen by the input port as a capacitor or an inductor depending on the sign of this imaginary number.\\
 If we plot the behavior of $Z_i$ over $\frac{l}{\lambda}$ we have a graphical way to see this behavior (\cref{fig:behavior_of_short_in_TL}):
@@ -436,8 +440,12 @@ $\bullet$ We do the same calculation we already with the open circuit, then wu o
 \end{equation}
 Again if we go back to time domain we will notice that we are looking at a stationary wave.\\
 $\bullet$ The calculation for the input impedance is a bit different, but at the end we obtain:
-\begin{equation}
-    Z_i(l)=\lim_{Z_0\rightarrow\infty} Z_0\frac{Z_L\cos(\beta l)+jZ_0 \sin(\beta l)}{Z_0\cos(\beta l)+jZ_L\sin(\beta l)}=-jZ_0\cot(\beta l)
+\begin{equation}\label{eq:open_circuit_TL}
+    Z_i(l)=\lim_{Z_0\rightarrow\infty} Z_0\frac{Z_L\cos(\beta l)+jZ_0 \sin(\beta l)}{Z_0\cos(\beta l)+jZ_L\sin(\beta l)}=jZ_0\cot(\beta l)
+\end{equation}
+$\bullet$ The input admittance:
+\begin{equation}\label{input_admittance_of_a_short}
+    Y_i(l)=\frac{1}{Z_i(l)}=\frac{1}{jZ_0\cot(\beta l)}=-Y_0\tan(\beta l)
 \end{equation}
 $\bullet$ We can plot again the behavior of the TL, that is very similar as before, but mirrored at the $x$ axe:
 \begin{figure}[H]

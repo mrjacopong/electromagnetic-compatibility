@@ -1,0 +1,433 @@
+\section{Class 7 - 19/03/21}
+Today we start very quickly talking about the Smith chart, and some new cool property about the SWR.\\
+From \cref{eq:swr_def} we can obtain the value of $|\rho|$ as:
+\begin{equation}
+    |\rho|=\frac{\text{SWR}-1}{\text{SWR}+1}
+\end{equation}
+Looking back at \cref{eq:definition_of_rho2} we can write $\rho(l)$ as:
+\begin{equation}
+    \rho(l)=\frac{Z(l)-Z_0}{Z(l)+Z_0}=\frac{\mathcal{Z}(l)-1}{\mathcal{Z}+1}
+\end{equation}
+WOW, $\frac{\mathcal{Z}(l)-1}{\mathcal{Z}(l)+1}$ and $\frac{\text{SWR}-1}{\text{SWR}+1}$ looks very similar, let's see if we can find something interesting.\\
+If we take in consideration a completely real impedance $\mathcal{Z}(l^*)$ (in $l^*$), this mean also that $\rho(l^*)\in \text{Re}$
+\begin{equation}
+    \rho(l^*)=|\rho(l^*)|=\frac{\text{SWR}-1}{\text{SWR}+1}=\frac{\mathcal{Z}(l^*)-1}{\mathcal{Z}(l^*)+1}
+\end{equation}
+This mean that in this situation $\text{SWR}=\mathcal{Z}(l^*)$, so in the Smith chart when my impedance lay on the horizontal axe:
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{smithchart}[
+            width=0.6\textwidth,
+            show origin
+            ]
+            \addplot coordinates {(3,0)};
+            \draw[->,blue!60!black] (1,0)--(2.9,0); % x axis
+            \end{smithchart}
+        \end{tikzpicture}
+    \end{center}\caption{Smith Chart of $\mathcal{Z} = 3$}\label{fig:smith_real_value} 
+\end{figure}
+So, what we can do is that we can obtain the SWR of any impedance by rotating in the chart until we reach the horizontal axe, for example in \cref{fig:smith_real_value} the standing wave ratio is $\text{SWR}=\mathcal{Z} = 3$.
+\subsubsection*{Little exercise}
+Now we will do a little exercise to get the hands on this topic, let's consider a coaxial cable with the following specs:
+\begin{multicols}{2}
+    \begin{itemize}
+    \item $\varepsilon_r=2.25$
+    \item $\mu_r=1$
+    \item $\sigma=0\;\rightarrow \text{no losses}$
+    \item $l=10\si{\metre}$
+    \item $f=34\si{\mega\hertz}$
+    \item $Z_L=50+j100 \si{\ohm}$
+    \item $Z_0=50\si{\ohm}$
+    \end{itemize}
+\end{multicols}
+We are asked to find the input impedance $Z_i$.\\
+We can start by calculating some useful stuff:
+\begin{align*}
+    \begin{split}
+        &\bm{v_p}=\frac{1}{\sqrt{\mu\varepsilon}}=\frac{1}{\sqrt{\mu_0\varepsilon_0}}\cdot\frac{1}{\sqrt{\mu_r\varepsilon_r}}=c\,\frac{1}{\sqrt{\mu_r\varepsilon_r}}=2\cdot 10^{8}\si{\metre\per\second}\\[5pt]
+        &\bm{\lambda}=\frac{v_p}{f}=5.882\si{\metre}\\[5pt]
+        &\bm{\frac{l}{\lambda}}=1.17\\[5pt]
+        &\bm{\beta\,l}=\frac{2\pi}{\lambda}l=3.4\pi
+    \end{split}
+\end{align*}
+Now with a bit of patience we can obtain $Z_i$ with the usual equation that we have used until now (\cref{eq:input_impedance_1}).\\
+But we have a new friend by our side: the Smith chart! let's draw the normalized load impedance on it: $\mathcal{Z_L}=\frac{Z_L}{Z_0}=1+j2 $.\\
+Now to find the normalized input impedance $\mathcal{Z_L}$ is a very easy task, what we are going to do is to rotate around the central point by a certain angle.\\
+From what we have seen in the past lecture and in \cref{eq:phase_rotation_smith} the impedance rotate on the Smith chart by $360\si{\degree}$ every $\frac{\lambda}{l}=\frac{1}{2}$, this mean that $\mathcal{Z_L}$ will rotate around the center of the chart $\frac{1.7}{1/2}=3.4$ times.\\
+This mean that we need to do 3 full rotation, plus an angle of $0.4 \cdot 360\si{\degree}=144\si{\degree}$ in clockwise direction (we are moving away from the load).\\
+In \cref{fig:smith_es1} you can admire the Smith chart of this exercise. At the end we obtained the normalized input impedance $\mathcal{Z}_i\approx 0.45 -j0.8$ and thus the input impedance $Z_i=\mathcal{Z}\cdot Z_0\approx 22.5+j40\si{\ohm} $
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{smithchart}[
+            width=0.8\textwidth,
+            show origin
+            ]
+            \path[draw=red,->] (1,2) arc (45:-99:2.78cm)
+            node[midway,xshift=-0.6em,rounded corners=2pt,fill=white,text opacity=1,fill opacity=0.6]{$144\si{\degree}$};
+            \addplot coordinates {(1,2)};
+            \draw[->,blue!60!black] (1,0)--(1,2)
+            node[left, black]{$Z_L$};
+            \path[draw=blue,fill=blue] (-0.438cm,-2.6655cm) circle (0.05cm);
+            \draw[->,blue!60!black] (1,0)--(-0.438cm,-2.6655cm)
+            node[left,black]{$Z_i$};
+            \end{smithchart}
+        \end{tikzpicture}
+    \end{center}\caption{Smith Chart of $\mathcal{Z_L}=1+j2$ and $\mathcal{Z}_i \approx 0.45 -j0.8$}\label{fig:smith_es1}
+\end{figure}
+From \cref{fig:smith_es1} we can also obtain the SWR by moving the normalized \\impedance until it lay on the vertical axe, then:
+\begin{equation*}
+    \text{SWR}=\mathcal{Z}(l^*)\approx 6
+\end{equation*}
+From that we can also obtain the module of the reflection coefficient
+\begin{equation*}
+    |\rho|=\frac{\text{SWR}-1}{\text{SWR}+1}=\frac{5}{7}=0.71
+\end{equation*}
+Looking at the results that we have here ($\text{SWR}=6$, $|\rho|=0.71$ and $Z_0\neq Z_L$) this line is pretty bad\dots What we can do to make it greater?
+\subsection*{Maximization of the power transmission}
+When we use a transmission line, we can have a lot of troubles and strange things as we have already seen, an that is also true for the power. Take in consideration a geneal transmission line:
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz}
+            \draw (0,0)
+            to[sV=$V_{g}$] (0,2.5)
+            to[R=$R_{g}$, -o] (2,2.5)
+            to[short, -o] (7,2.5)
+            to[short] (8.5,2.5)
+            to[generic=$Z_{l}$] (8.5,0)
+            to[short, -o](7,0)
+            to[short, -o](2,0)
+            to[short](0,0)
+            ;
+            \draw (4.5,0.71)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{General TL}\label{fig:general_tl} 
+\end{figure}
+We want to know what is the power that the generator emits to the TL. This sound pretty easy because in phasor domain the power is defined by the voltage and the current in input on the line (the generator is connected to the input of the line):
+\begin{equation}
+    \phas{P}=\frac{1}{2}\phas{V}_i\,\phas{I}_i^*
+\end{equation}
+For the voltage there is no problem, we already know it when we buy that generator, so what about the current?\\
+We are able to represent both the load and the characteristic impedance with $Z_i$ because that is how the generator sees the transmission line.
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz}
+            \draw (0,0)
+            to[sV=$V_{g}$] (0,2.5)
+            to[R=$R_{g}$, -o] (2,2.5)
+            to[short] (3.5,2.5)
+            to[generic=$Z_{i}$] (3.5,0)
+            to[short, -o](2,0)
+            to[short](0,0)
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{TL from the generator point of view}\label{fig:general_tl2} 
+\end{figure}
+We can apply the kirchhoff law from \cref{fig:general_tl2} (to simplify the notation i'll omit the phasor symbol, but keep in mind that those are complex number)
+\begin{equation}
+    V_i=\frac{Z_i}{Z_i+Z_g}\,V_g=\frac{R_i+jX_i}{R_i+jX_i+R_g+jX_g}\,V_g
+\end{equation}
+With $Z_i=R_i+jX_i$ and $Z_g=R_g+jX_g$, the power equation becomes:
+
+\begin{align*}
+    \begin{split}
+        P_i&=\frac{1}{2}\,V_i\,\left(\frac{V_i}{Z_i}\right)^*=\\[5pt]
+        &=\frac{1}{2}\,\frac{Z_i}{Z_i+Z_g}V_g\,\left(\frac{\cancel{Z_i}}{\cancel{Z_i}(Z_i+Z_g)}V_g\right)^*=\\[5pt]
+        &=\frac{1}{2}\,\frac{Z_i}{(Z_i+Z_g)\,(Z_i+Z_g)^*}\,V_g\,V_g^*\\[5pt]
+        &=\frac{1}{2}\,\frac{R_i+jX_i}{|R_i+R_g+j(X_i+X_g)|^2}|V_g|^2\\[5pt]
+    \end{split}
+\end{align*}
+What we want to maximize is the active power, so we will care only about the real part of $P_i$
+\begin{equation}
+    \operatorname{Re}(P_i)=\frac{1}{2}\,\frac{R_i}{|R_i+R_g+j(X_i+X_g)|^2}|V_g|^2
+\label{eq:porer_on_TL2}
+\end{equation}
+Let's say that we have already bought the generator, so $Z_g$ and $X_g$ are given, then to maximize \cref{eq:porer_on_TL2} we can use a few cool tricks:\\
+first of all we can set $X_i=-X_g$, so the remaining equation become:
+\begin{equation}
+    \operatorname{Re}(P_i)=\frac{1}{2}\,\frac{R_i}{|R_i+R_g|^2}|V_g|^2=\frac{1}{2}\,\frac{R_i}{|R_i^2+R_g^2+2R_iR_g|}|V_g|^2
+\label{eq:porer_on_TL3}
+\end{equation}
+In order to maximize \cref{eq:porer_on_TL3} we can only change $R_i$ , so we can use the derivative of $P$
+\begin{align}
+    \begin{split}
+        \frac{d \operatorname{Re}(P_i)} {d R_i}&=0\\[5pt]
+        \frac{(R_g - R_i)}{(R_g + R_i)^3}&=0\\[5pt]
+        R_i&=R_g
+    \end{split}
+\end{align}
+According to what we have said until now, to maximize the active power we need to design a transmission line which has $R_i=R_g$ and $X_i=-X_g$.\\
+In other terms, to maximize the active power, we will need to design a TL which input impedance is the complex conjugate of the generator series impedance:
+\begin{equation}
+    Z_i=Z_g^*
+\end{equation}
+Then the maximum active power will be:
+\begin{equation}
+    P_{max}=\frac{1}{8}\frac{|V_g|}{R_g}
+\end{equation}
+\subsubsection*{Why it is so important to have a good TL?}
+We have quite a bit reason to have a good transmission line with no or few reflection (SWR=1 and $\rho=0$):
+\begin{enumerate}
+    \item The energy wasted or not used by a non optimal power transfer
+    \item Think about the power value where $V(l)=V_{max}$:
+        \begin{equation*}
+            P=\frac{1}{2}\,\frac{|V_{max}^2|}{Z_{max}}=\frac{1}{2}\,\frac{|V_{max}^2|}{Z_0\cdot \text{SWR}}{}
+        \end{equation*}
+        and so:
+        \begin{equation}
+            |V_{max}|=\sqrt{2\,Z_0\,\text{SWR}\,P}
+        \end{equation}
+        This mean that for the same power value, when SWR is higher than 1, the maximum voltage could increase and make a few problems (if the voltage is too high it can also burn the line medium)
+    \item It is very important in communication tho have zero or at least very few distortion: if the signal becomes reflected we introduce unwanted noise
+\end{enumerate}
+\subsection*{Adaption of the Transmission Line}
+Going back to the main topic, how it is possible to build a well designed transmission line? there are some tricks, and they consist in the addition of a special "box" in the middle of the transmission line in order to adapt it to the load (\cref{fig:general_tl_adapter}). It is very useful because wi will not need to change the entire TL if we deal to a different load, but we can simply adjust it.
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz}
+            \node[draw,minimum width=2.5cm,minimum height=2.9cm,anchor=south west] at (4,-0.2){Adapter};
+            \draw (0,0)
+            to[open] (0,2.5)
+            to[short, o-o] (3.5,2.5)
+            to[short] (4,2.5)
+            (6.5,2.5)to[short,-o](7,2.5)
+            to[short] (8.5,2.5)
+            to[generic=$Z_{l}$] (8.5,0)
+            to[short, -o](7,0)
+            to[short](6.5,0)
+            (4,0)to[short, -o](3.5,0)
+            to[short, -o](0,0)
+            ;
+            \draw (1.5,0.71)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw [-]  (3.5,2.8) -- (3.5,-0.3)
+            ;
+            \draw [->]  (3.5,1.25) -- (3.7,1.25)
+            node[ yshift=0.7em,rectangle,draw,fill=white,inner sep=1pt] {\tiny $Z_i=Z_0$}
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{TL adapted by a general "black box"}\label{fig:general_tl_adapter} 
+\end{figure}
+As you can see from \cref{fig:general_tl_adapter}, what we want from the adapter line is to modify the impedance value in that point to $Z_0$, if so there would be no reflected signals.\\
+There are different approach to accomplish this adaption:
+\subsubsection*{1) $\lambda/4$ line adapter}
+The first adapter that we will see here is the $\lambda/4$ line adapter, it consist in a short piece of line with the length of $l=\lambda/4\,\si{\metre}$ as in \cref{fig:general_tl_adapter_lambda_4}:
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz}
+            \draw (0,0)
+            to[open] (0,2.5)
+            to[short, o-o] (2.5,2.5)
+            to[short] (3,2.5)
+            to[short] (3,3)
+            to[short] (6.5,3)
+            to[short] (6.5,2.5)
+            to[short,-o](7,2.5)
+            to[short] (8.5,2.5)
+            to[generic=$Z_{l}$] (8.5,0)
+            to[short, -o](7,0)
+            to[short](6.5,0)
+            to[short] (6.5,-0.5)
+            to[short] (3,-0.5)
+            to[short] (3,0)
+            to[short, -o](2.5,0)
+            to[short, -o](0,0)
+            ;
+            \draw (1,0.71)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw (4.7,0.71)node[label={[font=\Large]above:{$Z_0^\prime$}}] {}
+            ;
+            \draw [dotted]  (2.5,2.8) -- (2.5,-0.3)
+            ;
+            \draw [->]  (2.5,1.25) -- (2.7,1.25)
+            node[label={[font=\footnotesize]above:{$Z_i$}},yshift=-0.5em] {}
+            ;
+            \draw [<->]  (3,3.2) -- (6.5,3.2)
+            node[label={[font=\footnotesize]above:{$\lambda/4$}},yshift=-0.5em,midway] {}
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{TL adapted by a general "black box"}\label{fig:general_tl_adapter_lambda_4} 
+\end{figure}
+From the transmission line in \cref{fig:general_tl_adapter_lambda_4} we want that the ingress impedance on the adaption line is equal to the characteristic impedance of the line ($Z_i=Z_0$). We start by evaluating $Z_i$ from \cref{eq:input_impedance_1}:
+\begin{align}
+    \begin{split}
+    Z_i&=Z_0^\prime \frac{Z_L\,\cancelto{0}{\cos(\beta \,\frac{\lambda}{4})}+j\,Z_0^\prime\,\cancelto{1}{\sin(\beta \,\frac{\lambda}{4})}}{Z_0^\prime\, \cancelto{0}{\cos(\beta \,\frac{\lambda}{4})}+j\,Z_L\,\cancelto{1}{\sin(\beta \,\frac{\lambda}{4})}}=\\[5pt]
+    &=\frac{Z_0^\prime\,Z_0^\prime}{Z_L}
+    \end{split}    
+\end{align}
+As we have already said we want that $Z_i=Z_0$, so if my $\lambda/4$ line, and now it is petty simple to do this changing the characteristic impedance of the adapter line:
+\begin{equation}
+    \frac{Z_0^\prime\,Z_0^\prime}{Z_L}=Z_0\,\rightarrow\,\,Z_0^\prime=\sqrt{Z_L\,Z_0}
+\end{equation}
+To recap:\\
+We will need a transmission line in series at the used one with characteristic impedance $Z_0^\prime=\sqrt{Z_L\,Z_0}$ and length $\lambda/4$.\\
+Note:\\
+Usually this technique is used to match only the real value of the load impedance, because as we have seen in \cref{eq:characteristic_impedance_no_loss}, the characteristic impedance of the transmission line is usually considered real to neglect the power loss. To match the imaginary part of my load, it is possible to use this method, but we need to add another layer of adaption that could be another piece of transmission line in series, or better a STUB.
+
+\subsubsection*{Closed circuit Stub}
+Another possibility we have is to modify directly the characteristic impedance of the line by inserting something in parallel, like a short circuit. In this way wi will change the impedance of the entire TL.\\
+From what we have already seen in \cref{input_impedance_of_a_short}, a short circuit could behave like an impedance or capacitor by changing his length. This is crucial in order to adapt the TL, because with that we can match the imaginary part of the load impedance.\\
+What we are going to do is so insert a special short circuit (STUB) in parallel to the transmission line, near the load position, like you can see in \cref{fig:stub}:
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz} 
+            \draw (2,2)
+            to[short, o-o] (5,2)
+            to[short] (8.5,2)
+            to[generic={$Z_{l}$}] (8.5,0)
+            to[short, -o](5,0)
+            to[short, -o](2,0)
+            ;
+            \draw [green!60!black](5,2)
+            to[short](7,0.5)
+            to[short](7,-1.5)
+            node[label={[font=\footnotesize]above:{STUB}},yshift=2em,xshift=1.4em]{}
+            to[short](5,0);
+            \draw (3,0.45)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw [dotted]  (5,2.3) -- (5,-0.3)
+            ;
+            \draw [->]  (5,0.9) -- (5.2,0.9)
+            node[label={[font=\footnotesize]above:{$Z_i$}},yshift=-0.5em] {}
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{Stub implementation example}\label{fig:stub} 
+\end{figure}
+The working principe of this Stub is very simple: if the load impedance has some reactive element, i can compensate it by applying a stub with the right length.
+We placed this short circuit stub in parallel to the load, so it is more simple to work in terms of admittance.\\
+From the widely famous Hom law, when we have two admittance placed in parallel, the total admittance will be the sum of the two: $Y_{tot}=Y_a+Y_b$.\\
+So, if the imaginary part of the stub admittance has the same value but opposite sign compared to the one of the load, we have cancelled his reactive part.
+\begin{equation}
+    \frac{1}{Z_L}=Y_L=G_L+jB_L \, \rightarrow \, Y_{stub}=-jB
+\end{equation}
+We can chose the stub to have both negative or positive admittance.
+\subsubsection*{Open circuit Stub}
+There is another type of stub, which is similar to the first one, but it utilize an open circuit in series on the transmission line.\\
+As we can see from \cref{eq:open_circuit_TL}, the open circuit can behave like both as an impedance or capacitor.\\
+A simple representation of the application of that type of stub is shown in \cref{fig:stub_open}.
+\begin{figure}[H]
+    \begin{center}
+        \begin{circuitikz} 
+            \draw (2,2)
+            to[short, o-o] (5,2)
+            (7,2)
+            to[short,o-] (8.5,2)
+            to[generic={$Z_{l}$}] (8.5,0)
+            to[short, -o](2,0)
+            ;
+            \draw [green!60!black](5,2)
+            to[short,o-](5.2,2)
+            to[short, -o](5.2,3.5)
+            to[open={STUB}](6.8,3.5)
+            to[short, o-](6.8,2)
+            to[short,-o](7,2)
+            ;
+            \draw (3,0.45)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw [dotted]  (5,2.3) -- (5,-0.3)
+            ;
+            \draw [->]  (5,0.9) -- (5.2,0.9)
+            node[label={[font=\footnotesize]above:{$Z_i$}},yshift=-0.5em] {}
+            ;
+          \end{circuitikz}     
+    \end{center} \caption{Stub implementation example}\label{fig:stub_open} 
+\end{figure}
+According to the Ohm law, the total impedance of a series of impedance is the sum of all the impedances ($Z_{tot}=Z_a+Z_b$).\\
+So, adjusting the stub length we can obtain a positive or negative impedance value to compensate the load impedance.
+\begin{equation}
+    Z_L=A_L+jX_L \, \rightarrow \, Y_{stub}=-jX
+\end{equation}
+\subsection*{General consideration on the adaption of a TL}
+As you may have already understood, in order to adapt the real part of the load impedance we use the $\lambda/4$ line adapter. If my load has both a real and imaginary part different from $Z_0$, we can combine the $\lambda/4$ line adapter and a stub.
+\begin{figure}[H]
+%    \begin{center}
+    \centering
+    \begin{subfigure}[b]{0.45\textwidth}\centering
+        \resizebox{1\textwidth}{!}{%
+        \begin{circuitikz} 
+            \draw (2,2)
+            to[short, o-o] (4,2)
+            to[short](4.2,2)
+            to[short](4.2,2.2)
+            to[short](5.8,2.2)
+            to[short](5.8,2)
+            to[short](6,2)
+            (8,2)
+            to[short,o-] (8.5,2)
+            to[generic={$Z_{l}$}] (8.5,0)
+            to[short, -o](6,0)
+            to[short](5.8,0)
+            to[short](5.8,-0.2)
+            to[short](4.2,-0.2)
+            to[short](4.2,0)            
+            to[short](4,0)
+            to[short, o-o](2,0)
+            ;
+            \draw [green!60!black](6,2)
+            to[short,o-](6.2,2)
+            to[short, -o](6.2,3.5)
+            to[open={STUB}](7.8,3.5)
+            to[short, o-](7.8,2)
+            to[short,-o](8,2)
+            ;
+            \draw (3,0.45)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw [dotted]  (4,2.3) -- (4,-0.3)
+            ;
+            \draw [->]  (4,0.9) -- (4.2,0.9)
+            node[label={[font=\footnotesize]above:{$Z_i$}},yshift=-0.5em] {}
+            ;
+            \draw [<->]  (4.2,2.4) -- (5.8,2.4)
+            node[label={[font=\footnotesize]above:{$\lambda/4$}},yshift=-0.5em,midway] {}
+            ;
+          \end{circuitikz}}
+%   \end{center} 
+    \caption{Open stub + $\lambda/4$ line adapter example}\label{fig:stub_open_lambda_4} 
+
+
+\end{subfigure}%
+\hfill
+\begin{subfigure}[b]{0.45\textwidth}\centering
+    \resizebox{1\textwidth}{!}{%
+        \begin{circuitikz} 
+            \draw (2,2)
+            to[short, o-o] (4,2)
+            to[short](4.2,2)
+            to[short](4.2,2.2)
+            to[short](5.8,2.2)
+            to[short](5.8,2)
+            to[short](6,2)
+            to[short,o-] (8.5,2)
+            to[generic={$Z_{l}$}] (8.5,0)
+            to[short, -o](6,0)
+            to[short](5.8,0)
+            to[short](5.8,-0.2)
+            to[short](4.2,-0.2)
+            to[short](4.2,0)            
+            to[short](4,0)
+            to[short, o-o](2,0)
+            ;
+            \draw [green!60!black](6,2)
+            to[short](7,0.5)
+            to[short](7,-1.5)
+            node[label={[font=\footnotesize]above:{STUB}},yshift=2em,xshift=1.4em]{}
+            to[short](6,0);
+            \draw (3,0.45)node[label={[font=\Large]above:$Z_0$}] {}
+            ;
+            \draw [dotted]  (4,2.3) -- (4,-0.3)
+            ;
+            \draw [->]  (4,0.9) -- (4.2,0.9)
+            node[label={[font=\footnotesize]above:{$Z_i$}},yshift=-0.5em] {}
+            ;
+            \draw [<->]  (4.2,2.4) -- (5.8,2.4)
+            node[label={[font=\footnotesize]above:{$\lambda/4$}},yshift=-0.5em,midway] {}
+            ;
+          \end{circuitikz} }    
+%    \end{center} 
+\caption{Stub + $\lambda/4$ line adapter example}\label{fig:stub_lambda_4} 
+\end{subfigure}
+\end{figure}
+Those 2 stubs (short and open circuit) seems to do the exactly same thing...\\
+This is true! We can choose to use one or another, the only difference is the production in the factory. So with some kind of application could be useful to use one instead of another, or you can just use the one that easier to use in order to solve the exercise.
