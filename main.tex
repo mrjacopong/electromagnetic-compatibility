@@ -77,8 +77,13 @@
 \draw (-0.1,0.2) to [out=15,in=-100] (0.4,0.95); 
 \end{tikzpicture}}
 %-----------------------%
+\usepackage{etoolbox}
+\include{extra/transmission_line_tikz_code}
 \usepackage{steinmetz}
 \usepackage{pifont}% http://ctan.org/pkg/pifont
+\usepackage{tikz-3dplot}
+\tdplotsetmaincoords{60}{110}
+%
 
 \begin{document}
 \maketitle
@@ -108,6 +113,7 @@ I want to suggest you to give a look at the book \emph{High Speed Digital Design
 \include{classes/class5}
 \include{classes/class6}
 \include{classes/class7}
+\include{classes/class8}
 
 \medskip
 \bibliographystyle{unsrt}
