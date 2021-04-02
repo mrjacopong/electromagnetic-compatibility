@@ -279,7 +279,7 @@ Now we are going to introduce the equation of the various components of the EMF 
 \end{equation}
 There is no phasor indicators over the components to simplify a bit the notation.\\
 Note that: $\eta =\sqrt{\frac{\mu}{\varepsilon}}$, $k=\frac{\omega}{c}=\omega\sqrt{\mu\varepsilon}$ and $\mu=\frac{2\pi}{\lambda}$.\\
-From what you can see in \cref{eq:EMF_components_in_spherical}, when we are far from the antenna we can neglect the components with $\frac{1}{r^2}$ and $\frac{1}{r^3}$ because them will become very small compared to $\frac{1}{r}$. Then we can write:
+From what you can see in \cref{eq:EMF_components_in_spherical}, when we are far from the antenna we can neglect the components with $\frac{1}{r^2}$ and $\frac{1}{r^3}$ because them will become very small compared to $\frac{1}{r}$. Then we can write the only two remaining components of the EMF:
 \begin{equation}\label{eq:EMF_components_in_spherical_2}
 \begin{cases}
     \overline{E}_\theta = j\eta \frac{I_0\,d}{2\lambda}\sin(\theta)\frac{e^{\,-jkr}}{r}\\
@@ -414,11 +414,11 @@ Before we have seen the power irradiated by an Hertzian dipole antenna, now we w
 \end{align}
 Now we can introduce the well known solid angle, so we are able to merge the 2 integrals in only one:
 \begin{equation}\label{eq:antenna_power}
-    \int_0^{4\pi}\frac{|\overline{E}(\theta,\varphi)|^2}{2\eta}\,d\Omega=\int_0^{4\pi}I_r(\theta,\varphi)\,d\Omega
+    P_a=\int_0^{4\pi}\frac{|\overline{E}(\theta,\varphi)|^2}{2\eta}\,d\Omega=\int_0^{4\pi}I_r(\theta,\varphi)\,d\Omega
 \end{equation}
 \subsubsection*{intensity of radiation}
 Here in \cref{eq:antenna_power} we have introduced the intensity of radiation $I_r(\theta,\varphi)$:
-\begin{equation}
+\begin{equation}\label{eq:radiation_intensity}
     I_r(\theta,\varphi)=\frac{|\overline{E}(\theta,\varphi)|^2}{2\eta}=|\overline{S}(r,\theta,\varphi)|r^2
 \end{equation}
 The intensity of radiation is very interesting for us, because it will be helpful to describe its directivity.
@@ -654,16 +654,16 @@ Now we are going a little bit more in depth, starting by looking at the impedanc
     \item $\bf{X_{a}}$ Reactance of the antenna (usually we would like to be compensate it trough adaption).
 \end{itemize}
 Then we can give new definition to the power loss and the emitted power, that were used to define the antenna efficiency parameter (\cref{eq:atenna_efficency}):
-\begin{align}%\label{eq:directivity2}
+\begin{align}\label{eq:emitted_power2}
     \begin{split}
         &P_a=\frac{1}{2}\,R_{in}|I|^2\\[5pt]
-        &P_a=\frac{1}{2}\,R_{loss}|I|^2
+        &P_{loss}=\frac{1}{2}\,R_{loss}|I|^2
     \end{split}
 \end{align}
 Then the efficiency of an antenna becomes:
 \begin{equation}
     \delta =\frac{R_{in}}{R_{in}+R_{loss}}
-\end{equation}.
+\end{equation}
 What we have just said is also true for a receiving antenna, but in this case the antenna becomes the generator of the TL, and so we need to add a voltage geneator on the bottom, as you can see in \cref{fig:impedance_antenna_receiving}:
 \begin{figure}[H]
     \begin{center}
