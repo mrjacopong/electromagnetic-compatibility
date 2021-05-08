@@ -1,0 +1,382 @@
+\section{Class 10 - 29/03/21}
+Today we will talk about the point to point link between two antennas, and it's performance.\\
+For example, take in consideration 2 antennas that wants to communicate each other, like in \cref{fig:antennas_example2} we need to find some parameter that can measure how efficiently the communication is happening, so we can deal with the power constrains that i could have in real applications.
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}[%
+            wave/.style={%
+              -,
+              %shorten >=4pt,
+              %shorten <=4pt,
+              decorate,
+              decoration={%
+                snake,
+                segment length=1mm,
+                amplitude=0.4mm,
+                pre length=0pt,
+                post length=0pt,
+              }
+            }
+          ]
+            %antenna 1
+            \draw [rotate around={-90:(-3,1)},thick] (-2.3,1.3) parabola bend (-3,1)  (-3.7,1.3);
+                \fill [black] (-3,1.05) -- (-3,0.95) -- (-2.87,1);
+                \fill [black] (-2.89,1) circle (0.4mm);
+            \draw [black,pattern=crosshatch] (-3.6,-1) -- (-2.8,-1) -- (-3,1) -- (-3.6,-1);
+
+            %antenna 2
+            \draw [rotate around={90:(3,1)},thick] (2.3,1.3) parabola bend (3,1)  (3.7,1.3);
+            \fill [black] (3,1.05) -- (3,0.95) -- (2.87,1);
+            \fill [black] (2.89,1) circle (0.4mm);
+            \draw [black,pattern=crosshatch] (3.6,-1) -- (2.8,-1) -- (3,1) -- (3.6,-1);
+
+            %radiation
+            \draw [blue,wave,->,decorate,
+            decoration={%
+              segment length=4mm,
+              amplitude=1mm,
+              pre length=0pt,
+              post length=1pt,
+            }] (-2.5,1) -- (2.5,1);
+
+          \end{tikzpicture}
+    \end{center}\caption{Two communicating antenna example}\label{fig:antennas_example2}
+\end{figure}
+With some passages we will derive the \emph{Friis Formula}, that is a very useful equation that relates the received power of an antenna with the transmitted power of the transmitter.
+\begin{comment}
+\subsection*{Friis Formula}
+Take for example two communicating antennas like in \cref{fig:antennas_example2}, but consider the first antenna very little and isotropic (for example see \cref{fig:Concentric_wavefront}). 
+\end{comment}
+
+\subsubsection*{Power Density irradiated by an isotropic antenna}
+We introduce now the very general description of \emph{surface power density} $S$ for any kind of radiation, that is the ratio between the power transmitted on a surface over the surface itself.
+\begin{equation}
+    S=\frac{P}{\text{S\tiny{urface}}}
+\end{equation}
+In our case, we deal with an isotropic antenna transmitting power in form of an EMF. From what we have already discussed, an isotropic antenna irradiate power uniformly in all directions, then the power density at any distance from an isotropic antenna is simply the transmitted power divided by the surface area of a sphere ($4\pi r^2$) at that distance ($r$).
+\begin{equation}
+    S_{iso}=\frac{P_{iso}}{4\pi r^2}
+\end{equation}
+Note that this power density is in fact the poynting vector (\cref{eq:poynting}) without the direction information, this is why we have used the letter $S$ to define it.
+\subsubsection*{Power Density irradiated by a real antenna}
+For a real antenna, the situation is not much different, so we can define the power density of an EMF irradiated by a real antenna as the product of the power density irradiated by the same antenna if it was little and isotropic, and the \emph{gain} of that antenna $G$.
+\begin{equation}
+    S_{real}=S_{iso}\cdot G=\frac{P_{iso}}{4\pi r^2}\, G=\frac{P}{4\pi r^2}\, G
+\end{equation}
+The gain $G$ of an antenna is simply the ratio of power radiated in the desired direction as compared to the power radiated from an isotropic antenna:
+\begin{equation}
+    G=\frac{I_r^{max}}{P_{iso}}
+\end{equation}
+Or, in other terms, $G$ could be seen as the directivity of the antenna, multiplied by an efficiency factor $\delta$ (that we have introduced in \cref{eq:atenna_efficency})
+\begin{equation}\label{eq:gain_def}
+    G=\delta\cdot D
+\end{equation}
+At the end, we can write the power density of an EMF irradiated by a general transmitting antenna as:
+\begin{equation}\label{eq:gain_in_friis}
+    S_t=S_{iso}^t\,\delta_t\,D_t
+\end{equation}
+We can substitute the directivity of that antenna $D_t$ by using the super famous relation in \cref{eq:true_for_every_antenna} and we obtain:
+\begin{equation}\label{eq:pow_density_transmitted}
+    S_t=\frac{P_t}{\cancel{4\pi} r^2}\,\delta_t\,\frac{\cancel{4\pi}\,A_{eff_{(t)}}}{\lambda^2}=\frac{P_t\,\delta_t\,A_{eff_{(t)}}}{\lambda^2 \, r^2}
+\end{equation}
+If you are confused by the notation, take in mind that the little subscript $_t$ is specifying that we are talking about the transmitting antenna (it will become helpful later).\\
+With the definition that we gave in \cref{eq:pow_density_transmitted} we have taken in consideration both directivity and power loss, so we can already tell that this will become very useful.
+\subsection*{Power received by an antenna: Friis Formula}
+What about the second antenna receiving the signal transmitted by the first one? We can write the power captured by the receiver simply by multiplying his effective area, by the power density transmitted by the first antenna:
+\begin{equation}\label{eq:pow_captured}
+    P_{captured}=S_t\cdot A_{eff_{(r)}}=\frac{P_t\,\delta_t\,A_{eff_{(t)}}\,A_{eff_{(r)}}}{\lambda^2\,r^2}
+\end{equation}
+To obtain the received power, it is important to take in consideration the receiving antenna efficiency $\delta_r$:
+\begin{equation}
+    P_r=P_{captured}\cdot \delta_r=\frac{P_t\,\delta_t\,\delta_r\,A_{eff_{(t)}}\,A_{eff_{(r)}}}{\lambda^2\,r^2}
+\end{equation}
+We can substitute then the $A_{eff}$ by using the always useful formula in \cref{eq:true_for_every_antenna}, and we obtain:
+\begin{equation}
+    \frac{P_r}{P_t}=\frac{\delta_r\,\delta_t}{\cancel{\lambda^2}r^2}\,D_r\frac{\cancel{\lambda^2}}{4\pi}\,D_t\frac{\lambda^2}{4\pi}=\frac{\overbrace{\delta_rD_r}^{G_r}\overbrace{\delta_tD_t}^{G_t}\lambda^2}{8\pi^2r^2}
+\end{equation}
+We then apply the gain definition from \cref{eq:gain_def} and we obtain what is known as the \emph{Friis Transmission Formula}:
+\begin{equation}\label{eq:received_power1}
+    \frac{P_r}{P_t}=G_r\,G_t\left(\frac{\lambda}{2\pi r}\right)^2
+\end{equation}
+This equation is very significative for us, because we can notice that the received power decrease wit the square of the distance from the transmitter, and with the square of the frequency!! The antenna builders does not like very much this squared dependency, but they are obliged to deal with it :(\\
+To solve this problem, a common practice is to build very directive antennas, but it is not always possible as we will see.\\
+That being said, to simplify a bit the notation, we can introduce the \emph{isotropic attenuation in free space} $A_0$:
+\begin{equation}\label{eq:isotropic_attenuation}
+    A_0=\left(\frac{4\pi r}{\lambda}\right)^2
+\end{equation}
+Then, we can write \cref{eq:received_power1} as:
+\begin{equation}\label{eq:received_power2}
+    \frac{P_r}{P_t}=\frac{G_r\,G_t}{A_0}
+\end{equation}
+\subsubsection*{Adding direction to Friis Formula}
+The \cref{eq:received_power2} is true if the two antennas are communicating on their best direction, but what if the receiver is somewhere else?
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{polaraxis}[axis lines = none]
+                \addplot[domain=0:360,samples=73,smooth] (x+90,{abs(sin(x))});
+            \end{polaraxis}
+            \draw[-stealth] ([yshift=1.5cm]current axis.south) -- ([yshift=-1.5cm]current axis.north) node[anchor=north,yshift=1em]{$z$};
+            \draw[-stealth] (current axis.west) -- (current axis.east) node[anchor=north west]{$x$};
+            \fill [black] ([xshift=0.7cm]current axis.east) circle (0.4mm)
+            node[right]{$Rx_1$};
+            \fill [black] (6,1.5) circle (0.4mm)
+            node[right]{$Rx_2$};
+            \fill [black] ([yshift=1cm]current axis.south) circle (0.4mm)
+            node[right]{$Rx_3$};
+            \draw [densely dotted,thin] (current axis.east) -- ([xshift=0.7cm]current axis.east);
+            \draw [densely dotted,thin] (current axis.center) -- (6,1.5);
+            \draw [densely dotted,thin] ([yshift=1.5cm]current axis.south) -- ([yshift=1cm]current axis.south);
+        \end{tikzpicture}
+        \caption{Hertzian dipole radiation pattern, and different receivers in x-z plane}\label{fig:Dipolexz_diff_rec_pos}
+    \end{center}
+\end{figure}
+As you can see from \cref{fig:Dipolexz_diff_rec_pos}, the \cref{eq:received_power2} is only true for the receiver $Rx_1$, while for $Rx_2$ the power received is lower. In the worst case, the receiver $Rx_3$ does not receive any power!\\
+We can introduce then a more produce a more generalized Friis Transmission Formula by taking into account both the radiation pattern of the receiver and transmitter, and their relative position over the space:
+\begin{equation}
+    P_r=\frac{P_t\,G_r\,G_t}{A_0}\,i_t(\theta\varphi)\,i_r(\theta\varphi)
+\end{equation}
+\begin{figure}[H]
+    \begin{center}
+        \begin{tikzpicture}
+            \begin{polaraxis}[axis lines = none]
+                \addplot[thin,blue!40!black, domain=0:360,samples=100,smooth,yshift=1.3cm,xshift=-1.7cm,xscale=0.5,yscale=0.5] (x+90+34,{abs(sin(x))});
+                \addplot[thin,red!40!black, domain=0:360,samples=100,smooth,yshift=-1cm,xshift=1.5cm,xscale=0.5,yscale=0.5] (x+90-10,{abs(sin(x))});
+
+                \draw [densely dotted,thin] (-1.7cm,1.3cm) -- (1.5cm,-1cm);
+
+                \fill [blue!15!black] (-1.7cm,1.3cm) circle (0.4mm) node[right,yshift=0.5em]{$Tx$};
+                \fill [red!10!black] (1.5cm,-1cm) circle (0.4mm) node[right]{$Rx$};
+            \end{polaraxis}
+            \draw[-stealth] ([yshift=1.5cm]current axis.south) -- ([yshift=-1.5cm]current axis.north) node[anchor=north,yshift=1em]{$z$};
+            \draw[-stealth] (current axis.west) -- (current axis.east) node[anchor=north west]{$x$};
+        \end{tikzpicture}
+        \caption{Hertzian dipole transmitter and receiver in different relative position}\label{fig:Dipolexz_diff_rec_pos2}
+    \end{center}
+\end{figure}
+\subsubsection*{Adding medium attenuation to Friis Formula}
+One more thing that could be added to generalize even more is the attenuation $A_s$ due to the domain that of the medium.
+\begin{equation}\label{eq:received_power_w_attenuation}
+    P_r=\frac{P_t\,G_r\,G_t}{A_0\,A_s}\,i_t(\theta\varphi)\,i_r(\theta\varphi)
+\end{equation}
+Obviously, in free space we can consider $A_s=1$, but in different condition like during raining or high humidity it increases.\\
+Usually $A_s$ is provided by statistic studies and empiric experiments, this is why we don't have a specific formula to find it.
+\subsubsection*{Noise constrains in the Friis Formula}
+When we transmit signals, whatever the medium is, we need to take in consideration noises. When we consider the power budget for the receiver antenna, it is not only the received power, but $\frac{P_r}{P_{noise}}$.\\
+This mean that we could have the most powerful antenna in the whole world, but if the transmitted power has a low Signal To Noise Ratio (SNR) what i am receiving is useless.\\
+So we want that the $SNR$ is greater that a minimum value set by the receiver and how good it is at isolating signals from noises:
+\begin{equation}
+    \frac{P_r}{P_{n}}>\text{SNR}_{min}
+\end{equation}
+Where $P_n$ is the power of the noise, and:
+\begin{equation}
+    P_n=\overbrace{K_b}^{\text{\tiny{boltzman constant}}}\cdot \overbrace{T_{sys}}^{\text{\tiny{system temperature}}}\cdot\overbrace{B}^{\text{\tiny{signal band}}}
+\end{equation}
+We can simplify the \cref{eq:received_power_w_attenuation} by not considering the direction of the two antenna, and we can write a sort of constrain for the transmitted power taking into account the SNR:
+\begin{equation}
+    \frac{P_t\,G_r\,G_t}{A_0\,A_s}>P_{n}\cdot\text{SNR}_{min}
+\end{equation}
+Usually it is seen more often in this form:
+\begin{equation}\label{eq:noise_constrain_in_friis}
+    P_t\,G_r\,G_t>P_{n} \, \text{SNR}_{min} \,A_0\,A_s
+\end{equation}
+It could be useful to transform \cref{eq:noise_constrain_in_friis} in decibel notation:
+\begin{equation}\label{eq:noise_constrain_in_friis_db}
+    P_t[\si{\deci\bel_{\milli\watt}}]+G_t[\si{\deci\bel}]+G_r[\si{\deci\bel}]>P_{noise}[\si{\deci\bel_{\milli\watt}}]+\text{SNR}_{min}[\si{\deci\bel}]+A_0[\si{\deci\bel}]+A_s[\si{\deci\bel}]
+\end{equation}
+Keep in mind that all the powers in \cref{eq:noise_constrain_in_friis_db} are expressed in $\si{\milli \watt}$, if you are still confused about decibel (as I am) i suggest to you to visit this useful and very simple pdf i found on internet\cite{Appunti_decibel}
+\subsubsection*{Some comments on receiving antenna}
+From the Friis equation in \cref{eq:received_power_w_attenuation} it is clear that the received power is not only affected by the transmitted power, but we need to take into account a lot of parameters.\\
+One example is the satellite communication: as you might think, you can not deal with the right part of \cref{eq:noise_constrain_in_friis} ($P_{n} \, \text{SNR}_{min} \,A_0\,A_s$), then we try to increase the gain parameters $G$:
+\begin{equation}\label{eq:gain_antenna_for_friis_example}
+    G=D\,\delta  =\frac{A_{eff}}{\lambda^2}\,4\pi\,\delta
+\end{equation}
+As we can see in \cref{eq:gain_antenna_for_friis_example}, if we want to increase $G$ we need to increase $A_{eff}$, this is why the satellite antenna are quite big and very directional.\\
+The opposite is the TV antenna that everyone has on the roof: if we want to receive all the signals from the various channels (from very different directions) we will need to have a very omnidirectional antenna, so we will have a very low value of $G$. How we can compensate this? By transmitting a greater amount of power from the transmitting antenna (that is located on the earth, so it will have less power constrains).
+\subsection*{Effective Radiated Power}
+One last thing about received power: if we write the simplified friis formula from \cref{eq:received_power_w_attenuation}:
+\begin{equation}\label{eq:friis_formula_simple}
+    P_r=\frac{G_r}{A_0\,A_s}\,\cdot G_t\,P_t
+\end{equation}
+We can introduce a very used parameter: the \emph{Effective Radiated Power} $ERP$
+\begin{equation}\label{eq:erp}
+    ERP=G_t\,P_t
+\end{equation}
+It is useful because usually we are more interested on this product more than the total power of the antenna.\\
+Sometimes it is also introduced the \emph{Effective Isotropic Radiated Power} $EIRP$:
+\begin{equation}\label{eq:eirp}
+    EIRP=ERP+2.15\si{\deci\bel i}
+\end{equation}
+As the name says, it is the $ERP$ value of the same antenna if it would irradiate its power "isotopically", and it is often used as a benchmark.
+\subsection*{Exercise 1:}
+Now a brief exercise, we want to find the minimum transmitted power of an antenna communicating to a receiver.\\
+Let's consider those parameters:
+\begin{itemize}
+    \item $\bm{A_s} =1.5\si{\deci\bel}$ attenuation of the medium
+    \item $\bm{D_t} =50\si{\centi\metre}$ diameter of the transmitter
+    \item $\bm{\delta_t} =0.85$ efficiency of the transmitter
+    \bigskip
+    \item Receiver is an half wave dipole
+    \item $\bm{G_r} =2\si{\deci\bel}$
+    \item $\bm{P_r} =-40\si{\deci\bel}$ minimum acceptable received power
+\end{itemize}
+We want to cover a length of $\bm{r} =800\si{\metre}$.\\
+It is an easy task to find $P_r$ by applying \cref{eq:friis_formula_simple}, but we don't have $G_t$!\\
+Not a big deal, we can evaluate it with the parameters that has been already given. From \cref{eq:gain_in_friis} we can write:
+\begin{align*}
+    \begin{split}
+        \frac{G_t}{A_0}&=\frac{\delta_t\,D_t}{A_0}=\delta_t\,\underbrace{A_{eff}\,\frac{4\pi}{\lambda_0^2}}_{D_t}\underbrace{\left(\frac{\lambda_0}{4\pi\,r}\right)^2}_\frac{1}{A_0}=\\[5pt]
+        &=\delta_t\,A_{eff}\,\frac{1}{4\pi\,r^2}=\\[5pt]
+        &=\frac{A_{geom_t}\delta_t}{4\pi\,r^2}=-77.85\si{\deci\bel}
+    \end{split}
+\end{align*}
+Now we can write \cref{eq:friis_formula_simple} in decibel and we calculate $P_t$:
+\begin{align*}
+    \begin{split}
+    P_t[\si{\deci\bel_{\milli\watt}}]&=P_r[\si{\deci\bel_{\milli\watt}}]-G_r[\si{\deci\bel}]-\frac{G_t}{A_0}[\si{\deci\bel}]+A_s[\si{\deci\bel}]=\\[5pt]
+    &=-40\si{\deci\bel_{\milli\watt}}-2\si{\deci\bel}-(-77.85\si{\deci\bel})+1.5\si{\deci\bel}=\\[5pt]
+    &=37.35\si{\deci\bel_{\milli\watt}}=5433\si{\milli\watt}
+    \end{split}
+\end{align*}
+\subsubsection*{Question \#2}
+Given a new transmitter with:
+\begin{itemize}
+    \item $\bf{P_t}=37.35\si{\deci\bel}$
+    \item $\bf{G_t}=25\si{\deci\bel}$
+\end{itemize}
+Which frequency can satisfy the link between the two antennas? I remind you that every parameter of the Friis formula are fixed except the isotropic attenuation in free space $A_0$.\\
+From \cref{eq:isotropic_attenuation} we can see that $A_0$ depends on the wavelength $\lambda$, so we can adjust it by changing the frequency of the transmitted signal:
+\begin{equation*}
+    A_0=\frac{G_t\,G_r\,P_t}{P_r\,A_s}=\left(\frac{\lambda}{4\pi\,r}\right)^2
+\end{equation*}
+So we can finally find the frequency ($\lambda=\frac{c}{f}$):
+\begin{equation*}
+    f=\sqrt{\frac{P_t}{P_r}\,\frac{G_t\,G_r}{A_s}\,\frac{c^2}{(4\pi\,r)^2}}=3.68\si{\giga\hertz}
+\end{equation*}
+\subsection*{Radars}
+The radar name means: \emph{RAdio Detection And Raging}, with this kind of antennas i can detect obstacles in front of the radiating antenna by exploiting the reflected waves by the object.\\
+We can start studying this particular application of antennas by considering the target object like an antenna and evaluating the captured power like we have done in \cref{eq:pow_captured}. Take in account that $\sigma$ is the cross section of the object, and we can consider in this case $A_{eff_{(r)}}=\sigma$:
+\begin{equation}
+    P_{captured_{(obj)}}=\frac{P_t\,\delta_t\,A_{eff_{(t)}}\,\sigma}{\lambda^2\,r^2}
+\end{equation}
+Now consider that this object is able to scatter all the captured power in all direction, like an isotropic antenna which directivity is equal to one ($D = 1$). From \cref{eq:true_for_every_antenna} we can also say that his effective area is $A_{eff_{(obj)}}=\frac{\lambda^2}{4\pi}$.\\
+Now we want to evaluate the captured power by the first antenna, which is receiving the scattered signal of the object (we consider it as an isotropic transmitting antenna).\\
+We take the \cref{eq:pow_captured}, and we insert in it the following parameters:
+\begin{itemize}
+    \item $\bm{P_t}=P_{capt_{(obj)}}$: as we said it is the power captured by the object. In \cref{eq:first_passage_radar} we consider the object as a transmitting antenna, this mean that $P_{capt_{(obj)}}$ is the available power for that object to irradiate signals.
+    \item $\bm{\delta_t}=\delta_{r}$: ?????????????
+    \item $\bm{A_{{eff}_{(t)}}}=A_{eff_{(obj)}}=\frac{\lambda^2}{4\pi}$: effective area of the object that we are considering as a transmitter
+    \item $\bm{A_{{eff}_{(r)}}}$: effective area of the radar antenna, our receiver
+\end{itemize}
+So we obtain:
+\begin{align}\label{eq:first_passage_radar}
+    \begin{split}
+    P_{capt_{(ant)}}&=\overbrace{\frac{P_t\,\delta_t\,A_{eff_{(t)}}\,\sigma}{\cancel{\lambda^2}\,r^2}}^{P_t}\,\overbrace{\frac{\lambda^2}{4\pi}}^{A_{{eff}_{(t)}}}\,\delta_{r}\,A_{eff_{(r)}}\,\frac{1}{\cancel{\lambda^2}\,r^2}=\\[5pt]
+    &=P_t\frac{\delta_t\,A_{eff_{(t)}}\,\delta_r\,A_{eff_{(r)}}}{4\pi\lambda^2\,r^4}\,\sigma
+    \end{split}
+\end{align}
+Note that in this case, $A_{eff_{(t)}}=A_{eff_{(r)}}$ because we use the same antenna to receive the signal, but in some case we use 2 different antennas.\\
+Now, thanks to the famous \cref{eq:true_for_every_antenna} we can substitute the effective area with:
+\begin{equation}
+    A_{eff}=\frac{D\,\lambda^2}{4\pi}
+\end{equation}
+Continuing the calculation of \cref{eq:first_passage_radar}, we can also simplify a bit the notation by assuming $P_{capt_{(ant)}}=P_r$:
+\begin{align}\label{eq:received_power_radar}
+    \begin{split}
+    P_{r}&=P_t\,\frac{\delta_t\,\delta_r}{4\pi\cancel{\lambda^2}\,r^4}\,\overbrace{\frac{D_t\,\cancel{\lambda^2}}{4\pi}}^{A_{{eff}_{(t)}}}\,\overbrace{\frac{D_r\,\lambda^2}{4\pi}}^{A_{{eff}_{(r)}}}\,\sigma=\\[5pt]
+    &=P_t\,\frac{G_t\,G_r\,\lambda^2\,\sigma}{(4\pi)^3\,r^4}
+    \end{split}
+\end{align}
+VERY BEAUTIFUL, this is the equation of the bistatic radar when the two antenna are at the same distance from the object.
+\subsubsection*{General Bistatic radar}
+A more general expression for the bistatic radar, when the two distance are not the same, is:
+\begin{equation}
+    P_{r}=P_t\,\frac{G_t\,G_r\,\lambda^2\,\sigma}{(4\pi)^3\,r^2_r\,r^2_t}
+\end{equation}
+\subsubsection*{Monostatic radar}
+If my antenna is both transmitting and receiving, we are talking about a monostatic antenna, with equation:
+\begin{equation}\label{eq:received_power_radar_monostatic}
+    P_{r}=P_t\,\frac{G_t^2\,\lambda^2\,\sigma}{(4\pi)^3\,r^4}
+\end{equation}
+\subsubsection*{Some concerns about object distance}
+As you can imagine, we can not detect objects that are too distant from the antenna, because along the distance traveled by the EM wave, we will also have the attenuation of the medium (as seen in \cref{eq:received_power_w_attenuation}).\\
+Then, for a given minimum amount of received power, we can define the maximum value of the distance of the detected object. 
+\begin{equation}\label{eq:r_max_only_rec_pow}
+    r_{max}=\sqrt[4]{\frac{P_t}{P_r}\,\frac{G_t^2\,\lambda^2}{(4\pi)^3}\,\sigma}
+\end{equation}
+If the object is farer from this $r_max$ we would not receive enough power to detect it.\\
+Then we need also to take in account that not all the power received is useful signal, but we could encounter in noises. Like we have seen in \cref{eq:noise_constrain_in_friis}, we will introduce a constrain on the minimum amount of useful signal over the total received value:
+\begin{equation}
+    \frac{P_r}{P_n}=\frac{P_r}{K_b\,T_{sys}\,B}>SNR_{min}
+\end{equation}
+And then we can rewrite \cref{eq:r_max_only_rec_pow} by taking into account the acceptable maximum signal to noise ratio ($SNR_{min}$):
+\begin{equation}
+    R_{max}=\sqrt[4]{\frac{P_t}{K_b\,T_{sys}\,B}\,\frac{G_t^2\,\lambda^2}{(4\pi)^3}\,\sigma}
+\end{equation}
+Now, let's consider the distance limitation due for speed of the radiation.\\
+The path of the radiation for a monostatic radar will be $T=\frac{2\,r}{c}$, so the distance travelled in time $T$ is:
+\begin{equation}
+    r=\frac{c\,T}{2}
+\end{equation}
+Now, why should this be an issue? The problem is that my signal is sent by pulses, and I need to receive the reflected pulse before launching another one. If i don't I would not understand which echo is being received, and i could wrongly understand that one object is very close (because the other signal could come back just after the new one is being sent).\\
+Then i could write a new constrain: the distance $R_\mu$ to be unambiguous, it need to be greater than $R_{max}$. In this way, if the object is too far, i will not detect it because the signal gets lost during the travel.
+\begin{equation}
+    R_\mu=\frac{C\,T_p}{2}>R_{max}
+\end{equation}
+Where $T_p$ is the period of the pulses.\\
+This is a very strong limitation, and we do not like it very much, this is why numerous alternative is being researched. A solution could be to use modulation on transmission signal, or to send coded pulses.
+\subsubsection*{Exercise \#1.1}
+Now some recap exercise (like usually).\\
+We have this data of a radar:
+\begin{itemize}
+    \item $\bm{d}=??$: unknown diameter of the antenna.
+    \item $\bm{f}=3\si{\giga \hertz}$: frequency of the signal.
+    \item $\bm{P_t}=100\si{\kilo\watt}=10^5\si{\watt}$: transmitted power.
+    \item $\bm{P_r}=-100\si{\deci\bel_{\milli\watt}}=10^{-18}$: received power.
+    \item $\bm{\sigma}=1\si{\metre^2}$: ross section of the object.
+    \item $\bm{r}=100\si{\kilo\metre}=1^5\si{\metre}$
+\end{itemize}
+We can answer the first question asking the gain of the antenna $G_t$ by using the monostatic radar equation in \cref{eq:received_power_radar_monostatic}:
+\begin{equation*}
+    G_t=\sqrt{\frac{P_r}{P_t}\frac{(4\pi)^3\,r^4}{\lambda^2\,\sigma}}=4455=36.5\si{\deci\bel i}
+\end{equation*}
+Now, in order to find the antenna diameter we will use the \cref{eq:true_for_every_antenna} to obtain the $A_{eff}$
+\begin{equation*}
+    A_{eff}=D\,\frac{\lambda^2}{4\pi}=\frac{G_t}{\delta}\,\frac{\lambda^2}{4\pi}
+\end{equation*}
+We assume that we have the maximum efficiency $\delta=1$, so:
+\begin{equation*}
+    A_{eff}=G_t\,\frac{\lambda^2}{4\pi}=3.54\si{m^2}\approx A_{geom}
+\end{equation*}
+Then it is very simple to calculate the antenna diameter $d$
+\begin{equation*}
+    d=\sqrt{\frac{A_{eff}}{\pi}}=2.2\si{\metre}
+\end{equation*}
+\subsubsection*{Exercise \#2.1}
+This exercise was for home, and now it is too late to me to solve it.\\
+The data are:
+\begin{itemize}
+    \item $\bm{r_{max}}=??$
+    \item $\bm{G_t}=10\si{\giga\hertz}$
+    \item $\bm{P_t}=2\si{\kilo\watt}$
+    \item $\bm{P_r}=-90\si{\deci \bel_{\milli\watt}}$
+    \item $\bm{\sigma}=12\si{\metre^2}$: object cross section
+\end{itemize}
+\subsubsection*{Exercise \#3.1}
+Now an exercise about ERP and EIRP.\\
+We need to find those 2 values, and data are:
+\begin{itemize}
+    \item $\bm{P_t}=20\si{\watt}$
+    \item $\bm{\delta}=0.8$
+    \item $\bm{HPBW}=45\si{\degree}$ and $30\si{\degree}$ : Half-Power Beam Width
+\end{itemize}
+We can find the directivity of the antenna by using the two $HPBW$ values. We will not go into details of this formula, but you can find more here\cite{Valparaiso_hpbw} :
+\begin{equation*}
+    D=\frac{4\pi}{HPBW_1\,HPBW_2}=\frac{4\pi}{\frac{\pi}{4}\,\frac{\pi}{6}}=30.55=14.85\si{\deci\bel i}=12.70 \si{\deci\bel d}
+\end{equation*}
+Note that $\si{\deci\bel i}$ is referred to the isotropic antenna, and $\si{\deci\bel d}$ is referred to the half wavelength dipole.\\
+Now we calculate the $ERP$ from \cref{eq:erp}:
+\begin{equation*}
+    ERP=P\,G=P\,\delta\,D=20\cdot 0.8\cdot 18.66=298.6\si{\watt}=24.75\si{\deci\bel_{\watt}}
+\end{equation*}
+Then we can find the $EIRP$ by using the \cref{eq:eirp}:

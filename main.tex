@@ -49,10 +49,12 @@
 \usepackage{pgfplots}
 \usepackage{xcolor}
 \usepackage{circuitikz}
-\usetikzlibrary{positioning} 
+\usetikzlibrary{positioning}
+\usetikzlibrary{patterns}
 \usepackage{float}
 \usepackage{scalerel}
 \usepackage{siunitx}
+\sisetup{detect-weight = true,detect-inline-weight = math}
 \newcommand{\bottomPlus}{\ensuremath{_{\scaleto{+}{3pt}}}}
 \newcommand{\bottomMinus}{\ensuremath{_{\scaleto{-}{3pt}}}}
 \sisetup{
@@ -104,9 +106,10 @@ Please consider to help me to find any mistakes or misunderstanding, contact me 
 If you want to be added to my private Github repository just give me your email and I'll add you with no problem.\\
 I want to suggest you to give a look at the book \emph{High Speed Digital Design}\cite{zhang_book}, in the introduction it is explained in very simple and intuitive way the first part of our course.\\
 \begin{footnotesize}
-  You can find it easily in 1lib.eu but i didn't told you nothing :x
+  You can find it easily in Z-Library but i didn't told you anything :x
 \end{footnotesize}
 \newpage
+%\begin{comment}
 \include{classes/class1}
 \include{classes/class2}
 \include{classes/class3}
@@ -116,6 +119,8 @@ I want to suggest you to give a look at the book \emph{High Speed Digital Design
 \include{classes/class7}
 \include{classes/class8}
 \include{classes/class9}
+%\end{comment}
+\include{classes/class10}
 
 \medskip
 \bibliographystyle{unsrt}
