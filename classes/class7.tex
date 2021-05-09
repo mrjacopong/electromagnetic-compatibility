@@ -65,7 +65,7 @@ In \cref{fig:smith_es1} you can admire the Smith chart of this exercise. At the 
             show origin
             ]
             \path[draw=red,->] (1,2) arc (45:-99:2.78cm)
-            node[midway,xshift=-0.6em,rounded corners=2pt,fill=white,text opacity=1,fill opacity=0.6]{$144\si{\degree}$};
+            node[midway,xshift=-0.6em,,fill=white,text opacity=1,fill opacity=0.6]{$144\si{\degree}$};
             \addplot coordinates {(1,2)};
             \draw[->,blue!60!black] (1,0)--(1,2)
             node[left, black]{$Z_L$};
@@ -165,7 +165,7 @@ In other terms, to maximize the active power, we will need to design a TL which 
 \end{equation}
 Then the maximum active power will be:
 \begin{equation}
-    P_{max}=\frac{1}{8}\frac{|V_g|}{R_g}
+    P_{max}=\frac{1}{8}\frac{|V_g|^2}{R_g}
 \end{equation}
 \subsubsection*{Why it is so important to have a good TL?}
 We have quite a bit reason to have a good transmission line with no or few reflection (SWR=1 and $\rho=0$):

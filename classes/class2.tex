@@ -144,7 +144,7 @@ We see that this solution is dependent both in space and time, but what else we 
 We can plot the solution in \cref{eq:maxwell_solution_simple} by considering one of the two variable constant.
 \begin{itemize}
     \item \textbf{\cref{fig:plot_E_space}}: if we assume constant time (like if you would take a photograph to the wave) we are evaluating the propagation in space, and so we can obtain the wavelength $\lambda$
-    \item \textbf{\cref{fig:plot_E_time}}: if we assume constant space (like if you look the wave from a fixed position) we are evaluating the propagation in space, and so we can obtain the wavelength $T$ 
+    \item \textbf{\cref{fig:plot_E_time}}: if we assume constant space (like if you look the wave from a fixed position) we are evaluating the propagation in space, and so we can obtain the period $T$ 
 \end{itemize} 
 \subsubsection*{Speed of the wave}
 As we said if we plot $E$ in constant time (\cref{fig:plot_E_space}) it is like to take a picture of the wave. If we evaluate the same plot, but in another time point, we can notice that the points of the wave has changed position \cref{fig:plot_E_variation}.\\
@@ -184,7 +184,7 @@ From the variation of the space in time we can evaluate the speed of the $E$ wav
 If we look at \cref{fig:plot_E_variation}, we can assumed that a point of the wave as moved from $z_1$ to $z_2$ from the instant $t_1$ to $t_2$. The function in the two points $(z_1,t_1)$ and $(z_2,t_2)$ has the same relative position (consider to "sit in the wave", you would feel like not moving, but the world around you is moving with a certain speed). So we can write:
 \begin{align}
     \begin{split}
-        &\omega\left(t_1-\frac{z_1}{c}\right)=\omega\left(t_1-\frac{z_1}{c}\right)\\[5pt]
+        &\omega\left(t_1-\frac{z_1}{c}\right)=\omega\left(t_2-\frac{z_2}{c}\right)\\[5pt]
         &t_2-t_1=\frac{z_2-z_1}{c}\\[5pt]
         &\Delta t= \frac{\Delta z}{c}\\[5pt]
         &c=\frac{\Delta z}{\Delta t}=\frac{\lambda}{T}
@@ -200,7 +200,7 @@ Note that the propagation speed is dependent of $\mu$ and $\varepsilon$, so we c
 \end{equation}
 What we have found is a forward speed because $\Delta z$ is positive and $c$ positive, if we would have used the second equation from \cref{eq:maxwell_solution_simple} the space path $\Delta z$ need to be negative, or we would not be able to have a solution if we try to calculate the propagation speed:
 \begin{equation}
-    \omega\left(t_1+\frac{z_1}{c}\right)=\omega\left(t_1+\frac{z_1}{c}\right)
+    \omega\left(t_1+\frac{z_1}{c}\right)=\omega\left(t_2+\frac{z_2}{c}\right)
 \end{equation}
 \subsubsection*{Going back to the EMF}
 Some more consideration of the EMF
@@ -241,7 +241,7 @@ Consider the forward equation of the EMF over the 3 direction:
 What we do now is to find a way to merge those equation and describe the EMF that goes in a general direction $\overline{r}=x\,\ihat+y\,\jhat+z\,\khat$.\\
 In order to do this we introduce the vector $\overline{k}=k_x\,\ihat+k_y\,\jhat+k_z\,\khat$ that generalize the $\beta$ factor, so we can write the wave equation with a general direction:
 \begin{equation}
-    E(\overline{E},t)=\overline{E}_0\,\cos(\omega\,t-\overline{k}\cdot\overline{r})
+    E(\overline{r},t)=\overline{E}_0\,\cos(\omega\,t-\overline{k}\cdot\overline{r})
 \end{equation}
 Keep in mind that the direction is not $\overline{r}$ but $\overline{k}$, because $\overline{r}$ represent the variables, and $\overline{k}$ the three weights that defines the direction of the wave.
 This is also called the plane wave equation, why?\\
@@ -250,4 +250,4 @@ Because we consider $\varphi = 0$ and $\omega\,t=0$ (we take a photo of the wave
     \cancel{\omega\,t}-\overline{k}\cdot\overline{r}+\cancel{\varphi}=-\overline{k}\cdot\overline{r}=k_x\,\ihat+k_y\,\jhat+k_z\,\khat=constant
 \end{equation}
 Then the last part of the equation is the equation of a plane.\\
-Another thing that we can say, is that if $\overline{k}\cdot\overline{r}$ is constant, the front of the wave have the shape of a sphere.
+Another thing that we can say, is that if $k$ is a scalar value, and $k\,\overline{r}$ is constant, the front of the wave have the shape of a sphere.

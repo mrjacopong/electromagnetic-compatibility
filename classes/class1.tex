@@ -10,11 +10,11 @@ And this second equation:
 \end{equation}
 Where those symbol are:
 \begin{itemize}
-\item $E=$ intensity of electric field $[\frac{V}{m}]$
-\item $B=$ magnetic induction vector $[T]$
-\item $H=$ intensity magnetic field $[A]$
-\item $D=$ electronic displacement $[\frac{A}{m}]$
-\item $J=$ intensity of electric current $[\frac{A}{m^2}]$
+\item $E=$ intensity of electric field $[\si{\frac{\volt}{\metre}}]$
+\item $B=$ magnetic induction vector $[\si{\tesla}]$
+\item $H=$ intensity magnetic field $[\si{\frac{\ampere}{\metre}}]$
+\item $D=$ electronic displacement $[\si{\frac{\coulomb}{\metre^2}}]$
+\item $J=$ intensity of electric current $[\si{\frac{\ampere}{\metre^2}}]$
 \end{itemize}
 Now, we can think $E - H$ as the element measuring the real electromagnetic field, and $D - B$ as something that measure the effect of the EMF.\\
 We also remember that:
@@ -38,7 +38,7 @@ What we can do now is using the dot or cross product between our vector E and th
 \subsubsection*{Scalar product (divergence) $\nabla \cdot \overline{E}$}
 The scalar product (dot) between nabla and a vectorial field is named \emph{divergence}
 \begin{equation}
-\nabla \cdot \overline{E} =\frac{\partial E_x}{\partial y}+\frac{\partial E_y}{\partial y}+\frac{\partial E_z}{\partial z}
+\nabla \cdot \overline{E} =\frac{\partial E_x}{\partial x}+\frac{\partial E_y}{\partial y}+\frac{\partial E_z}{\partial z}
 \end{equation}
 Physically speaking the divergence of the vector $E$ is \textit{how $E_x$ is changing over the $x$ direction etc...}\\
 Another way to look at this divergence is:
@@ -47,8 +47,8 @@ Another way to look at this divergence is:
 \end{equation}
 \subsubsection*{Divergence theorem}
 This theorem is very useful to transform an integral over a surface to an integral over a volume.
-\begin{equation}
-\int_v \nabla \cdot \overline{E} = \int_s \overline{E}\cdot \hat{n}\,ds
+\begin{equation}\label{eq:divergence_theorem}
+\int_v \nabla \cdot \overline{E} dv= \int_s \overline{E}\cdot \hat{n}\,ds
 \end{equation}
 So the integral of the divergence over a volume is equal to the flux across the boundary surface of the volume.
 \subsubsection*{Cross product (curl) $\nabla \times \overline{E}$}
@@ -100,7 +100,7 @@ Starting from the first Maxwell equation seen in \cref{eq:first_maxwell}
 \end{equation} 
 And with the Stokes theorem \cref{eq:stokes_eq}, we can write:
 \begin{equation}
-\int_s (\nabla \times \overline{E})\cdot \hat{n}\,ds=\frac{d}{dt}\int_s \overline{B}\cdot\hat{n}\, ds
+\int_s (\nabla \times \overline{E})\cdot \hat{n}\,ds=-\frac{d}{dt}\int_s \overline{B}\cdot\hat{n}\, ds
 \end{equation}
 We notice that we have two integral over the same surface $s$, so:
 \begin{equation}
@@ -175,7 +175,7 @@ We try to make this system solvable by substitution:
 \end{equation}
 As can be seen, the system in \cref{eq:maxwell_system} is a systems of equations in two unknown variable ($E$ and $H$), we can solve that but it would be very complicated.
 \subsection*{Another useful equation}
-similarly to what we have done in \cref{eq:maxwell_first_local}, we can write this equation exploiting the Stokes Theorem (\cref{eq:stokes_eq}):
+similarly to what we have done in \cref{eq:maxwell_first_local}, we can write this equation exploiting the divergence Theorem (\cref{eq:divergence_theorem}):
     \begin{align}
     \begin{split}
     &\frac{d}{dt}\int_v\overline{\rho}\,dv=-\int_s \overline{J}\cdot \hat{n}ds=-\int_v\nabla\cdot\overline{J}\,dv\\[5pt]

@@ -11,9 +11,9 @@ Then from the first equation in \cref{eq:telegraph_in_phas_1} we can obtain anot
 If we take a look on that equation, we can notice a very interesting pattern, that look like the ohm's law: $I=G\,V$ with $G$ the conductivity of the circuit, or the inverse of the resistivity.\\
 If you look closely, also $\frac{\gamma}{(R+j\omega L)}$ is a conductance:
 \begin{equation}
-    \frac{\gamma}{(R+j\omega L)}=\frac{\sqrt{(R+j\omega L)\,(G+j\omega C)}}{(R+j\omega L)}=\sqrt{\frac{G+j\omega L}{R+j\omega C}}
+    \frac{\gamma}{(R+j\omega L)}=\frac{\sqrt{(R+j\omega L)\,(G+j\omega C)}}{(R+j\omega L)}=\sqrt{\frac{G+j\omega C}{R+j\omega L}}
 \end{equation}
-The inverse of that term is an impedance, and we call that \emph{characteristic impedance} (lol, what a fantasy, you should give pokemon's name):
+The inverse of that term is an impedance, and we call that \emph{characteristic impedance} (lol, what a fantasy):
 \begin{equation}
     Z_0=\sqrt{\frac{R+j\omega L}{G+j\omega C}}\;\left[\Omega \right]
 \end{equation}
@@ -151,7 +151,7 @@ In \cref{fig:forward_and_backward_wave} you can see a very common example of how
 The forward signal $V\bottomPlus$ is the one that we like, the backward $V\bottomMinus$ is not helpful for us, and it cause unwanted interference (by adding to the forward one, and making a mess).\\
 To describe a bit better this situation, we can introduce the \emph{reflection coefficient} $\rho(l)$, that define the reflected wave with respect to the incident wave:
 \begin{equation}\label{eq:definition_of_rho}
-    \rho(l) = \frac{V\bottomMinus\,e^{-j\,\beta\,l}}{V\bottomPlus\,e^{\,j\,\beta\,l}}=\frac{V\bottomMinus}{V\bottomPlus}\,e^{\,j2\beta l}
+    \rho(l) = \frac{V\bottomMinus\,e^{-j\,\beta\,l}}{V\bottomPlus\,e^{\,j\,\beta\,l}}=\frac{V\bottomMinus}{V\bottomPlus}\,e^{\,-j2\beta l}
 \end{equation}
 \begin{equation}\label{eq:definition_of_rho2}
     \rho(l) = \frac{Z_i(l)-Z_0}{Z_i(l)+Z_0}
@@ -177,7 +177,7 @@ We have a transmission line with:
     \item characteristic impedance $Z_0 = 100 \si{\ohm}$
     \item Load resistance $R_L=50 \si{\ohm}$ 
     \item Load capacitance $C_L=10 \si{\pico\farad}$
-    \item Frequency of the generator $f=10\si{\mega\hertz}$
+    \item Frequency of the generator $f=100\si{\mega\hertz}$
 \end{itemize}
 The question is: \textbf{What is the value of $\rho(l)$ and $\rho_L$?}
 First of all we can calculate the load impedance in phasor domain $Z_l$
@@ -289,7 +289,7 @@ $\bullet$ If we go back in time domain:
 \begin{align}
     \begin{split}
       V(l,t)&=\operatorname{Re}\left\{V(l)\,e^{\,j\omega t}\right\}=\operatorname{Re}\left\{j 2V\bottomPlus\sin (\beta l)\,e^{\,j\omega t}\right\}=\\[5pt]
-      &=\operatorname{Re}\left\{j2V\bottomPlus\sin(\omega t)\,(\cos(\omega t)+j\sin(\omega t))\right\}=\\[5pt]
+      &=\operatorname{Re}\left\{j2V\bottomPlus\sin(\beta l)\,(\cos(\omega t)+j\sin(\omega t))\right\}=\\[5pt]
       &=-2\,|V\bottomPlus|\,\sin(\beta l)\sin(\omega t)
     \end{split}
 \end{align}
@@ -369,10 +369,10 @@ We go on to find the value of $l$:
     \begin{split}
       &Z_0\,\tan(\beta l)=\omega l\\[5pt]
       &\beta l=\arctan(\frac{\omega l}{Z_0})\\[5pt]
-      &l=\frac{\lambda}{2\pi}\,\arctan(\frac{\omega l}{Z_0})=1.53\si{\metre}
+      &l=\frac{\lambda}{2\pi}\,\arctan(\frac{\omega l}{Z_0})=1.53\si{\centi\metre}
     \end{split}
 \end{align*}
-This mean that if my TL described by the data i gave before measure $1.53\si{\metre}$, at the eye of the transmitter the TL is an inductor of $L=15\si{\nano\henry}$.\\
+This mean that if my TL described by the data i gave before measure $1.53\si{\centi\metre}$, at the eye of the transmitter the TL is an inductor of $L=15\si{\nano\henry}$.\\
 $\bullet$ If we change $f=4\si{\giga\hertz}$? Nothing to worry about:
 \begin{equation*}
     \frac{l}{\lambda}=\frac{l\cdot f}{v_p}=0.3\geq 0.25
@@ -414,7 +414,7 @@ We obtained a negative imaginary impedance, so this is a capacitor!
 In this case we do the opposite as before, we put an open circuit at the output of the TL, in this case $Z_L=\infty$.\\
 Instead to have the voltage equal to 0 at the load, we have the current equal to zero:
 \begin{equation}
-    I(l)=\frac{V\bottomPlus}{Z_0}\,e^{\,-j\omega l}-\frac{V\bottomMinus}{Z_0}\,e^{\,-j\omega l}
+    I(l)=\frac{V\bottomPlus}{Z_0}\,e^{\,-j\omega l}-\frac{V\bottomMinus}{Z_0}\,e^{\,j\omega l}
 \end{equation}
 \begin{equation}
     I(l=0)=I_L=0=I\bottomPlus+I\bottomMinus = \frac{1}{Z_0}\,\left[V\bottomPlus-V\bottomMinus\right] \;\rightarrow \;V\bottomPlus=V\bottomMinus

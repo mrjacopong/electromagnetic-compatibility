@@ -52,7 +52,7 @@ That being said, we can give the definition of electric or magnetic field that p
 Now in phasor domain, we can write the maxwell equations that we have already seen in \cref{eq:maxwell_system_2}, but with a simpler notation.
 \begin{align}\label{eq:maxwell_equation_in_phasor}
     \begin{split}
-        &\nabla\times\phas{E}=j\omega \,\phas{B}\\[5pt]
+        &\nabla\times\phas{E}=-j\omega \,\phas{B}\\[5pt]
         &\nabla\times\phas{H}=j\omega \,\phas{D}+\phas{J}_\sigma+\phas{J}_i\\[5pt]
     \end{split}
 \end{align}
@@ -98,20 +98,23 @@ Given the system of equation in \cref{eq:maxwell_equation_in_phasor}, and applyi
 It is evident that without derivative it is much more simple to find the wave equation.\\
 For the sake of simplicity we will not make all the calculation to arrive to the final value, instead we use the old wave equation in time domain (\cref{eq:whave_2}) and we obtain the new wave equation in phasor domain:
 \begin{equation}\label{eq:Helmholtz1}
-    \nabla^2\,\phas{E}-\frac{\omega^2}{c^2}\,\phas{E}=0
+    \nabla^2\,\phas{E}+\frac{\omega^2}{c^2}\,\phas{E}=0
 \end{equation}
-If we assume $E$ as a scalar field, then:
-\begin{equation}\label{eq:Helmholtz2}
-    \frac{\partial^2\phas{E}(z)}{\partial z^2}\nabla^2\,-\frac{\omega^2}{c^2}\,\phas{E}(z)=0
-\end{equation}
-\cref{eq:Helmholtz1} and \cref{eq:Helmholtz2} are also known as the Helmholtz equation (strange name, i know).
-\subsubsection*{Solution of the wave equation in phasor domain}
-Given \cref{eq:Helmholtz2}, it is very simple to obtain its solution.\\
-Before to do that we introduce the parameter $\gamma$ such that:
+Most of the times this equation is written introducing the propagation constant $\gamma$ as:
 \begin{equation}\label{eq:gamma_1}
     \gamma^2=-\frac{\omega^2}{c^2}=-\omega\,\mu\,\varepsilon
 \end{equation}
-Substituting $-\frac{\omega^2}{c^2}$ with $gamma$ from \cref{eq:Helmholtz2} we are able to get a possible solution:
+So \cref{eq:Helmholtz1} becomes:
+\begin{equation}
+    \nabla^2\,\phas{E}-\gamma\,\phas{E}=0
+\end{equation}
+If we assume $E$ as a scalar field, then:
+\begin{equation}\label{eq:Helmholtz2}
+    \frac{\partial^2\phas{E}(z)}{\partial z^2}\,-\omega\,\phas{E}(z)=0
+\end{equation}
+\cref{eq:Helmholtz1} and \cref{eq:Helmholtz2} are also known as the Helmholtz equation (strange name, i know).
+\subsubsection*{Solution of the wave equation in phasor domain}
+Given \cref{eq:Helmholtz2}, it is very simple to obtain its solution:
 \begin{equation}\label{eq:maxwell_solution_phasor1}
     \phas{E}=\overline{E}_{0_1}\,e^{\gamma z}+\overline{E}_{0_2}\,e^{-\gamma z}
 \end{equation}
@@ -179,12 +182,12 @@ Until now we have seen a pure sinusoidal EMF that propagates, what if this EMF i
 We can say that our signal is not a pure sinusoid if we have more than 1 component other than the fundamental harmonic, this mean that we deal with noisy signal.\\
 Similarly to \cref{eq:electric_field_in_time}, we can define the transformation from time domain to frequency domain as:
 \begin{equation}
-    \overline{E}(\overline{r},t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\overline{E}(\overline{r},w)e^{j\omega t}
+    \overline{E}(\overline{r},t)=\frac{1}{2\pi}\int_{-\infty}^{+\infty}\overline{E}(\overline{r},w)e^{j\omega t}\,d\omega
 \end{equation}
 That transformation is actually the same as the one for the complex domain, but we now can consider more than 1 harmonic.\\
 Again here we don't deal anymore with derivatives in time, so our job simplify a lot!:
 \begin{equation}
-    \frac{\partial\overline{E}(\overline{r},t)}{\partial t}=\frac{1}{2\pi}\int_{-\infty}^{+\infty}j\omega\,\overline{E}(\overline{r},w)e^{j\omega t}
+    \frac{\partial\overline{E}(\overline{r},t)}{\partial t}=\frac{1}{2\pi}\int_{-\infty}^{+\infty}j\omega\,\overline{E}(\overline{r},w)e^{j\omega t}\,d\omega
 \end{equation}
 Like in \cref{eq:maxwell_equation_in_phasor_simplified} we can have a look at the Maxwell equation in phasor domain again without the $\overline{J}_i$ term (no current that is generating the EMF).\\
 You can notice that they are actually the same, but in frequency the field $E$ and $H$ are dependent in time and also in frequency.
@@ -256,7 +259,7 @@ Just like $\left[V\right]=\Omega \,\left[A\right]$
 \subsection*{One more thing: Poynting vector}
 The \emph{Poynting vector} represents the directional energy flux of our radiation, this mean that it is not simply the "representation" of the power density of an EMF, but we also have the direction of the propagating wave, and it is defined by:
 \begin{equation}\label{eq:poynting}
-    \overline{S}=\overline{E}\times\overline{H}\rightarrow\left[\frac{w}{m^2}\right]
+    \overline{S}=\overline{E}\times\overline{H}\rightarrow\left[\si{\frac{\watt}{\metre^2}}\right]
 \end{equation}
 To obtain $\overline{S}$ is not very simple, but in phasor domain it is \emph{na crema} (italian way to say "very beautiful"):
 \begin{equation}

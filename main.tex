@@ -26,6 +26,7 @@
   \makebox[0pt]{\scriptsize#3}
   \end{array}%
 }
+\usepackage{tikzducks}
 \usepackage{multicol}
 \usepackage{comment}
 \usepackage[nottoc]{tocbibind}
@@ -51,6 +52,7 @@
 \usepackage{circuitikz}
 \usetikzlibrary{positioning}
 \usetikzlibrary{patterns}
+\usetikzlibrary{ducks}
 \usepackage{float}
 \usepackage{scalerel}
 \usepackage{siunitx}
@@ -86,16 +88,19 @@
 \usepackage{pifont}% http://ctan.org/pkg/pifont
 \usepackage{tikz-3dplot}
 \tdplotsetmaincoords{60}{110}
-%
+\include{extra/aviatorduck}
 
+%
 \begin{document}
-\maketitle
+\clearpage\maketitle
+\thispagestyle{empty}
 \begin{center}
-  \vspace*{\stretch{0.5}}
+  \vspace*{\stretch{0.6}}
   \Huge{\ding{166}}
-  \vspace*{\stretch{1.5}}
+  \vspace*{\stretch{1.4}}
 \end{center}
 \newpage
+\pagenumbering{arabic}
 \tableofcontents
 \newpage
 \section*{Introduction}
@@ -108,6 +113,8 @@ I want to suggest you to give a look at the book \emph{High Speed Digital Design
 \begin{footnotesize}
   You can find it easily in Z-Library but i didn't told you anything :x
 \end{footnotesize}
+\vspace*{\fill}
+Huge thanks to Rosario La Rocca who helped me correcting some mistakes found in the text.
 \newpage
 %\begin{comment}
 \include{classes/class1}
@@ -119,9 +126,9 @@ I want to suggest you to give a look at the book \emph{High Speed Digital Design
 \include{classes/class7}
 \include{classes/class8}
 \include{classes/class9}
-%\end{comment}
 \include{classes/class10}
-
+%\end{comment}
+%\include{classes/class11}
 \medskip
 \bibliographystyle{unsrt}
 \bibliography{bibliography}
