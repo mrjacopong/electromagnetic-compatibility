@@ -67,6 +67,7 @@
 \pgfplotsset{compat=1.17}
 \usepackage{graphicx}
 \usepackage{subcaption}
+
 %% stupid dunno emoticon%%
 \newcommand{\dunno}[1][]{%
 \begin{tikzpicture}[baseline,x=0.8\ht\strutbox,y=0.8\ht\strutbox,line width=0.125ex,#1]
@@ -83,6 +84,7 @@
 \draw (-0.1,0.2) to [out=15,in=-100] (0.4,0.95); 
 \end{tikzpicture}}
 %-----------------------%
+
 \usepackage{etoolbox}
 \include{extra/transmission_line_tikz_code}
 \usepackage{steinmetz}
@@ -90,6 +92,9 @@
 \usepackage{tikz-3dplot}
 \tdplotsetmaincoords{60}{110}
 \include{extra/aviatorduck}
+%---- font ----%
+\usepackage{sectsty}
+\allsectionsfont{\sffamily}
 %
 \begin{document}
 \clearpage\maketitle
