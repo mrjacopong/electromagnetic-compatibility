@@ -26,7 +26,7 @@ On the right of \cref{eq:1} we can find a minus sign, because if my electron goe
 \subsection*{Recap of operator nabla}
 \subsubsection*{Gradient $\nabla T$}
 Usually we refer to a variation of a scalar quantity with the derivative (for example $\frac{dT}{dt}$).\\
-If the scalar $T$ variates in more than one component, we want have a look at the derivative of everything: $\frac{dT}{dx},\frac{dT}{dy},\frac{dT}{dz}$.\\
+If the scalar $T$ does change in more than one component, we want have a look at the derivative of everything: $\frac{dT}{dx},\frac{dT}{dy},\frac{dT}{dz}$.\\
 If we are in space, our scalar field vary his value over we have 3 components, so we introduce the \emph{gradient} of the scalar field T (temperature) as:
 \begin{equation}
 \left(\frac{\partial T}{\partial x}\ihat+\frac{\partial T}{\partial y}\jhat+\frac{\partial T}{\partial z}\khat\right)=\nabla\,T
@@ -81,7 +81,7 @@ This theorem is similar to divergence theorem, but instead of surface and volume
 \end{equation}
 It means that the flux over a surface of the curl of a vectorial field, is the integral of that field on the line that is bounding s.
 \subsubsection*{Laplacian}\label{sec:laplacian}
-If i use the operator curl twice we get the laplacian.\\
+If I use the operator curl twice we get the laplacian.\\
 Consider the gradient of a scalar field $T$: $\nabla T=\left(\frac{\partial T}{\partial x}\ihat+\frac{\partial T}{\partial y}\jhat+\frac{\partial T}{\partial z}\khat\right)$ now:
 \begin{equation}\label{eq:2}
 \nabla\cdot(\nabla T)=\nabla^2T=\left(\frac{\partial^2 T}{\partial x^2}+\frac{\partial^2 T}{\partial y^2}+\frac{\partial^2 T}{\partial z^2}\right)
@@ -139,7 +139,7 @@ The solutions of the Maxwell equations are not always simple to obtain analytica
 \end{itemize}
 \end{itemize}
 \textbf{Linear} means that the equation is composed only and only only by the sum of each variable $x_i$ multiplied by their own coefficient $a_i$: $\bm{a_1x_2+a_1x_2\cdots + a_nx_n+b=0}$, this is an important class of equation because we can use a lot of useful properties.\\
-\textbf{Stationary} means that the results will not change with the time, so if i do the experiment now or 10 years later I'll be sure that nothing will change.\\
+\textbf{Stationary} means that the results will not change with the time, so if I do the experiment now or 10 years later I'll be sure that nothing will change.\\
 We need this little recap to neglect all those non optimal behavior, and for the sake of simplicity we use those relation:
 \begin{itemize}
     \item $\overline{D}=\varepsilon \overline{E}\;\rightarrow \varepsilon$ is the dielectric permittivity
@@ -211,7 +211,7 @@ Using the same passages as before, we can obtain the forth maxwell equation in l
     \begin{split}
         &\nabla \cdot \left[ (\nabla\times \overline{H})=-\frac{d\overline{D}}{dt}+\overline{J}\right]=\\[5pt]
         &\nabla \cdot \left(-\frac{d\overline{D}}{dt}+\overline{J}\right)=0\\[5pt]
-        &\frac{d}{dt}(\nabla\cdot \overline{D})+\nabla\cdot \overline{J}=0\\[5pt]
+        &\frac{d}{dt}(\nabla\cdot \overline{D})+ \overline{J}=0\\[5pt]
         &\frac{d}{dt}(\nabla\cdot \overline{D})+\nabla\cdot \frac{d\overline\rho}{dt}=0\\[5pt]
         &\frac{d}{dt}\left(\nabla\cdot\overline{D}-\overline{\rho}\right)=0\\[5pt]
     \end{split}

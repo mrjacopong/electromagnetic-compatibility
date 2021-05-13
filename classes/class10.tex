@@ -1,6 +1,6 @@
 \section{Class 10 - 29/03/21}
 Today we will talk about the point to point link between two antennas, and it's performance.\\
-For example, take in consideration 2 antennas that wants to communicate each other, like in \cref{fig:antennas_example2} we need to find some parameter that can measure how efficiently the communication is happening, so we can deal with the power constrains that i could have in real applications.
+For example, take in consideration 2 antennas that wants to communicate each other, like in \cref{fig:antennas_example2} we need to find some parameter that can measure how efficiently the communication is happening, so we can deal with the power constrains that I could have in real applications.
 \begin{figure}[H]
     \begin{center}
         \begin{tikzpicture}[%
@@ -163,7 +163,7 @@ Obviously, in free space we can consider $A_s=1$, but in different condition lik
 Usually $A_s$ is provided by statistic studies and empiric experiments, this is why we don't have a specific formula to find it.
 \subsubsection*{Noise constrains in the Friis Formula}
 When we transmit signals, whatever the medium is, we need to take in consideration noises. When we consider the power budget for the receiver antenna, it is not only the received power, but $\frac{P_r}{P_{noise}}$.\\
-This mean that we could have the most powerful antenna in the whole world, but if the transmitted power has a low Signal To Noise Ratio (SNR) what i am receiving is useless.\\
+This mean that we could have the most powerful antenna in the whole world, but if the transmitted power has a low Signal To Noise Ratio (SNR) what I am receiving is useless.\\
 So we want that the $SNR$ is greater that a minimum value set by the receiver and how good it is at isolating signals from noises:
 \begin{equation}
     \frac{P_r}{P_{n}}>\text{SNR}_{min}
@@ -184,7 +184,7 @@ It could be useful to transform \cref{eq:noise_constrain_in_friis} in decibel no
 \begin{equation}\label{eq:noise_constrain_in_friis_db}
     P_t[\si{\deci\bel_{\milli\watt}}]+G_t[\si{\deci\bel}]+G_r[\si{\deci\bel}]>P_{noise}[\si{\deci\bel_{\milli\watt}}]+\text{SNR}_{min}[\si{\deci\bel}]+A_0[\si{\deci\bel}]+A_s[\si{\deci\bel}]
 \end{equation}
-Keep in mind that all the powers in \cref{eq:noise_constrain_in_friis_db} are expressed in $\si{\milli \watt}$, if you are still confused about decibel (as I am) i suggest to you to visit this useful and very simple pdf i found on internet\cite{Appunti_decibel}
+Keep in mind that all the powers in \cref{eq:noise_constrain_in_friis_db} are expressed in $\si{\milli \watt}$, if you are still confused about decibel (as I am) I suggest to you to visit this useful and very simple pdf I found on internet\cite{Appunti_decibel}
 \subsubsection*{Some comments on receiving antenna}
 From the Friis equation in \cref{eq:received_power_w_attenuation} it is clear that the received power is not only affected by the transmitted power, but we need to take into account a lot of parameters.\\
 One example is the satellite communication: as you might think, you can not deal with the right part of \cref{eq:noise_constrain_in_friis} ($P_{n} \, \text{SNR}_{min} \,A_0\,A_s$), then we try to increase the gain parameters $G$:
@@ -254,7 +254,7 @@ So we can finally find the frequency ($\lambda=\frac{c}{f}$):
     f=\sqrt{\frac{P_t}{P_r}\,\frac{G_t\,G_r}{A_s}\,\frac{c^2}{(4\pi\,r)^2}}=3.68\si{\giga\hertz}
 \end{equation*}
 \subsection*{Radars}
-The radar name means: \emph{RAdio Detection And Raging}, with this kind of antennas i can detect obstacles in front of the radiating antenna by exploiting the reflected waves by the object.\\
+The radar name means: \emph{RAdio Detection And Raging}, with this kind of antennas I can detect obstacles in front of the radiating antenna by exploiting the reflected waves by the object.\\
 We can start studying this particular application of antennas by considering the target object like an antenna and evaluating the captured power like we have done in \cref{eq:pow_captured}. Take in account that $\sigma$ is the cross section of the object, and we can consider in this case $A_{eff_{(r)}}=\sigma$:
 \begin{equation}
     P_{captured_{(obj)}}=\frac{P_t\,\delta_t\,A_{eff_{(t)}}\,\sigma}{\lambda^2\,r^2}
@@ -421,8 +421,8 @@ The path of the radiation for a monostatic radar will be $T=\frac{2\,r}{c}$, so 
 \begin{equation}
     r=\frac{c\,T}{2}
 \end{equation}
-Now, why should this be an issue? The problem is that my signal is sent by pulses, and I need to receive the reflected pulse before launching another one. If i don't I would not understand which echo is being received, and i could wrongly understand that one object is very close (because the other signal could come back just after the new one is being sent).\\
-Then i could write a new constrain: the distance $R_\mu$ to be unambiguous, it need to be greater than $R_{max}$. In this way, if the object is too far, i will not detect it because the signal gets lost during the travel.
+Now, why should this be an issue? The problem is that my signal is sent by pulses, and I need to receive the reflected pulse before launching another one. If I don't I would not understand which echo is being received, and I could wrongly understand that one object is very close (because the other signal could come back just after the new one is being sent).\\
+Then I could write a new constrain: the distance $R_\mu$ to be unambiguous, it need to be greater than $R_{max}$. In this way, if the object is too far, I will not detect it because the signal gets lost during the travel.
 \begin{equation}
     R_\mu=\frac{C\,T_p}{2}>R_{max}
 \end{equation}

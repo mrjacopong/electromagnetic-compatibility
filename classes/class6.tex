@@ -35,10 +35,10 @@ Then we can write the voltage over the line as:
   We can notice from \cref{eq:new_form_of_voltage_over_TL} that the voltage over a TL is composed by two terms:
   \begin{itemize}
       \item $\bm{(V\bottomPlus - V\bottomMinus)e^{\,j\beta l}}$: This is the equation of a direct wave with amplitude $(V\bottomPlus - V\bottomMinus)$. The amplitude is not $V\bottomPlus$ because part of the wave is reflected backward
-      \item $\bm{2\,V\bottomMinus\,\cos(\beta l)}$: This is the expression of a stationary wave. This part is "eating" part of the forward wave, this mean that if i fall in some "unlucky" point inside my TL the signal will be distorted.
+      \item $\bm{2\,V\bottomMinus\,\cos(\beta l)}$: This is the expression of a stationary wave. This part is "eating" part of the forward wave, this mean that if I fall in some "unlucky" point inside my TL the signal will be distorted.
   \end{itemize}
 
-If i want to go back to the time domain with the forward wave using the usual formula in \cref{eq:from_phas_to_time_TL}:
+If I want to go back to the time domain with the forward wave using the usual formula in \cref{eq:from_phas_to_time_TL}:
 \begin{equation}
     V(l,t)=(V\bottomPlus - V\bottomMinus)\cos(\omega t-\beta l)+2V\bottomMinus\cos(\omega t)\cos(\beta l)
 \end{equation}
@@ -129,8 +129,8 @@ From here, we assume that we have found a certain $l_0$ value where we can find 
     &=|V\bottomPlus|+|V\bottomMinus|=V_{max}\\[5pt]
     \end{split}
 \end{align}
-If i move from that section of the line, the phase will not be equal anymore and we will not see $V_{max}$ anymore.\\
-Just a little example if i move by $\Delta L=\frac{\lambda}{4}$ from $V_{max}$, we will reach the minimum:
+If I move from that section of the line, the phase will not be equal anymore and we will not see $V_{max}$ anymore.\\
+Just a little example if I move by $\Delta L=\frac{\lambda}{4}$ from $V_{max}$, we will reach the minimum:
 \begin{align}
     \begin{split}
         \left|V\left(l_0+\frac{\lambda}{4}\right)\right|&=|V\bottomPlus|(1-|\rho|)=\\[5pt]
@@ -153,7 +153,7 @@ A little recap:
     \end{cases}
 \end{equation}
 As we can see in \cref{eq:v_minimum}, we reached the minimum value $V_{min}$ by moving from $V_{max}$ by $\Delta L=\frac{\lambda}{4}$, so it was not just a little example but it is very important!\\
-Again if i move by another $\Delta L=\frac{\lambda}{4}$ from $V_{min}$ we reach another maximum and so on \dots
+Again if I move by another $\Delta L=\frac{\lambda}{4}$ from $V_{min}$ we reach another maximum and so on \dots
 \begin{figure}[H]
     \begin{center}
         \begin{circuitikz} [ baseline=(current bounding box.center)]
@@ -258,7 +258,7 @@ We can also refer to those values as normalized to $Z_0$, this will help a bit t
         \mathcal{Z}_{min} = \frac{Z_{min}}{Z_0}=\frac{1}{\text{SWR}}
     \end{cases}
 \end{equation}
-This last part is a bit different from what explained the prof during lectures, but i think that during this class he was not very clear with math, so i decided to consult the world wide web, and i've actually found a really interesting free book available at \cite{Ellingson2020Book}.
+This last part is a bit different from what explained the prof during lectures, but I think that during this class he was not very clear with math, so I decided to consult the world wide web, and i've actually found a really interesting free book available at \cite{Ellingson2020Book}.
 \subsection*{Little exercise \#1}
 Now we will do some simple exercise useful to better comprehend what we are saying.\\
 In the first exercise we have a transmission line in  where we need to find the SWR.
@@ -381,7 +381,7 @@ I won't do all the calculations here, but the results are:
     \item \item $\bm{f=200}\si{\mega\hertz}\bm{\rightarrow Z_i=140}\si{\ohm}$: This is $Z_{max}$
 \end{itemize}
 \subsection*{Smith chart}
-All those numbers and complex numbers are quite confusing... But what if i tell you that there is a graphical way to describe the transmission line and all the useful coefficient.\\
+All those numbers and complex numbers are quite confusing... But what if I tell you that there is a graphical way to describe the transmission line and all the useful coefficient.\\
 We need to prepare ourself a bit, first of all we need to define a bit better the normalized impedance (already seen in \cref{eq:normalized_impedance}):
 \begin{equation}
     \mathcal{Z}(l)=\frac{Z_i(l)}{Z_0}=\mathcal{R}+j\mathcal{X}
@@ -601,7 +601,7 @@ If we move in the transmission line changing the $l$ value, in the Smith chart w
 We can exploit this cool behavior of the chart because whenever we move along the line, $\rho$ will rotate, and then we move in another point where we can interpolate the famous circles and we can obtain the value of the new $\mathcal{Z}$ without going troughs all the ugly formulas that we have already seen before.\\
 Another interesting characteristic of this chart is that when you rotate the vector, and touch the horizontal $u$ axe, the impedance will be completely real.
 
-If from my point i do a complete rotation, this mean that my phase variation is $2\pi$, this mean that:
+If from my point I do a complete rotation, this mean that my phase variation is $2\pi$, this mean that:
 \begin{align}
     \begin{split}
         &2\beta l=2\pi\\[5pt]

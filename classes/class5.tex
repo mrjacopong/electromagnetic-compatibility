@@ -2,7 +2,7 @@
 \subsection*{characteristic impedance}
 We can start this lecture by computing the derivative over the space of the voltage equation in phasor domain in \cref{eq:voltage_in_phas_domain}.
 \begin{equation}
-    \frac{\partial \phas{V}(z)}{\partial z}=\gamma \cdot \left(-Z_i(l)\,e^{-\gamma z}+V\bottomMinus \,e^{\gamma z}\right) 
+    \frac{\partial \phas{V}(z)}{\partial z}=\gamma \cdot \left(-V\bottomPlus\,e^{-\gamma z}+V\bottomMinus \,e^{\gamma z}\right) 
 \end{equation}
 Then from the first equation in \cref{eq:telegraph_in_phas_1} we can obtain another way to express the current in phasor domain:
 \begin{equation}
@@ -29,7 +29,7 @@ The current and current expression becomes:
     \phas{I}(z)=\frac{1}{Z_0}\left[V\bottomPlus \,e^{-\gamma z}-V\bottomMinus \,e^{\gamma z}\right]
     \end{cases}\label{eq:current_and_voltage_in_TL_phas}
 \end{equation}
-From now on, sometimes i could miss some phasor notation over $V$ and $I$, this was very important to emphasize the difference between the different domains, but no the next pages if you see $V(l)$ or $I(l)$ just remember that those wave expression does not contain the time $t$, so they are in phasor domain.\\
+From now on, sometimes I could miss some phasor notation over $V$ and $I$, this was very important to emphasize the difference between the different domains, but no the next pages if you see $V(l)$ or $I(l)$ just remember that those wave expression does not contain the time $t$, so they are in phasor domain.\\
 That being said, we can also write:
 \begin{align}
     \begin{split}
@@ -88,7 +88,7 @@ All this notation is very confusing in my opinion, so a fast clarification:
     \item $\phas{V_p}(z)=V\bottomPlus \,e^{-j\beta z}$ is the progressive (or incident) voltage wave equation over the line in phasor domain.
     \item $v(z,t)$ is the real voltage over the line and over the time, we are not using it because it is very difficult to manipulate, so we prefer to go in complex domain, then going back to time domain with simpler calculations
 \end{itemize}
-Still very confusing, i know (\textgreater\_\textless).
+Still very confusing, I know (\textgreater\_\textless).
 \subsubsection*{Input impedance in trigonometric form}
 As we can see from the final form of the input impedance of \cref{eq:input_impedance}, $Z_i$ is a complex number, so it could be useful to express it in trigonometric form (you should remember $a\,e^{j\,b}=a(\cos\,b+j\sin\,b)$ ).\\
 Now the calculation can seems scary, but they are very simple but long:
@@ -168,7 +168,7 @@ From \cref{eq:definition_of_rho} we can write:
     \rho(l)=\rho_L\,e^{\,j2\beta l}
 \end{equation}
 This is a parameter that is used to define the reflected wave with respect to the
-incident wave on the load, and i think that it is much more easy to understand than $\rho(l)$.
+incident wave on the load, and I think that it is much more easy to understand than $\rho(l)$.
 If you look closely at \cref{eq:reflection_coeff_at_load}, it is possible to have $\rho_L=0$ when $Z_L=Z_0$. The explanation that the prof gave to us is a little confusing for me, but it works like the wave is always seeing $Z_0$ while it is travelling along all the tiny portion of TL; when the wave arrives to $Z_L$, it sees no difference, so for him it is like the TL is infinite.\\
 Note that sometimes the reflection coefficient $\rho_L$ is written like only the symbol $\rho$. This is a little confusing, but it simplify a lot the notation.
 \subsubsection*{Little exercise!}
@@ -372,7 +372,7 @@ We go on to find the value of $l$:
       &l=\frac{\lambda}{2\pi}\,\arctan(\frac{\omega l}{Z_0})=1.53\si{\centi\metre}
     \end{split}
 \end{align*}
-This mean that if my TL described by the data i gave before measure $1.53\si{\centi\metre}$, at the eye of the transmitter the TL is an inductor of $L=15\si{\nano\henry}$.\\
+This mean that if my TL described by the data I gave before measure $1.53\si{\centi\metre}$, at the eye of the transmitter the TL is an inductor of $L=15\si{\nano\henry}$.\\
 $\bullet$ If we change $f=4\si{\giga\hertz}$? Nothing to worry about:
 \begin{equation*}
     \frac{l}{\lambda}=\frac{l\cdot f}{v_p}=0.3\geq 0.25
@@ -441,7 +441,7 @@ $\bullet$ We do the same calculation we already with the open circuit, then wu o
 Again if we go back to time domain we will notice that we are looking at a stationary wave.\\
 $\bullet$ The calculation for the input impedance is a bit different, but at the end we obtain:
 \begin{equation}\label{eq:open_circuit_TL}
-    Z_i(l)=\lim_{Z_0\rightarrow\infty} Z_0\frac{Z_L\cos(\beta l)+jZ_0 \sin(\beta l)}{Z_0\cos(\beta l)+jZ_L\sin(\beta l)}=jZ_0\cot(\beta l)
+    Z_i(l)=\lim_{Z_l\rightarrow\infty} Z_0\frac{Z_L\cos(\beta l)+jZ_0 \sin(\beta l)}{Z_0\cos(\beta l)+jZ_L\sin(\beta l)}=-jZ_0\cot(\beta l)
 \end{equation}
 $\bullet$ The input admittance:
 \begin{equation}\label{input_admittance_of_a_short}

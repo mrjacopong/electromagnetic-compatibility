@@ -161,14 +161,14 @@ Now we do something clever: we could separate the end side of the line like in ,
 \end{figure}
 While the first part of the line in \cref{fig:TL_dipole2} does not produce EMF, the second one that we have bent is generating a current distribution in phase and in vertical direction.\\
 This does mean that we are moving electric charges along a vertical axe, and so we are generating an EMF! What we have created is a very rudimentary antenna that we call \emph{Dipole}.
-\subsubsection*{How i need to build my dipole?}
+\subsubsection*{How I need to build my dipole?}
 Now that we have seen the basics, we could be curious to know how to build an appropriate dipole antenna. The physical form it quite straight forward, but how long should our vertical termination be?\\Hertzian 
 It depends on my desired current distribution over the antenna: for example if the length of my dipole is $l=\lambda$ (full wave dipole), the current distribution will be able to be distributed 2 times in the total length like in . Why this?\\
 Think about you are making a photo at the current distribution when it reach the maximum peak (it is a wave, will reach its peak every half period): at the absolute top and bottom the current will always be zero (it can not go anywhere, because it sees an open circuit).\\
 Imagine to travel along a steady wave: you start from 0 and after a quarter of the wavelength you reach a peak of amplitude (i know that this is confusing, just think about the figure of the wave and what you can find every $\frac{\lambda}{4}$). If we travel along the photograph of the "imaginary line" mentioned before, we will see the first peak of the current wave in the half of one conductor (or a quarter of the total antenna length starting from the bottom). At the center of the antenna, the current wave will be 0 again (because we are in the middle of the wavelength, and we started from 0). For the other terminal the situation is exactly the same. This situation can be seen in \cref{fig:Full_wave_antenna}.
 In \cref{fig:Half_wave_antenna} you can see the current distribution in an half wave antenna, here the length is $l=\frac{\lambda}{2}$.\\
 Similarly to how we have seen the full wave antenna, the current distribution starts from 0 from one node, but now we reach the first amplitude peak on the center of the TL because the total length is now an half of $\lambda$. In this way we have created a pretty capable antenna.\\
-The half wave antenna ideally is the best one, because it will behave like a pure resistive load\cite{Antenne_appunti_tlc} (this behavior will be described better during the next lecture, but i can already tell you that it happen if the length is just a little bit shorter than $\frac{lambda}{2}$). Sometimes we need to shrink the length for our application (think that our car should have an antenna $75\si{\centi\metre}$ long), and we can use smaller antennas by adapting the line.
+The half wave antenna ideally is the best one, because it will behave like a pure resistive load\cite{Antenne_appunti_tlc} (this behavior will be described better during the next lecture, but I can already tell you that it happen if the length is just a little bit shorter than $\frac{lambda}{2}$). Sometimes we need to shrink the length for our application (think that our car should have an antenna $75\si{\centi\metre}$ long), and we can use smaller antennas by adapting the line.
 \begin{figure}[H]
     %    \begin{center}
         \centering
@@ -354,11 +354,11 @@ This \cref{eq:power_of_dipole_far} is very important because it describes the po
 \begin{equation}
     P=\frac{\eta \pi}{3}\,I_0^2\,\left(\frac{d}{\lambda}\right)^2-j\eta I_0^2\frac{1}{24\pi^2}\left(\frac{d}{\lambda}\right)^2\left(\frac{\lambda}{r}\right)^3
 \end{equation}
-So if we are more near to the transmitting dipole, we well see also a reactive power, that could not see if i move away.
+So if we are more near to the transmitting dipole, we well see also a reactive power, that could not see if I move away.
 \subsection*{More general antennas parameters}
 We finish to talk about hertzian dipoles, and now we are starting to talk about some useful parameters that we can find in all kind of antennas (valid also for the dipole).
 \subsection*{Generalization of the $\overline{E}$ and $\overline{H}$ of an antenna}
-Until now we skipped a lot of passages, and we obtained the equation of $\overline{E}$ and $\overline{H}$ for the Hertzian dipole when we are far from the antenna that you can see in \cref{eq:EMF_components_in_spherical_2}\dots And now we are going to do the same thing for a general antenna too LOL (if you want to go into details, i can suggest you to look at the notes of Prof. Cucinotta from Unipr\cite{Appunti_unipr}).
+Until now we skipped a lot of passages, and we obtained the equation of $\overline{E}$ and $\overline{H}$ for the Hertzian dipole when we are far from the antenna that you can see in \cref{eq:EMF_components_in_spherical_2}\dots And now we are going to do the same thing for a general antenna too LOL (if you want to go into details, I can suggest you to look at the notes of Prof. Cucinotta from Unipr\cite{Appunti_unipr}).
 We now need to introduce the equivalent moment of an antenna, that for the Hertzian dipole is:
 \begin{equation}
     \overline{M}=I_0 \, d \, \hat{z}
@@ -440,7 +440,7 @@ We introduce here the \emph{radiation function}, that is the square root of the 
 \end{equation}
 This function is what will describe the propagation of the antenna on the space
 \subsubsection*{Radiation Pattern}
-The radiation pattern is the plot in 2 or 3 dimension of the radiation function $f(\theta,\varphi)$, Here i decided to plot in \cref{fig:radiation_function} an approximation of a classic radiation pattern in 2-d axe, where you can find:
+The radiation pattern is the plot in 2 or 3 dimension of the radiation function $f(\theta,\varphi)$, Here I decided to plot in \cref{fig:radiation_function} an approximation of a classic radiation pattern in 2-d axe, where you can find:
 \begin{itemize}
     \item \textbf{max}: the point where you can spot the maximum value of the radiation intensity
     \item \textbf{main lobe}: actually the main and the longest lobe, here you can find the max value
@@ -492,7 +492,7 @@ Looking at the radiation pattern in \cref{fig:radiation_function}, we can introd
 The HPBW is the angle measured on the main lobe, in which the magnitude of the radiation pattern decreases by 50\% (or -3dB) from the peak of the main beam. It is in fact the area where most of the power is radiated.\\
 Maybe it is more clear when you look at the picture in \cref{fig:beam_width_2d}.\\
 It could be measured by targeting the two half power point, then the angle between those two is the HPBW.\\
-Usually we can find more than one HPBW, because we can choose more than one orthogonal with which i can cut and study my radiation.
+Usually we can find more than one HPBW, because we can choose more than one orthogonal with which I can cut and study my radiation.
 \begin{figure}[H]
     \begin{center}
         \begin{tikzpicture}
@@ -580,7 +580,7 @@ From \cref{eq:power_isotropic_antenna} we can give another definition of directi
     \end{split}
 \end{align}
 For this new directivity definition in \cref{eq:directivity2} the numerator is the maximum value of F, and the denominator just represents the "average power radiated over all directions".
-To sum up: if my directivity is lower than another antenna, this mean that i will need more power to irradiate the same beam in that specific direction, so having a high $D$ value is very appreciated. In \cref{fig:different_radiation_pattern} you can see an example of two antennas with different directivity, where the "blue" antenna has an higher value of $D$.
+To sum up: if my directivity is lower than another antenna, this mean that I will need more power to irradiate the same beam in that specific direction, so having a high $D$ value is very appreciated. In \cref{fig:different_radiation_pattern} you can see an example of two antennas with different directivity, where the "blue" antenna has an higher value of $D$.
 \begin{figure}[H]
 \begin{center}
     \resizebox{0.6\textwidth}{!}{%

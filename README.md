@@ -13,7 +13,13 @@ BECAUSE I  LOVE  YOU!
 Just kidding, I really like to think  that  my  hard work could be helpful to someone of you, and i  think  that it is the perfect  spot to show  my  my  new learned skill.  
   
 ##  Why  are  you  so proud of your  work?  
-I have  written  every  line  of  code, and if  you  open  the  .tex  files  you  can notice that every  image  has been done with  **tikz**. No  image  taken  from  internet  has been  used! Of course  I got helped by  *stackoverflow*, but the  most  of  images  was made by myself.  
+I have  written  every  line  of  code, and if  you  open  the  .tex  files  you  can notice that every  image  has been done with  **tikz**. No  image  taken  from  internet  has been  used! Of course  I got helped by  *stackoverflow*, but the  most  of  images  was made by myself. 
+
+### How to compile the code
+You need a working LaTeX distribution (I am using MiKTeX).
+Use pdflatex and bibtex to build the code,
+To be 100% sure of the result you should use this recipe in order: pdflatex -> bibtex -> pdflatex -> pdflatex
+
   
 ###  disclaimer:  
 Of course  it  is  not a  perfect  work, and  it  has  **a lot of  errors**, this  is  why  it  is here on  github. I would  really  appreciate your  contribution  if  you  spot  some  mistake: you  can  both  send  an  issue  (please be as precise as possible)  or  you  can  just  send  me a pull request.  
