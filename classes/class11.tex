@@ -1,4 +1,4 @@
-\section{Class 10 - 31/03/21}
+\section{Class 11 - 31/03/21}
 Today we are introducing the concept of using multiple antennas to send EM signals. The main advantage of using a cluster of antennas is that we can easily change the radiation pattern without using moving parts, this will let us serve multiple directions with the same antenna geometry.
 \subsection*{Two dipole array}
 What does happen if we put two dipole antennas at a distance $l$ like in \cref{fig:Two_dipole_array_example}?
@@ -159,8 +159,8 @@ And with some trigonometry, by noticing that $\theta$ is equal for all the segme
 Then \cref{eq:electric_field_dual_array2} will become:
 \begin{align}
     \begin{split}
-        E_T&=j\eta\frac{I_0\,d}{2\lambda}\frac{\cos(\theta)}{r}\left\{e^{\,-jk(r-\frac{l}{2})}e^{\,-j\frac{\delta}{2}}+e^{\,-jk(r-\frac{l}{2})}e^{\,j\frac{\delta}{2}}\right\}\\[5pt]
-        &=j\eta\frac{I_0\,d}{2\lambda}\,\cos(\theta)\,\frac{e^{\,-jkr}}{r}\left\{e^{\,jk(\frac{l}{2}-\frac{\delta}{2})}+e^{\,-jk(\frac{l}{2}-\frac{\delta}{2})}\right\}\\[5pt]
+        E_T&=j\eta\frac{I_0\,d}{2\lambda}\frac{\cos(\theta)}{r}\left\{e^{\,-jk(r-\frac{l}{2}\cos(\theta))}e^{\,-j\frac{\delta}{2}}+e^{\,-jk(r-\frac{l}{2}\cos(\theta))}e^{\,j\frac{\delta}{2}}\right\}\\[5pt]
+        &=j\eta\frac{I_0\,d}{2\lambda}\,\cos(\theta)\,\frac{e^{\,-jkr}}{r}\left\{e^{\,j(k\frac{l}{2}\cos(\theta)-\frac{\delta}{2})}+e^{\,-j(k\frac{l}{2}\cos(\theta)-\frac{\delta}{2})}\right\}\\[5pt]
     \end{split}
 \end{align}
 We could see the last part of exponentials as:
@@ -174,11 +174,11 @@ Then we obtain the final expression of the total electric field:
 The expression of $E_T$ in \cref{eq:electric_field_dual_array2} can be seen as the combination of two parts: the first one is the expression of $E$ for the hertzian dipole that we have already seen in \cref{eq:EMF_components_in_spherical_2}, ant the second one is the expression of how the total field changes depending on $l$, $\theta$ and $\delta$.\\
 This second part of the $E_T$ equation is usually called \emph{Array Factor} $AF$, so the \cref{eq:electric_field_dual_array3} could be seen as:
 \begin{equation}
-    E_T=\text{Dipole eq.} + AF
+    E_T=\text{Dipole eq.} \cdot AF
 \end{equation}
 and in a more general form:
 \begin{equation}
-    E_T=\text{Antenna eq.} + AF
+    E_T=\text{Antenna eq.} \cdot AF
 \end{equation}
 This expression is very good, because we can study complex antenna arrays by multiplying the equation of one of the antenna array, with the AF.
 \subsubsection*{Example of array patterns with hertzian dipole}
@@ -300,12 +300,19 @@ In the \emph{Odd symmetry}(\cref{fig:odd_simmetry}) the electric field could be 
         
         \pgfmathsetmacro{\hx}{(\xmax-\xmin)/\nx}
         \pgfmathsetmacro{\hy}{(\ymax-\ymin)/\ny}
-        \foreach \i in {0,...,\nx}
-        \foreach \j in {0,...,\ny}{
-        \pgfmathsetmacro{\yprime}{f({\xmin+\i*\hx},{\ymin+\j*\hy})}
+        \foreach \i in {0,...,\nx}{
+        \foreach \j in {9,...,15}{
+        \pgfmathsetmacro{\yprime}{f({(\xmin+\i*\hx)},{\ymin+\j*\hy})}
         \draw[teal,-stealth,shift={({\xmin+\i*\hx},{\ymin+\j*\hy})}] 
         (0,0)--($(0,0)!1mm!(.1,.1*\yprime)$);
         }
+        \foreach \k in {0,...,8}{
+        \pgfmathsetmacro{\yprime}{f({(\xmin+\i*\hx)},{abs(\ymin+\k*\hy)})}
+        \draw[teal,-stealth,shift={({\xmin+\i*\hx},{\ymin+\k*\hy})}] 
+        (0,0)--($(0,0)!1mm!(-.1,.1*\yprime)$);
+        }
+        }
+        
         
         %axes
         \draw[-stealth] (\xmin-0.2,0) -- (\xmax+0.2,0) node[anchor=north,xshift=4pt]{$x$};

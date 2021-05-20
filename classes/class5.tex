@@ -25,11 +25,11 @@ If you look closely, \cref{eq:characteristic_impedance_no_loss} is very similar 
 The current and current expression becomes:
 \begin{equation}
     \begin{cases}
-    \phas{V}(z) = V\bottomPlus \,e^{-j\beta z}+V\bottomMinus \,e^{j\beta z} \\[5pt]
+    \phas{V}(z) = V\bottomPlus \,e^{-\gamma z}+V\bottomMinus \,e^{\gamma z} \\[5pt]
     \phas{I}(z)=\frac{1}{Z_0}\left[V\bottomPlus \,e^{-\gamma z}-V\bottomMinus \,e^{\gamma z}\right]
     \end{cases}\label{eq:current_and_voltage_in_TL_phas}
 \end{equation}
-From now on, sometimes I could miss some phasor notation over $V$ and $I$, this was very important to emphasize the difference between the different domains, but no the next pages if you see $V(l)$ or $I(l)$ just remember that those wave expression does not contain the time $t$, so they are in phasor domain.\\
+From now on, sometimes I could miss some phasor notation over $V$ and $I$, this was very important to emphasize the difference between the different domains, but on the next pages if you see $V(l)$ or $I(l)$ just remember that those wave expression does not contain the time $t$, so they are in phasor domain.\\
 That being said, we can also write:
 \begin{align}
     \begin{split}
@@ -91,7 +91,7 @@ All this notation is very confusing in my opinion, so a fast clarification:
 Still very confusing, I know (\textgreater\_\textless).
 \subsubsection*{Input impedance in trigonometric form}
 As we can see from the final form of the input impedance of \cref{eq:input_impedance}, $Z_i$ is a complex number, so it could be useful to express it in trigonometric form (you should remember $a\,e^{j\,b}=a(\cos\,b+j\sin\,b)$ ).\\
-Now the calculation can seems scary, but they are very simple but long:
+Now the calculation can seems scary, in reality they are very simple but long:
 \begin{align}
     \begin{split}
       Z_i(l)&=Z_0\,\frac{V\bottomPlus \,e^{-j\beta l}+V\bottomMinus \,e^{j\beta l}}{V\bottomPlus \,e^{-j\beta l}-V\bottomMinus \,e^{j\beta l}}=\\[5pt]
@@ -167,7 +167,7 @@ From \cref{eq:definition_of_rho} we can write:
 \begin{equation}\label{eq:reflection_coeff_at_load2}
     \rho(l)=\rho_L\,e^{\,j2\beta l}
 \end{equation}
-This is a parameter that is used to define the reflected wave with respect to the
+$\rho_L$ is a parameter that is used to define the reflected wave with respect to the
 incident wave on the load, and I think that it is much more easy to understand than $\rho(l)$.
 If you look closely at \cref{eq:reflection_coeff_at_load}, it is possible to have $\rho_L=0$ when $Z_L=Z_0$. The explanation that the prof gave to us is a little confusing for me, but it works like the wave is always seeing $Z_0$ while it is travelling along all the tiny portion of TL; when the wave arrives to $Z_L$, it sees no difference, so for him it is like the TL is infinite.\\
 Note that sometimes the reflection coefficient $\rho_L$ is written like only the symbol $\rho$. This is a little confusing, but it simplify a lot the notation.
@@ -280,8 +280,8 @@ In other words, if you place a short circuit as load of your TL, the incident wa
 The voltage and the current over the line is:
 \begin{equation}
     \begin{cases}
-      V(l)&=V\bottomPlus\,e^{\,-j\beta l}-V\bottomMinus\,e^{\,j\beta l}=V\bottomPlus(e^{\,-j\beta l}+e^{\,j\beta l})=-2\,jV\bottomPlus\sin (\beta l)\\[5pt]
-      I(l)&=\frac{V\bottomPlus}{Z_0}e^{\,-j\beta l}+\frac{V\bottomPlus}{Z_0}e^{\,j\beta l}=2\frac{V\bottomPlus}{Z_0}\cos (\beta l)
+      V(l)&=V\bottomPlus\,e^{\,-j\beta l}+V\bottomMinus\,e^{\,j\beta l}=V\bottomPlus(e^{\,-j\beta l}-e^{\,j\beta l})=-2\,jV\bottomPlus\sin (\beta l)\\[5pt]
+      I(l)&=\frac{V\bottomPlus}{Z_0}e^{\,-j\beta l}-\frac{V\bottomMinus}{Z_0}e^{\,j\beta l}=\frac{V\bottomPlus}{Z_0}e^{\,-j\beta l}+\frac{V\bottomPlus}{Z_0}e^{\,j\beta l}=2\frac{V\bottomPlus}{Z_0}\cos (\beta l)
     \end{cases}
 \end{equation}
 So knowing only that $V\bottomPlus=-V\bottomMinus$ we can derive the voltage and current wave.\\
@@ -434,8 +434,8 @@ And this mean that:
 $\bullet$ We do the same calculation we already with the open circuit, then wu obtain the voltage and the current over the line:
 \begin{equation}
     \begin{cases}
-      V(l)&=V\bottomPlus\,e^{\,-j\beta l}-V\bottomMinus\,e^{\,j\beta l}=V\bottomPlus(e^{\,-j\beta l}-e^{\,j\beta l})=2\,jV\bottomPlus\sin (\beta l)\\[5pt]
-      I(l)&=\frac{V\bottomPlus}{Z_0}e^{\,-j\beta l}-\frac{V\bottomPlus}{Z_0}e^{\,j\beta l}=-2\frac{V\bottomPlus}{Z_0}\cos (\beta l)
+      V(l)&=V\bottomPlus\,e^{\,-j\beta l}+V\bottomMinus\,e^{\,j\beta l}=V\bottomPlus(e^{\,-j\beta l}+e^{\,j\beta l})=2V\bottomPlus\cos (\beta l)\\[5pt]
+      I(l)&=\frac{V\bottomPlus}{Z_0}e^{\,-j\beta l}-\frac{V\bottomPlus}{Z_0}e^{\,j\beta l}=V\bottomPlus(-e^{\,-j\beta l}+e^{\,j\beta l})=2j\frac{V\bottomPlus}{Z_0}\cos (\beta l)
     \end{cases}
 \end{equation}
 Again if we go back to time domain we will notice that we are looking at a stationary wave.\\

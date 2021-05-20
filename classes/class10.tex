@@ -98,7 +98,7 @@ We then apply the gain definition from \cref{eq:gain_def} and we obtain what is 
 \begin{equation}\label{eq:received_power1}
     \frac{P_r}{P_t}=G_r\,G_t\left(\frac{\lambda}{4\pi r}\right)^2
 \end{equation}
-This equation is very significative for us, because we can notice that the received power decrease wit the square of the distance from the transmitter, and with the square of the frequency!! The antenna builders does not like very much this squared dependency, but they are obliged to deal with it :(\\
+This equation is very significative for us, because we can notice that the received power decrease with the square of the distance from the transmitter, and with the square of the frequency!! The antenna builders does not like very much this squared dependency, but they are obliged to deal with it :(\\
 To solve this problem, a common practice is to build very directive antennas, but it is not always possible as we will see.\\
 That being said, to simplify a bit the notation, we can introduce the \emph{isotropic attenuation in free space} $A_0$:
 \begin{equation}\label{eq:isotropic_attenuation}
@@ -407,7 +407,7 @@ Then, for a given minimum amount of received power, we can define the maximum va
 \begin{equation}\label{eq:r_max_only_rec_pow}
     r_{max}=\sqrt[4]{\frac{P_t}{P_r}\,\frac{G_t^2\,\lambda^2}{(4\pi)^3}\,\sigma}
 \end{equation}
-If the object is farer from this $r_max$ we would not receive enough power to detect it.\\
+If the object is farer from this $r_{max}$ we would not receive enough power to detect it.\\
 Then we need also to take in account that not all the power received is useful signal, but we could encounter in noises. Like we have seen in \cref{eq:noise_constrain_in_friis}, we will introduce a constrain on the minimum amount of useful signal over the total received value:
 \begin{equation}
     \frac{P_r}{P_n}=\frac{P_r}{K_b\,T_{sys}\,B}>SNR_{min}

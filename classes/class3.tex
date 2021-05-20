@@ -14,12 +14,12 @@ From \cref{eq:electric_field_3_axes_phase}, and exploiting the cos property:
 \begin{equation*}
     \cos(\alpha + \beta )=\cos\alpha\, \cos\beta - \sin\alpha \, \sin\beta
 \end{equation*}
-By considering $\alpha = \omega\, t$ and $\beta = \beta z+\varphi+z$ we obtain the total equation of the EMF on $z$ direction:
+By considering $\alpha = \omega\, t$ and $\beta = - \beta z+\varphi$ we will obtain the total equation of the EMF on $z$ direction:
 \begin{align}
     \begin{split}
         &\overline{E}(z,t)=E_x\,\jhat+E_y\,\ihat+E_z\,\khat=\\[5pt]
-        &=\cos(\omega\,t)[E_{x_0}\cos(\varphi-\beta\,z)\ihat+E_{y_0}\cos(\varphi_y-\beta\,z)\jhat+E_{z_0}\cos(\varphi_z-\beta\,z)\khat]+\\[5pt]
-        &-\sin(\omega\,t)[E_{x_0}\sin(\varphi-\beta\,z)\ihat+E_{y_0}\sin(\varphi_y-\beta\,z)\jhat+E_{z_0}\sin(\varphi_z-\beta\,z)\khat])=\\[5pt]
+        &=\cos(\omega\,t)[E_{x_0}\cos(\varphi_x-\beta\,z)\ihat+E_{y_0}\cos(\varphi_y-\beta\,z)\jhat+E_{z_0}\cos(\varphi_z-\beta\,z)\khat]+\\[5pt]
+        &-\sin(\omega\,t)[E_{x_0}\sin(\varphi_x-\beta\,z)\ihat+E_{y_0}\sin(\varphi_y-\beta\,z)\jhat+E_{z_0}\sin(\varphi_z-\beta\,z)\khat])=\\[5pt]
         &=\overline{E}_1\,\cos(\omega\,t)+\overline{E}_2\,\sin(\omega\,t)
     \end{split}
 \end{align}
@@ -110,8 +110,8 @@ So \cref{eq:Helmholtz1} becomes:
 \end{equation}
 If we assume $E$ as a scalar field, then:
 \begin{equation}\label{eq:Helmholtz2}
-    \frac{\partial^2\phas{E}(z)}{\partial z^2}\,-\omega\,\phas{E}(z)=0
-\end{equation}
+    \frac{\partial^2\phas{E}(z)}{\partial z^2}\,-\gamma\,\phas{E}(z)=0
+    \end{equation}
 \cref{eq:Helmholtz1} and \cref{eq:Helmholtz2} are also known as the Helmholtz equation (strange name, I know).
 \subsubsection*{Solution of the wave equation in phasor domain}
 Given \cref{eq:Helmholtz2}, it is very simple to obtain its solution:
@@ -170,9 +170,9 @@ We can also use $\frac{\sigma}{\omega \epsilon}$ to know the property of our med
     \item $\bm{\frac{\sigma}{\omega \epsilon}< 1}$: dielectric medium loss
 \end{itemize}
 If we suppose no metallic loss: $\sigma = 0$, then:
-\begin{equation*}
-    \theta=0\rightarrow\varepsilon_c=\varepsilon\rightarrow\alpha=0\rightarrow\gamma =j\beta
-\end{equation*}
+\begin{equation}
+    \sigma=0\rightarrow\varepsilon_c=\varepsilon\rightarrow\alpha=0\rightarrow\gamma =j\beta
+\end{equation}
 With this simplification the forward magnetic field becomes:
 \begin{equation}
     \phas{E}=\overline{E}_{0}\, e^{-j\beta z}
@@ -263,6 +263,6 @@ The \emph{Poynting vector} represents the directional energy flux of our radiati
 \end{equation}
 To obtain $\overline{S}$ is not very simple, but in phasor domain it is \emph{na crema} (italian way to say "very beautiful"):
 \begin{equation}
-    \overline{S}=\frac{\phas{E}\times\phas{H}^*}{2}=\frac{1}{2}\,\overline{E}
-_x\cdot\overline{H}_y^*\,\khat
+    \phas{S}=\frac{\phas{E}\times\phas{H}^*}{2}=\frac{1}{2}\,\phas{E}
+_x\cdot\phas{H}_y^*\,\khat
 \end{equation}

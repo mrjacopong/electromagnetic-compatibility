@@ -18,7 +18,7 @@ I have  written  every  line  of  code, and if  you  open  the  .tex  files  you
 ### How to compile the code
 You need a working LaTeX distribution (I am using MiKTeX).
 Use pdflatex and bibtex to build the code,
-To be 100% sure of the result you should use this recipe in order: pdflatex -> bibtex -> pdflatex -> pdflatex
+To be 100% sure of the result you should use this recipe in order: pdflatex -> bibtex -> pdflatex -> pdflatex.
 
   
 ###  disclaimer:  

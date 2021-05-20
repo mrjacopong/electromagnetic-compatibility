@@ -235,7 +235,7 @@ impedance:
 \end{equation}
 And:
 \begin{equation}
-    Z_{max}=\frac{V_{max}}{I_{max}}=\frac{|V\bottomPlus|+|V\bottomMinus|}{|V\bottomPlus|-|V\bottomMinus|}\,Z_0
+    Z_{max}=\frac{V_{max}}{I_{min}}=\frac{|V\bottomPlus|+|V\bottomMinus|}{|I\bottomPlus|-|I\bottomMinus|}\,Z_0
 \end{equation}
 \subsection*{Standing wave ratio (SWR)}
 Finally we can introduce this famous value of Standing wave ratio (SWR). This is very useful to describe the quality of our signal when we have a forward and backward wave.
@@ -501,7 +501,7 @@ Good news for the second equation in \cref{eq:normalized_impedance}, because als
 In \cref{fig:y_cicles} you can have a look at the circles made by changing the $\mathcal{R}$ parameter. When $\mathcal{R}\rightarrow \infty$ those circles collapse in $(1,0)$, then by decreasing the $\mathcal{R}$ the circumference radius will increase, until we reach the limit $\mathcal{R}=0$ where the circumference is lying in the horizontal $u$ axe (in green). You can also go in the negative part of the plot with $\mathcal{R}<0$\\
 Hooray! We found a very intuitive way to represent our normalized impedance $\mathcal{Z} (l) = \mathcal{R}+j\mathcal{X}$ by choosing the right circles in my new plot that we will call \emph{Smith Chart} (Smith Will for friends). With that we can obtain the value of $v$ and $u$ of the reflection coefficient by looking at the position of the point on the plot. 
 \subsubsection*{A simple example}
-In this example, we want to represent $\mathcal{Z}_i = 0.2 +j0.5\si{\ohm}$ in our new plot (\cref{fig:example_plot}):
+In this example, we want to represent $\mathcal{Z}_i = 0.9 +j0.5\si{\ohm}$ in our new plot (\cref{fig:example_plot}):
 \begin{figure}[H]
     \begin{center}
         \begin{tikzpicture}
@@ -560,7 +560,7 @@ We draw $\mathcal{Z}_L=\mathcal{Z}(l=0)$ in the Smith Chart:
             \draw[thick,->,black] (2,0)--(3,0) node[below] {$u$}; % x axis
             \draw[thick,->,black] (0,-1)--(0,4) node[left] {$v$}; % y axis
             \draw[->,black] (1.2,0.4)--(-0.5,1)
-            node[label={[font=\footnotesize]left:$\mathcal{Z}_L = 0.9 +j0.5$}] {};
+            node[label={[font=\footnotesize]left:$\mathcal{Z}_L = 2 +j3$}] {};
             \filldraw [black] (1.2,0.4) circle (1pt);
             \draw[black] (2*1,2*1/2) circle (2*1/2);
             \draw[black] (3*2/4,0) circle (2/4);

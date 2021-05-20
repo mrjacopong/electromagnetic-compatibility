@@ -183,7 +183,7 @@ We have quite a bit reason to have a good transmission line with no or few refle
     \item It is very important in communication tho have zero or at least very few distortion: if the signal becomes reflected we introduce unwanted noise
 \end{enumerate}
 \subsection*{Adaption of the Transmission Line}
-Going back to the main topic, how it is possible to build a well designed transmission line? there are some tricks, and they consist in the addition of a special "box" in the middle of the transmission line in order to adapt it to the load (\cref{fig:general_tl_adapter}). It is very useful because wi will not need to change the entire TL if we deal to a different load, but we can simply adjust it.
+Going back to the main topic, how it is possible to build a well designed transmission line? there are some tricks, and they consist in the addition of a special "box" in the middle of the transmission line in order to adapt it to the load (\cref{fig:general_tl_adapter}). It is very useful because we will not need to change the entire TL if we deal to a different load, but we can simply adjust it.
 \begin{figure}[H]
     \begin{center}
         \begin{circuitikz}
@@ -266,7 +266,7 @@ We will need a transmission line in series at the used one with characteristic i
 Note:\\
 Usually this technique is used to match only the real value of the load impedance, because as we have seen in \cref{eq:characteristic_impedance_no_loss}, the characteristic impedance of the transmission line is usually considered real to neglect the power loss. To match the imaginary part of my load, it is possible to use this method, but we need to add another layer of adaption that could be another piece of transmission line in series, or better a STUB.
 
-\subsubsection*{Closed circuit Stub}
+\subsubsection*{Short circuit Stub}
 Another possibility we have is to modify directly the characteristic impedance of the line by inserting something in parallel, like a short circuit. In this way wi will change the impedance of the entire TL.\\
 From what we have already seen in \cref{input_impedance_of_a_short}, a short circuit could behave like an impedance or capacitor by changing his length. This is crucial in order to adapt the TL, because with that we can match the imaginary part of the load impedance.\\
 What we are going to do is so insert a special short circuit (STUB) in parallel to the transmission line, near the load position, like you can see in \cref{fig:stub}:
@@ -337,7 +337,7 @@ A simple representation of the application of that type of stub is shown in \cre
 According to the Ohm law, the total impedance of a series of impedance is the sum of all the impedances ($Z_{tot}=Z_a+Z_b$).\\
 So, adjusting the stub length we can obtain a positive or negative impedance value to compensate the load impedance.
 \begin{equation}
-    Z_L=A_L+jX_L \, \rightarrow \, Y_{stub}=-jX
+    Z_L=A_L+jX_L \, \rightarrow \, X_{stub}=-jX
 \end{equation}
 \subsection*{General consideration on the adaption of a TL}
 As you may have already understood, in order to adapt the real part of the load impedance we use the $\lambda/4$ line adapter. If my load has both a real and imaginary part different from $Z_0$, we can combine the $\lambda/4$ line adapter and a stub.
